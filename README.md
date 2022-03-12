@@ -5,7 +5,7 @@ Course: CSC680/780 Mobile App Development\
 Instuctor: Axel Esselmann
 
 ### Description
-This app is meant to help people add things to and remember a wish list of items that they might otherwise forget. The interface allows the user to add items with a name, price, optional image, and other details about the desired item.
+This app is meant to help people add things to and remember a wish list of items that they might otherwise forget. The interface allows the user to add lists for certain occasions and populate those lists with items they find throughout their day. Item will have a name, price, optional image, and other details about the desired item.
 
 ### Must-have features
  - Create new a user account and log in
