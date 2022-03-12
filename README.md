@@ -55,5 +55,7 @@ This app is meant to help people add things to and remember a wish list of items
  - Send money through Stripe instead of purchasing lsit item (possibly on a scheduled day)
  - Friend list (for sharing list updates)
 
+## Layout
 
+<img width="886" alt="Screen Shot 2022-03-12 at 2 18 58 PM" src="https://user-images.githubusercontent.com/62198796/158037007-4b4d55ae-85a0-4686-9c90-c29f7a586f51.png">
 
