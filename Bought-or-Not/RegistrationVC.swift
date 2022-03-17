@@ -29,6 +29,18 @@ class RegistrationVC: UIViewController {
             //TODO: No email error
             return
         }
+        guard let username = usernameInput.text else{
+            //TODO: No username error
+            return
+        }
+        guard let name = nameInput.text else{
+            //TODO: No name error
+            return
+        }
+        guard let phoneNumber = phoneNumberInput.text else{
+            //TODO: No phoneNumber error
+            return
+        }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let err = error{
@@ -37,9 +49,24 @@ class RegistrationVC: UIViewController {
                 return
             }
             
+            //Add user data
+            //TODO: Possibly make this async?
+            let db = Firestore.firestore()
+            var ref: DocumentReference? = nil
+            ref = db.collection("users").addDocument(data: [
+                "username": username,
+                "fullName": name,
+                "phoneNumber": phoneNumber
+            ]) { err in
+                if let err = err {
+                    //TODO: Inform user of error saving data
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
+            
             self.performSegue(withIdentifier: "toHome", sender: self)
-            
-            
         }
     }
     
