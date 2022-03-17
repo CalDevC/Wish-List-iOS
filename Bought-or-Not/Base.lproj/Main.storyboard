@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-736" y="80"/>
         </scene>
-        <!--Log-in-->
+        <!--Sign In-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Log-in" id="BYZ-38-t0r" customClass="LoginVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign In" id="BYZ-38-t0r" customClass="SignInVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,24 +85,74 @@
                     <view key="view" contentMode="scaleToFill" id="rrp-yA-car">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ay-Ii-gsH">
+                                <rect key="frame" x="50" y="685" width="314" height="48.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Create Account">
+                                            <attributes>
+                                                <font key="NSFont" size="30" name="Helvetica-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseBackgroundColor" name="btnFill"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="createAcctBtnPress:" destination="cOF-Hi-uuK" eventType="touchUpInside" id="bbS-8P-Yyq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HT-CT-YbN">
+                                <rect key="frame" x="50" y="753.5" width="314" height="48.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign In">
+                                            <attributes>
+                                                <font key="NSFont" size="30" name="Helvetica-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseBackgroundColor" name="btnFill"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signInBtnPress:" destination="cOF-Hi-uuK" eventType="touchUpInside" id="eUy-FV-19a"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ru8-mx-sVY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6ay-Ii-gsH" firstAttribute="leading" secondItem="Ru8-mx-sVY" secondAttribute="leading" constant="50" id="8iE-eh-sGj"/>
+                            <constraint firstItem="7HT-CT-YbN" firstAttribute="top" secondItem="6ay-Ii-gsH" secondAttribute="bottom" constant="20" id="9Zo-uv-XZT"/>
+                            <constraint firstItem="Ru8-mx-sVY" firstAttribute="bottom" secondItem="7HT-CT-YbN" secondAttribute="bottom" constant="60" id="ENR-cc-yaJ"/>
+                            <constraint firstItem="6ay-Ii-gsH" firstAttribute="centerX" secondItem="rrp-yA-car" secondAttribute="centerX" id="Ku5-Zt-pNs"/>
+                            <constraint firstItem="7HT-CT-YbN" firstAttribute="centerX" secondItem="rrp-yA-car" secondAttribute="centerX" id="LJc-Ee-AT8"/>
+                            <constraint firstItem="Ru8-mx-sVY" firstAttribute="trailing" secondItem="6ay-Ii-gsH" secondAttribute="trailing" constant="50" id="QPb-Dq-rAZ"/>
+                            <constraint firstItem="Ru8-mx-sVY" firstAttribute="trailing" secondItem="7HT-CT-YbN" secondAttribute="trailing" constant="50" id="V2q-Rt-eM0"/>
+                            <constraint firstItem="7HT-CT-YbN" firstAttribute="leading" secondItem="Ru8-mx-sVY" secondAttribute="leading" constant="50" id="zm0-ue-qDI"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ARw-5d-rIX"/>
                     <connections>
-                        <segue destination="zuG-tn-mQS" kind="show" id="gQA-8U-DMN"/>
-                        <segue destination="BYZ-38-t0r" kind="show" id="Y3X-cC-ybr"/>
+                        <segue destination="zuG-tn-mQS" kind="show" identifier="toRegistration" id="gQA-8U-DMN"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toSignIn" id="Y3X-cC-ybr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpU-a5-fFq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="83" y="80"/>
+            <point key="canvasLocation" x="82.608695652173921" y="79.6875"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qA0-Wh-LUP"/>
+        <segue reference="HaO-Xb-REi"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <namedColor name="btnFill">
+            <color red="0.019289925377756877" green="0.74830334595959602" blue="0.20200769442149782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

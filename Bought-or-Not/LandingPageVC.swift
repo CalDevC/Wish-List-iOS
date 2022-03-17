@@ -8,7 +8,16 @@
 import UIKit
 
 class LandingPageVC: UIViewController {
-
+    
+    //Button actions
+    @IBAction func signInBtnPress(_ sender: Any) {
+        performSegue(withIdentifier: "toSignIn", sender: self)
+    }
+    
+    @IBAction func createAcctBtnPress(_ sender: Any) {
+        performSegue(withIdentifier: "toRegistration", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
