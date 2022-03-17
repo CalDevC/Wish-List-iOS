@@ -41,8 +41,9 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Register">
+                                        <fragment content="Sign In">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="30" name="Helvetica-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -264,17 +265,33 @@
                                     <action selector="signInBtnPress:" destination="cOF-Hi-uuK" eventType="touchUpInside" id="eUy-FV-19a"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎁" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-f6-WND">
+                                <rect key="frame" x="125.5" y="358.5" width="163" height="179.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bought-or-Not" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usH-kz-ErX">
+                                <rect key="frame" x="86" y="539" width="242" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <color key="textColor" name="text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ru8-mx-sVY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="qMX-f6-WND" firstAttribute="centerX" secondItem="rrp-yA-car" secondAttribute="centerX" id="8QX-mR-uzE"/>
                             <constraint firstItem="6ay-Ii-gsH" firstAttribute="leading" secondItem="Ru8-mx-sVY" secondAttribute="leading" constant="50" id="8iE-eh-sGj"/>
                             <constraint firstItem="7HT-CT-YbN" firstAttribute="top" secondItem="6ay-Ii-gsH" secondAttribute="bottom" constant="20" id="9Zo-uv-XZT"/>
                             <constraint firstItem="Ru8-mx-sVY" firstAttribute="bottom" secondItem="7HT-CT-YbN" secondAttribute="bottom" constant="60" id="ENR-cc-yaJ"/>
                             <constraint firstItem="6ay-Ii-gsH" firstAttribute="centerX" secondItem="rrp-yA-car" secondAttribute="centerX" id="Ku5-Zt-pNs"/>
                             <constraint firstItem="7HT-CT-YbN" firstAttribute="centerX" secondItem="rrp-yA-car" secondAttribute="centerX" id="LJc-Ee-AT8"/>
                             <constraint firstItem="Ru8-mx-sVY" firstAttribute="trailing" secondItem="6ay-Ii-gsH" secondAttribute="trailing" constant="50" id="QPb-Dq-rAZ"/>
+                            <constraint firstItem="usH-kz-ErX" firstAttribute="top" secondItem="qMX-f6-WND" secondAttribute="bottom" constant="1" id="S57-M5-jT4"/>
                             <constraint firstItem="Ru8-mx-sVY" firstAttribute="trailing" secondItem="7HT-CT-YbN" secondAttribute="trailing" constant="50" id="V2q-Rt-eM0"/>
+                            <constraint firstItem="qMX-f6-WND" firstAttribute="centerY" secondItem="rrp-yA-car" secondAttribute="centerY" id="fda-7U-edX"/>
+                            <constraint firstItem="usH-kz-ErX" firstAttribute="centerX" secondItem="rrp-yA-car" secondAttribute="centerX" id="uOq-Ur-kFS"/>
                             <constraint firstItem="7HT-CT-YbN" firstAttribute="leading" secondItem="Ru8-mx-sVY" secondAttribute="leading" constant="50" id="zm0-ue-qDI"/>
                         </constraints>
                     </view>
@@ -298,6 +315,9 @@
         </namedColor>
         <namedColor name="inputBackground">
             <color red="0.72944433829671151" green="1" blue="0.68457847558909068" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
