@@ -53,9 +53,10 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createAcctBtnPress:" destination="cOF-Hi-uuK" eventType="touchUpInside" id="V5K-t4-T1X"/>
+                                    <action selector="signInBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RUg-sh-AfH"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAu-Ms-3Qo">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAu-Ms-3Qo">
                                 <rect key="frame" x="107" y="398" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -71,7 +72,7 @@
                                     <constraint firstAttribute="width" constant="200" id="y0g-IT-vtu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -87,7 +88,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="vqk-D7-raT"/>
                     <connections>
-                        <segue destination="1MF-kv-JJw" kind="show" id="HaO-Xb-REi"/>
+                        <outlet property="emailInput" destination="OAu-Ms-3Qo" id="TTX-Lc-ChZ"/>
+                        <outlet property="passwordInput" destination="J7r-y9-c5T" id="dDI-Td-fq3"/>
+                        <segue destination="1MF-kv-JJw" kind="show" identifier="toHome" id="HaO-Xb-REi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -101,6 +104,15 @@
                     <view key="view" contentMode="scaleToFill" id="alW-lq-jOf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You made it :D" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijz-c2-U9R">
+                                <rect key="frame" x="152" y="438" width="111" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="z5m-WQ-QCA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -182,6 +194,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createAcctBtnPress:" destination="cOF-Hi-uuK" eventType="touchUpInside" id="zBT-5T-yO9"/>
+                                    <action selector="registerBtnPressed:" destination="zuG-tn-mQS" eventType="touchUpInside" id="kof-aB-MrX"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHS-Bx-OQx">
@@ -215,7 +228,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="zMb-Mg-BNN"/>
                     <connections>
-                        <segue destination="1MF-kv-JJw" kind="show" id="qA0-Wh-LUP"/>
+                        <outlet property="cPasswordInput" destination="BHS-Bx-OQx" id="ppR-H7-j1V"/>
+                        <outlet property="emailInput" destination="I70-ml-JSP" id="NxZ-It-Fof"/>
+                        <outlet property="nameInput" destination="hUE-2a-qBs" id="AIh-6m-JAX"/>
+                        <outlet property="passwordInput" destination="Nm4-Bj-HS6" id="8Vj-Vb-0OZ"/>
+                        <outlet property="phoneNumberInput" destination="9FJ-dN-OWq" id="mRl-rV-1BQ"/>
+                        <outlet property="usernameInput" destination="pKG-hX-Fgc" id="hzt-F1-xDW"/>
+                        <segue destination="1MF-kv-JJw" kind="show" identifier="toHome" id="qA0-Wh-LUP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSG-sY-Kkp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
