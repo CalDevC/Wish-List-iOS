@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JRn-8J-RLY"/>
+                        <segue destination="cOF-Hi-uuK" kind="relationship" relationship="rootViewController" id="Bcr-qY-fiF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCs-AR-5Uh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -36,13 +36,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="vqk-D7-raT"/>
                     <connections>
-                        <segue destination="zuG-tn-mQS" kind="show" id="w58-iC-wc0"/>
-                        <segue destination="1MF-kv-JJw" kind="show" id="ORM-Pl-XI2"/>
+                        <segue destination="1MF-kv-JJw" kind="show" id="HaO-Xb-REi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="80"/>
+            <point key="canvasLocation" x="945" y="475"/>
         </scene>
         <!--Home Page-->
         <scene sceneID="977-LE-fBd">
@@ -58,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewG-ZE-yfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="946" y="565"/>
+            <point key="canvasLocation" x="1767" y="80"/>
         </scene>
         <!--Registration-->
         <scene sceneID="G7D-jZ-wr6">
@@ -71,12 +70,38 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="zMb-Mg-BNN"/>
+                    <connections>
+                        <segue destination="1MF-kv-JJw" kind="show" id="qA0-Wh-LUP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSG-sY-Kkp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="-163"/>
+            <point key="canvasLocation" x="945" y="-242"/>
+        </scene>
+        <!--Landing Page-->
+        <scene sceneID="BHA-Rz-qcl">
+            <objects>
+                <viewController title="Landing Page" id="cOF-Hi-uuK" customClass="LandingPageVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rrp-yA-car">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ru8-mx-sVY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ARw-5d-rIX"/>
+                    <connections>
+                        <segue destination="zuG-tn-mQS" kind="show" id="gQA-8U-DMN"/>
+                        <segue destination="BYZ-38-t0r" kind="show" id="Y3X-cC-ybr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fpU-a5-fFq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="83" y="80"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qA0-Wh-LUP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

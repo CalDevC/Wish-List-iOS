@@ -21,6 +21,7 @@
 		ABC165F927E3A3D9006C0B2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */; };
 		ABC165FC27E3A545006C0B2C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ABC165FB27E3A545006C0B2C /* FirebaseAuth */; };
 		ABC165FE27E3A545006C0B2C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = ABC165FD27E3A545006C0B2C /* FirebaseFirestore */; };
+		ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		ABC165F627E39EBC006C0B2C /* HomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */,
 				ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */,
 				ABC165F627E39EBC006C0B2C /* HomePageVC.swift */,
+				ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */,
 			);
 			path = "Bought-or-Not";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				ABC165F727E39EBC006C0B2C /* HomePageVC.swift in Sources */,
 				ABC165C927E39BC1006C0B2C /* LoginVC.swift in Sources */,
 				ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */,
+				ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */,
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,
 				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
 			);
