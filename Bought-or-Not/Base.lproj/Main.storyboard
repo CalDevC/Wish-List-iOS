@@ -35,10 +35,46 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="vqk-D7-raT"/>
+                    <connections>
+                        <segue destination="zuG-tn-mQS" kind="show" id="w58-iC-wc0"/>
+                        <segue destination="1MF-kv-JJw" kind="show" id="ORM-Pl-XI2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="30" y="80"/>
+        </scene>
+        <!--Home Page-->
+        <scene sceneID="977-LE-fBd">
+            <objects>
+                <viewController title="Home Page" id="1MF-kv-JJw" customClass="HomePageVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="alW-lq-jOf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="z5m-WQ-QCA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="E45-ub-vNd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ewG-ZE-yfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="565"/>
+        </scene>
+        <!--Registration-->
+        <scene sceneID="G7D-jZ-wr6">
+            <objects>
+                <viewController title="Registration" id="zuG-tn-mQS" customClass="RegistrationVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v4N-8Y-kp5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YFT-ch-SSt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zMb-Mg-BNN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DSG-sY-Kkp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925" y="-117"/>
         </scene>
     </scenes>
     <resources>

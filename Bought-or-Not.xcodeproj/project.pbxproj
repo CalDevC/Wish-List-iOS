@@ -16,6 +16,8 @@
 		ABC165DC27E39BC2006C0B2C /* Bought_or_NotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165DB27E39BC2006C0B2C /* Bought_or_NotTests.swift */; };
 		ABC165E627E39BC2006C0B2C /* Bought_or_NotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165E527E39BC2006C0B2C /* Bought_or_NotUITests.swift */; };
 		ABC165E827E39BC2006C0B2C /* Bought_or_NotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165E727E39BC2006C0B2C /* Bought_or_NotUITestsLaunchTests.swift */; };
+		ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */; };
+		ABC165F727E39EBC006C0B2C /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165F627E39EBC006C0B2C /* HomePageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		ABC165E127E39BC2006C0B2C /* Bought-or-NotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bought-or-NotUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC165E527E39BC2006C0B2C /* Bought_or_NotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bought_or_NotUITests.swift; sourceTree = "<group>"; };
 		ABC165E727E39BC2006C0B2C /* Bought_or_NotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bought_or_NotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		ABC165F627E39EBC006C0B2C /* HomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				ABC165CD27E39BC2006C0B2C /* Assets.xcassets */,
 				ABC165CF27E39BC2006C0B2C /* LaunchScreen.storyboard */,
 				ABC165D227E39BC2006C0B2C /* Info.plist */,
+				ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */,
+				ABC165F627E39EBC006C0B2C /* HomePageVC.swift */,
 			);
 			path = "Bought-or-Not";
 			sourceTree = "<group>";
@@ -258,9 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC165F727E39EBC006C0B2C /* HomePageVC.swift in Sources */,
 				ABC165C927E39BC1006C0B2C /* LoginVC.swift in Sources */,
 				ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */,
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,
+				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
