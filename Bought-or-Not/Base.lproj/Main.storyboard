@@ -116,7 +116,13 @@
                         <viewLayoutGuide key="safeArea" id="z5m-WQ-QCA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E45-ub-vNd"/>
+                    <navigationItem key="navigationItem" id="E45-ub-vNd">
+                        <barButtonItem key="rightBarButtonItem" title="Sign out" id="gkx-qo-pEf">
+                            <connections>
+                                <action selector="signoutBtnPressed:" destination="1MF-kv-JJw" id="MWt-qc-GWJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewG-ZE-yfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
