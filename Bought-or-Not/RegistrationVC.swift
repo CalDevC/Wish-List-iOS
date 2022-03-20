@@ -24,6 +24,7 @@ class RegistrationVC: UIViewController {
     @IBOutlet weak var phoneNumberInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var cPasswordInput: UITextField!
+    var emptyField: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +34,27 @@ class RegistrationVC: UIViewController {
     
     
     @IBAction func registerBtnPressed(_ sender: Any) {
-        let inputArr = [passwordInput, emailInput, usernameInput,
-                        nameInput, phoneNumberInput, cPasswordInput]
+        let requiredTextfields = [passwordInput, emailInput, usernameInput,
+                        nameInput, cPasswordInput]
         
         let password = passwordInput.unwrappedText, cPassword = cPasswordInput.unwrappedText,
             email = emailInput.unwrappedText, username = usernameInput.unwrappedText,
             name = nameInput.unwrappedText, phoneNumber = phoneNumberInput.unwrappedText
         
         //Check if any textfields are empty
-        for input in inputArr{
+        for input in requiredTextfields{
             guard let input = input else{
                 return
             }
             
             if(input.unwrappedText == ""){
-                //TODO: Give user details
                 launchAlert(title: "Error", message: "Some required fields were left empty.", btnText: "Ok")
-                errorOnTextfield(textfield: input)
+                checkForEmptyText(textfield: input)
+                emptyField = true
             }
         }
+        
+        if(emptyField){ return } //Don't attempt account creation with an empty field
     
         //TODO: validation checking for all textfield inputs
         if(password != cPassword){
@@ -88,7 +91,9 @@ class RegistrationVC: UIViewController {
     }
     
     @IBAction func textEditingDidEnd(_ sender: UITextField) {
+        emptyField = false
         clearErrorOnTextfield(textfield: sender)
+        checkForEmptyText(textfield: sender)
     }
     
 
@@ -99,6 +104,18 @@ class RegistrationVC: UIViewController {
     
     func clearErrorOnTextfield(textfield: UITextField){
         textfield.layer.borderWidth = 0.0
+    }
+    
+    //Mark the textfield as errored if its content is empty
+    func checkForEmptyText(textfield: UITextField?){
+        guard let input = textfield else{
+            return
+        }
+        
+        if(input.unwrappedText == ""){
+            errorOnTextfield(textfield: input)
+            emptyField = true
+        }
     }
     
     //Launch an alert to notify the user of something

@@ -180,9 +180,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="uyX-Lp-aWg"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nm4-Bj-HS6">
                                 <rect key="frame" x="107" y="416" width="200" height="34"/>
