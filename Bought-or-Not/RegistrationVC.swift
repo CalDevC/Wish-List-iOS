@@ -56,7 +56,6 @@ class RegistrationVC: UIViewController {
         
         if(emptyField){ return } //Don't attempt account creation with an empty field
     
-        //TODO: validation checking for all textfield inputs
         if(password != cPassword){
             errorOnTextfield(textfield: passwordInput)
             errorOnTextfield(textfield: cPasswordInput)
@@ -67,11 +66,23 @@ class RegistrationVC: UIViewController {
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let err = error{
+            if let err = error, let errCode = AuthErrorCode(rawValue: error!._code){
+                var errMessage: String = ""
                 //TODO: Inform user of account creation error
                 print(err.localizedDescription)
+                switch(errCode){
+                case .emailAlreadyInUse:
+                    errMessage = "The email '\(email)' is already associated with an account."
+                    break
+                case .invalidEmail:
+                    errMessage = "Please enter a vlaid email address."
+                    break
+                default:
+                    errMessage = err.localizedDescription
+                }
+                
                 self.launchAlert(title: "Error",
-                                 message: err.localizedDescription,
+                                 message: errMessage,
                                  btnText: "Ok")
                 return
             }
