@@ -8,6 +8,14 @@
 import UIKit
 import Firebase
 
+//Know that the text is not nill because default is empty string we add an
+//unwrapped text value to avoid lots of unwrapping
+extension UITextField {
+    var unwrappedText: String {
+        return self.text ?? ""
+     }
+}
+
 class RegistrationVC: UIViewController {
 
     @IBOutlet weak var emailInput: UITextField!
@@ -17,29 +25,38 @@ class RegistrationVC: UIViewController {
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var cPasswordInput: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    
     @IBAction func registerBtnPressed(_ sender: Any) {
-        //
+        let inputArr = [passwordInput, emailInput, usernameInput,
+                        nameInput, phoneNumberInput, cPasswordInput]
+        
+        let password = passwordInput.unwrappedText, cPassword = cPasswordInput.unwrappedText,
+            email = emailInput.unwrappedText, username = usernameInput.unwrappedText,
+            name = nameInput.unwrappedText, phoneNumber = phoneNumberInput.unwrappedText
+        
+        //Check if any textfields are empty
+        for input in inputArr{
+            guard let input = input else{
+                return
+            }
+            
+            if(input.unwrappedText == ""){
+                //TODO: Give user details
+                launchAlert(title: "Error", message: "Some required fields were left empty.", btnText: "Ok")
+                errorOnTextfield(textfield: input)
+            }
+        }
+    
         //TODO: validation checking for all textfield inputs
-        //
-        guard let password = passwordInput.text else{
-            //TODO: No password error
-            return
-        }
-        guard let email = emailInput.text else{
-            //TODO: No email error
-            return
-        }
-        guard let username = usernameInput.text else{
-            //TODO: No username error
-            return
-        }
-        guard let name = nameInput.text else{
-            //TODO: No name error
-            return
-        }
-        guard let phoneNumber = phoneNumberInput.text else{
-            //TODO: No phoneNumber error
-            return
+        if(password != cPassword){
+            errorOnTextfield(textfield: passwordInput)
+            errorOnTextfield(textfield: cPasswordInput)
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
@@ -70,21 +87,25 @@ class RegistrationVC: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBAction func textEditingDidEnd(_ sender: UITextField) {
+        clearErrorOnTextfield(textfield: sender)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func errorOnTextfield(textfield: UITextField){
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.red.cgColor
     }
-    */
+    
+    func clearErrorOnTextfield(textfield: UITextField){
+        textfield.layer.borderWidth = 0.0
+    }
+    
+    //Launch an alert to notify the user of something
+    func launchAlert(title: String, message: String, btnText: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: btnText, style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }

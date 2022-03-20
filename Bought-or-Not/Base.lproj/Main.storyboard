@@ -144,6 +144,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="5fb-Qd-9MW"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="full name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUE-2a-qBs">
                                 <rect key="frame" x="107" y="290" width="200" height="34"/>
@@ -153,6 +156,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="LOA-oM-DXD"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I70-ml-JSP">
                                 <rect key="frame" x="107" y="332" width="200" height="34"/>
@@ -162,6 +168,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="Z2D-0K-vM6"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone #" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9FJ-dN-OWq">
                                 <rect key="frame" x="107" y="374" width="200" height="34"/>
@@ -171,6 +180,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="uyX-Lp-aWg"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nm4-Bj-HS6">
                                 <rect key="frame" x="107" y="416" width="200" height="34"/>
@@ -180,6 +192,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="Qvr-rf-zmH"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsN-xd-WMy">
                                 <rect key="frame" x="107" y="741" width="200" height="48.5"/>
@@ -211,6 +226,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="yQS-lh-ooQ"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YFT-ch-SSt"/>
@@ -332,7 +350,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HaO-Xb-REi"/>
+        <segue reference="qA0-Wh-LUP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="btnFill">
