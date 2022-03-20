@@ -211,7 +211,6 @@
                                     <color key="baseBackgroundColor" name="btnFill"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="createAcctBtnPress:" destination="cOF-Hi-uuK" eventType="touchUpInside" id="zBT-5T-yO9"/>
                                     <action selector="registerBtnPressed:" destination="zuG-tn-mQS" eventType="touchUpInside" id="kof-aB-MrX"/>
                                 </connections>
                             </button>
@@ -227,9 +226,8 @@
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="yQS-lh-ooQ"/>
                                 </connections>
                             </textField>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-RY-I9q">
-                                <rect key="frame" x="183" y="500" width="49" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-RY-I9q">
+                                <rect key="frame" x="182" y="681" width="51" height="52"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YFT-ch-SSt"/>
@@ -248,6 +246,8 @@
                             <constraint firstItem="I70-ml-JSP" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="jxa-EJ-bO2"/>
                             <constraint firstItem="hUE-2a-qBs" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="kJH-fK-yF9"/>
                             <constraint firstItem="YFT-ch-SSt" firstAttribute="bottom" secondItem="gsN-xd-WMy" secondAttribute="bottom" constant="72.5" id="oVY-5N-lgy"/>
+                            <constraint firstItem="gsN-xd-WMy" firstAttribute="top" secondItem="ACv-RY-I9q" secondAttribute="bottom" constant="8" symbolic="YES" id="p8g-fv-3HI"/>
+                            <constraint firstItem="ACv-RY-I9q" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="rpL-mP-Ng1"/>
                             <constraint firstItem="BHS-Bx-OQx" firstAttribute="top" secondItem="Nm4-Bj-HS6" secondAttribute="bottom" constant="8" symbolic="YES" id="vYe-VM-Rj6"/>
                         </constraints>
                     </view>
@@ -359,7 +359,7 @@
             <color red="0.019289925377756877" green="0.74830334595959602" blue="0.20200769442149782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="inputBackground">
-            <color red="0.72944433829671151" green="1" blue="0.68457847558909068" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.72899997234344482" green="1" blue="0.68500000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

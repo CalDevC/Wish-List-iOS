@@ -35,7 +35,7 @@ class RegistrationVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func registerBtnPressed(_ sender: Any) {
+    @IBAction func registerBtnPressed(_ sender: Any){
         acitivtyIndicator.startAnimating()
         let requiredTextfields = [passwordInput, emailInput, usernameInput,
                         nameInput, cPasswordInput]
@@ -58,10 +58,11 @@ class RegistrationVC: UIViewController {
             }
         }
         
+        //Don't attempt account creation with an empty field
         if(emptyField){
             acitivtyIndicator.stopAnimating()
             return
-        } //Don't attempt account creation with an empty field
+        }
     
         //Check that passwords match
         if(password != cPassword){
@@ -119,6 +120,7 @@ class RegistrationVC: UIViewController {
         }
     }
     
+    
     //When a required textfield finishes being edited
     @IBAction func textEditingDidEnd(_ sender: UITextField) {
         emptyField = false
@@ -172,6 +174,24 @@ class RegistrationVC: UIViewController {
         
         //Return true if all checks are passed
         return (true, "")
+    }
+    
+    func displaySignUpPendingAlert() -> UIAlertController {
+            //create an alert controller
+        let pending = UIAlertController(title: "Creating New User", message: nil, preferredStyle: .alert)
+
+            //create an activity indicator
+            let indicator = UIActivityIndicatorView(frame: pending.view.bounds)
+            indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            //add the activity indicator as a subview of the alert controller's view
+            pending.view.addSubview(indicator)
+            indicator.isUserInteractionEnabled = false // required otherwise if there buttons in the UIAlertController you will not be able to press them
+            indicator.startAnimating()
+
+        self.present(pending, animated: true, completion: nil)
+
+            return pending
     }
     
     //Attempt to create a new user in Firebase and add additional data
