@@ -24,18 +24,19 @@ class RegistrationVC: UIViewController {
     @IBOutlet weak var phoneNumberInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var cPasswordInput: UITextField!
+    @IBOutlet weak var acitivtyIndicator: UIActivityIndicatorView!
     
     var emptyField: Bool = false
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        acitivtyIndicator.hidesWhenStopped = true
         // Do any additional setup after loading the view.
     }
     
-    
     @IBAction func registerBtnPressed(_ sender: Any) {
+        acitivtyIndicator.startAnimating()
         let requiredTextfields = [passwordInput, emailInput, usernameInput,
                         nameInput, cPasswordInput]
         
@@ -46,6 +47,7 @@ class RegistrationVC: UIViewController {
         //Check if any textfields are empty
         for input in requiredTextfields{
             guard let input = input else{
+                acitivtyIndicator.stopAnimating()
                 return
             }
             
@@ -56,7 +58,10 @@ class RegistrationVC: UIViewController {
             }
         }
         
-        if(emptyField){ return } //Don't attempt account creation with an empty field
+        if(emptyField){
+            acitivtyIndicator.stopAnimating()
+            return
+        } //Don't attempt account creation with an empty field
     
         //Check that passwords match
         if(password != cPassword){
@@ -65,6 +70,7 @@ class RegistrationVC: UIViewController {
             self.launchAlert(title: "Error",
                              message: "Passwords do not match.",
                              btnText: "Ok")
+            acitivtyIndicator.stopAnimating()
             return
         }
         
@@ -93,6 +99,7 @@ class RegistrationVC: UIViewController {
                         self.launchAlert(title: "Error",
                                          message: "username not available.",
                                          btnText: "Ok")
+                        self.acitivtyIndicator.stopAnimating()
                         return
                     }
                 }
@@ -100,12 +107,13 @@ class RegistrationVC: UIViewController {
                 //Create the new user
                 self.createNewUser(username: username, email: email,
                                    password: password, name: name,
-                                   phoneNumber: phoneNumber)
+                                   phoneNumber: phoneNumber, docRef: takenUsernamesDocRef)
             } else {
                 print("Document does not exist")
                 self.launchAlert(title: "Error",
                                  message: "Our servers are undergoing maintenance, please try again later.",
                                  btnText: "Ok")
+                self.acitivtyIndicator.stopAnimating()
                 return
             }
         }
@@ -167,7 +175,9 @@ class RegistrationVC: UIViewController {
     }
     
     //Attempt to create a new user in Firebase and add additional data
-    func createNewUser(username: String, email: String, password: String, name: String, phoneNumber: String){
+    func createNewUser(username: String, email: String, password: String,
+                       name: String, phoneNumber: String, docRef: DocumentReference){
+        
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let err = error, let errCode = AuthErrorCode(rawValue: error!._code){
                 var errMessage: String = ""
@@ -192,6 +202,7 @@ class RegistrationVC: UIViewController {
                 self.launchAlert(title: "Error",
                                  message: errMessage,
                                  btnText: "Ok")
+                self.acitivtyIndicator.stopAnimating()
                 return
             }
             
@@ -214,6 +225,10 @@ class RegistrationVC: UIViewController {
                 }
             }
             
+            //Add username to the takenUsernames list
+            docRef.updateData([authResult!.user.uid: username])
+            
+            self.acitivtyIndicator.stopAnimating()
             self.performSegue(withIdentifier: "toHome", sender: self)
         }
 

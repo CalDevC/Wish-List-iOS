@@ -227,15 +227,19 @@
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="yQS-lh-ooQ"/>
                                 </connections>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-RY-I9q">
+                                <rect key="frame" x="183" y="500" width="49" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YFT-ch-SSt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pKG-hX-Fgc" firstAttribute="top" secondItem="YFT-ch-SSt" secondAttribute="top" constant="160" id="3Be-lJ-cZ2"/>
                             <constraint firstItem="Nm4-Bj-HS6" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="3kk-2N-dvW"/>
                             <constraint firstItem="pKG-hX-Fgc" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="Blm-Zu-rzb"/>
                             <constraint firstItem="9FJ-dN-OWq" firstAttribute="top" secondItem="I70-ml-JSP" secondAttribute="bottom" constant="8" symbolic="YES" id="CjI-Pq-e7I"/>
                             <constraint firstItem="9FJ-dN-OWq" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="ObE-Y5-WaT"/>
-                            <constraint firstItem="gsN-xd-WMy" firstAttribute="top" secondItem="BHS-Bx-OQx" secondAttribute="bottom" constant="249" id="Vfg-zn-H9T"/>
                             <constraint firstItem="BHS-Bx-OQx" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="Yyk-3k-NuX"/>
                             <constraint firstItem="gsN-xd-WMy" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="ZCz-eP-j5i"/>
                             <constraint firstItem="hUE-2a-qBs" firstAttribute="top" secondItem="pKG-hX-Fgc" secondAttribute="bottom" constant="8" symbolic="YES" id="afn-QI-2er"/>
@@ -249,6 +253,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zMb-Mg-BNN"/>
                     <connections>
+                        <outlet property="acitivtyIndicator" destination="ACv-RY-I9q" id="ZpI-LX-pHc"/>
                         <outlet property="cPasswordInput" destination="BHS-Bx-OQx" id="ppR-H7-j1V"/>
                         <outlet property="emailInput" destination="I70-ml-JSP" id="NxZ-It-Fof"/>
                         <outlet property="nameInput" destination="hUE-2a-qBs" id="AIh-6m-JAX"/>
