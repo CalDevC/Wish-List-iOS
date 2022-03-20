@@ -9,8 +9,7 @@ import UIKit
 import Firebase
 import simd
 
-//Know that the text is not nill because default is empty string we add an
-//unwrapped text value to avoid lots of unwrapping
+//Added an unwrapped text value to avoid lots of unwrapping
 extension UITextField {
     var unwrappedText: String {
         return self.text ?? ""
@@ -25,7 +24,9 @@ class RegistrationVC: UIViewController {
     @IBOutlet weak var phoneNumberInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var cPasswordInput: UITextField!
+    
     var emptyField: Bool = false
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,6 @@ class RegistrationVC: UIViewController {
     @IBAction func registerBtnPressed(_ sender: Any) {
         let requiredTextfields = [passwordInput, emailInput, usernameInput,
                         nameInput, cPasswordInput]
-        
-        //TODO: Check that username is not taken
         
         let password = passwordInput.unwrappedText, cPassword = cPasswordInput.unwrappedText,
             email = emailInput.unwrappedText, username = usernameInput.unwrappedText,
@@ -79,51 +78,36 @@ class RegistrationVC: UIViewController {
                         btnText: "Ok")
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let err = error, let errCode = AuthErrorCode(rawValue: error!._code){
-                var errMessage: String = ""
+        //Check that username is not taken
+        let takenUsernamesDocRef = db.collection("users").document("takenUsernames")
+        takenUsernamesDocRef.getDocument { (doc, error) in
+            if let document = doc, document.exists {
                 
-                print(err.localizedDescription)  //Inform developer of error
+                //Get the list of taken usernames
+                let takenUsernames: [String: String] = document.data() as! [String: String]
                 
-                switch(errCode){
-                case .emailAlreadyInUse:
-                    self.errorOnTextfield(textfield: self.emailInput)
-                    errMessage = "The email '\(email)' is already associated with an account."
-                    break
-                case .invalidEmail:
-                    self.errorOnTextfield(textfield: self.emailInput)
-                    errMessage = "Please enter a vlaid email address."
-                    break
-                default:
-                    errMessage = err.localizedDescription
+                //For each taken username check if it is equal to the provided username
+                for pair in takenUsernames{
+                    print("\(pair.value) - \(username == pair.value)")
+                    if(username == pair.value){
+                        self.launchAlert(title: "Error",
+                                         message: "username not available.",
+                                         btnText: "Ok")
+                        return
+                    }
                 }
                 
+                //Create the new user
+                self.createNewUser(username: username, email: email,
+                                   password: password, name: name,
+                                   phoneNumber: phoneNumber)
+            } else {
+                print("Document does not exist")
                 self.launchAlert(title: "Error",
-                                 message: errMessage,
+                                 message: "Our servers are undergoing maintenance, please try again later.",
                                  btnText: "Ok")
                 return
             }
-            
-            //Add user data
-            let db = Firestore.firestore()
-            var ref: DocumentReference? = nil
-            ref = db.collection("users").addDocument(data: [
-                "username": username,
-                "fullName": name,
-                "phoneNumber": phoneNumber,
-                "uid": authResult!.user.uid
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                    self.launchAlert(title: "Error",
-                                     message: "Account created but failed to save user data.",
-                                     btnText: "Ok")
-                } else {
-                    print("Document added with ID: \(ref!.documentID)")
-                }
-            }
-            
-            self.performSegue(withIdentifier: "toHome", sender: self)
         }
     }
     
@@ -180,6 +164,59 @@ class RegistrationVC: UIViewController {
         
         //Return true if all checks are passed
         return (true, "")
+    }
+    
+    //Attempt to create a new user in Firebase and add additional data
+    func createNewUser(username: String, email: String, password: String, name: String, phoneNumber: String){
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let err = error, let errCode = AuthErrorCode(rawValue: error!._code){
+                var errMessage: String = ""
+                
+                print(err.localizedDescription)  //Inform developer of error
+                
+                //Choose an appropriate error message based on the error code
+                switch(errCode){
+                case .emailAlreadyInUse:
+                    self.errorOnTextfield(textfield: self.emailInput)
+                    errMessage = "The email '\(email)' is already associated with an account."
+                    break
+                case .invalidEmail:
+                    self.errorOnTextfield(textfield: self.emailInput)
+                    errMessage = "Please enter a vlaid email address."
+                    break
+                default:
+                    errMessage = err.localizedDescription
+                }
+                
+                //Launch the error alert with the appropriate message
+                self.launchAlert(title: "Error",
+                                 message: errMessage,
+                                 btnText: "Ok")
+                return
+            }
+            
+            //Add user data
+            var ref: DocumentReference? = nil
+            ref = self.db.collection("users").addDocument(data: [
+                "username": username,
+                "fullName": name,
+                "phoneNumber": phoneNumber,
+                "uid": authResult!.user.uid
+            ]) { err in
+                if let err = err {
+                    //Error savng data
+                    print("Error adding document: \(err)")
+                    self.launchAlert(title: "Error",
+                                     message: "Account created but failed to save user data.",
+                                     btnText: "Ok")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
+            
+            self.performSegue(withIdentifier: "toHome", sender: self)
+        }
+
     }
 
 }

@@ -136,7 +136,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-hX-Fgc">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="chase" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-hX-Fgc">
                                 <rect key="frame" x="107" y="248" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -148,7 +148,7 @@
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="5fb-Qd-9MW"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="full name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUE-2a-qBs">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="chase a" borderStyle="roundedRect" placeholder="full name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUE-2a-qBs">
                                 <rect key="frame" x="107" y="290" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -160,7 +160,7 @@
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="LOA-oM-DXD"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I70-ml-JSP">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="@mail.com" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I70-ml-JSP">
                                 <rect key="frame" x="107" y="332" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -181,7 +181,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nm4-Bj-HS6">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345!" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nm4-Bj-HS6">
                                 <rect key="frame" x="107" y="416" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -215,7 +215,7 @@
                                     <action selector="registerBtnPressed:" destination="zuG-tn-mQS" eventType="touchUpInside" id="kof-aB-MrX"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHS-Bx-OQx">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345!" borderStyle="roundedRect" placeholder="confirm password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHS-Bx-OQx">
                                 <rect key="frame" x="107" y="458" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
