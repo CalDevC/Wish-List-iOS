@@ -188,7 +188,7 @@
                                     <constraint firstAttribute="width" constant="200" id="IQV-P1-VfV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="Qvr-rf-zmH"/>
                                 </connections>
@@ -221,7 +221,7 @@
                                     <constraint firstAttribute="width" constant="200" id="di5-Ul-iXL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="yQS-lh-ooQ"/>
                                 </connections>
