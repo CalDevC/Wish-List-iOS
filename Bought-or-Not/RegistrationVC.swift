@@ -60,12 +60,19 @@ class RegistrationVC: UIViewController {
         if(password != cPassword){
             errorOnTextfield(textfield: passwordInput)
             errorOnTextfield(textfield: cPasswordInput)
+            self.launchAlert(title: "Error",
+                             message: "Passwords do not match.",
+                             btnText: "Ok")
+            return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let err = error{
-                print(err.localizedDescription)
                 //TODO: Inform user of account creation error
+                print(err.localizedDescription)
+                self.launchAlert(title: "Error",
+                                 message: err.localizedDescription,
+                                 btnText: "Ok")
                 return
             }
             
@@ -76,11 +83,14 @@ class RegistrationVC: UIViewController {
             ref = db.collection("users").addDocument(data: [
                 "username": username,
                 "fullName": name,
-                "phoneNumber": phoneNumber
+                "phoneNumber": phoneNumber,
+                "uid": authResult!.user.uid
             ]) { err in
                 if let err = err {
-                    //TODO: Inform user of error saving data
                     print("Error adding document: \(err)")
+                    self.launchAlert(title: "Error",
+                                     message: "Account created but failed to save user data.",
+                                     btnText: "Ok")
                 } else {
                     print("Document added with ID: \(ref!.documentID)")
                 }
