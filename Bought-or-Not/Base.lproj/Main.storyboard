@@ -6,6 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +57,7 @@
                                     <action selector="signInBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RUg-sh-AfH"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAu-Ms-3Qo">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="chrish@sfsu.edu" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAu-Ms-3Qo">
                                 <rect key="frame" x="107" y="398" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -65,7 +66,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7r-y9-c5T">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7r-y9-c5T">
                                 <rect key="frame" x="107" y="440" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -90,43 +91,12 @@
                     <connections>
                         <outlet property="emailInput" destination="OAu-Ms-3Qo" id="TTX-Lc-ChZ"/>
                         <outlet property="passwordInput" destination="J7r-y9-c5T" id="dDI-Td-fq3"/>
-                        <segue destination="1MF-kv-JJw" kind="show" identifier="toHome" id="HaO-Xb-REi"/>
+                        <segue destination="dwB-fH-uMd" kind="show" identifier="toHome" id="moi-2V-PxF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945" y="475"/>
-        </scene>
-        <!--Home Page-->
-        <scene sceneID="977-LE-fBd">
-            <objects>
-                <viewController title="Home Page" id="1MF-kv-JJw" customClass="HomePageVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="alW-lq-jOf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You made it :D" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijz-c2-U9R">
-                                <rect key="frame" x="152" y="438" width="111" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="z5m-WQ-QCA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="E45-ub-vNd">
-                        <barButtonItem key="rightBarButtonItem" title="Sign out" id="gkx-qo-pEf">
-                            <connections>
-                                <action selector="signoutBtnPressed:" destination="1MF-kv-JJw" id="MWt-qc-GWJ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ewG-ZE-yfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1767" y="80"/>
         </scene>
         <!--Registration-->
         <scene sceneID="G7D-jZ-wr6">
@@ -260,12 +230,70 @@
                         <outlet property="passwordInput" destination="Nm4-Bj-HS6" id="8Vj-Vb-0OZ"/>
                         <outlet property="phoneNumberInput" destination="9FJ-dN-OWq" id="mRl-rV-1BQ"/>
                         <outlet property="usernameInput" destination="pKG-hX-Fgc" id="hzt-F1-xDW"/>
-                        <segue destination="1MF-kv-JJw" kind="show" identifier="toHome" id="qA0-Wh-LUP"/>
+                        <segue destination="dwB-fH-uMd" kind="show" identifier="toHome" id="VyQ-K2-sIE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSG-sY-Kkp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="944.92753623188412" y="-242.41071428571428"/>
+        </scene>
+        <!--Home Collection View Controller-->
+        <scene sceneID="7H0-fq-060">
+            <objects>
+                <collectionViewController restorationIdentifier="HomeCollectionViewController" storyboardIdentifier="HomeCollectionViewController" id="dwB-fH-uMd" customClass="HomeCollectionViewController" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1CJ-UC-hcl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Ou-xs-mwR">
+                            <size key="itemSize" width="130" height="130"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VPy-B9-vSK" customClass="HomeCollectionViewCell" customModule="Bought_or_Not" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fyY-tW-o5G">
+                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2pX-wF-get">
+                                            <rect key="frame" x="43" y="0.0" width="42" height="75"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="2pX-wF-get" secondAttribute="bottom" id="7AT-1t-Mzm"/>
+                                        <constraint firstItem="2pX-wF-get" firstAttribute="leading" secondItem="fyY-tW-o5G" secondAttribute="leading" id="7hk-M2-PUS"/>
+                                        <constraint firstAttribute="trailing" secondItem="2pX-wF-get" secondAttribute="trailing" id="F0k-xd-LuD"/>
+                                        <constraint firstItem="2pX-wF-get" firstAttribute="top" secondItem="fyY-tW-o5G" secondAttribute="top" constant="54" id="FR1-mn-5GT"/>
+                                        <constraint firstAttribute="trailing" secondItem="2pX-wF-get" secondAttribute="trailing" constant="45" id="Mdl-lt-d8f"/>
+                                        <constraint firstItem="2pX-wF-get" firstAttribute="leading" secondItem="fyY-tW-o5G" secondAttribute="leading" constant="43" id="QTI-ky-4rY"/>
+                                        <constraint firstAttribute="bottom" secondItem="2pX-wF-get" secondAttribute="bottom" constant="55" id="Z7X-OS-llx"/>
+                                        <constraint firstItem="2pX-wF-get" firstAttribute="top" secondItem="fyY-tW-o5G" secondAttribute="top" id="bDe-zd-yvG"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="130" height="130"/>
+                                <connections>
+                                    <outlet property="listCellLabel" destination="2pX-wF-get" id="ZMM-ub-mK2"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="dwB-fH-uMd" id="1Ll-C2-nQL"/>
+                            <outlet property="delegate" destination="dwB-fH-uMd" id="hWE-vE-mpU"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="ens-sz-TXC"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WpO-x5-zoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942.0289855072465" y="24.776785714285712"/>
         </scene>
         <!--Landing Page-->
         <scene sceneID="BHA-Rz-qcl">
@@ -352,7 +380,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qA0-Wh-LUP"/>
+        <segue reference="moi-2V-PxF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="btnFill">
@@ -366,6 +394,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
