@@ -114,6 +114,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="5fb-Qd-9MW"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="full name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUE-2a-qBs">
                                 <rect key="frame" x="107" y="290" width="200" height="34"/>
@@ -123,6 +126,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="LOA-oM-DXD"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I70-ml-JSP">
                                 <rect key="frame" x="107" y="332" width="200" height="34"/>
@@ -132,6 +138,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="Z2D-0K-vM6"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone #" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9FJ-dN-OWq">
                                 <rect key="frame" x="107" y="374" width="200" height="34"/>
@@ -149,7 +158,10 @@
                                     <constraint firstAttribute="width" constant="200" id="IQV-P1-VfV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="Qvr-rf-zmH"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsN-xd-WMy">
                                 <rect key="frame" x="107" y="741" width="200" height="48.5"/>
@@ -169,7 +181,6 @@
                                     <color key="baseBackgroundColor" name="btnFill"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="createAcctBtnPress:" destination="cOF-Hi-uuK" eventType="touchUpInside" id="zBT-5T-yO9"/>
                                     <action selector="registerBtnPressed:" destination="zuG-tn-mQS" eventType="touchUpInside" id="kof-aB-MrX"/>
                                 </connections>
                             </button>
@@ -180,17 +191,23 @@
                                     <constraint firstAttribute="width" constant="200" id="di5-Ul-iXL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="yQS-lh-ooQ"/>
+                                </connections>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-RY-I9q">
+                                <rect key="frame" x="182" y="681" width="51" height="52"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YFT-ch-SSt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pKG-hX-Fgc" firstAttribute="top" secondItem="YFT-ch-SSt" secondAttribute="top" constant="160" id="3Be-lJ-cZ2"/>
                             <constraint firstItem="Nm4-Bj-HS6" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="3kk-2N-dvW"/>
                             <constraint firstItem="pKG-hX-Fgc" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="Blm-Zu-rzb"/>
                             <constraint firstItem="9FJ-dN-OWq" firstAttribute="top" secondItem="I70-ml-JSP" secondAttribute="bottom" constant="8" symbolic="YES" id="CjI-Pq-e7I"/>
                             <constraint firstItem="9FJ-dN-OWq" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="ObE-Y5-WaT"/>
-                            <constraint firstItem="gsN-xd-WMy" firstAttribute="top" secondItem="BHS-Bx-OQx" secondAttribute="bottom" constant="249" id="Vfg-zn-H9T"/>
                             <constraint firstItem="BHS-Bx-OQx" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="Yyk-3k-NuX"/>
                             <constraint firstItem="gsN-xd-WMy" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="ZCz-eP-j5i"/>
                             <constraint firstItem="hUE-2a-qBs" firstAttribute="top" secondItem="pKG-hX-Fgc" secondAttribute="bottom" constant="8" symbolic="YES" id="afn-QI-2er"/>
@@ -199,11 +216,14 @@
                             <constraint firstItem="I70-ml-JSP" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="jxa-EJ-bO2"/>
                             <constraint firstItem="hUE-2a-qBs" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="kJH-fK-yF9"/>
                             <constraint firstItem="YFT-ch-SSt" firstAttribute="bottom" secondItem="gsN-xd-WMy" secondAttribute="bottom" constant="72.5" id="oVY-5N-lgy"/>
+                            <constraint firstItem="gsN-xd-WMy" firstAttribute="top" secondItem="ACv-RY-I9q" secondAttribute="bottom" constant="8" symbolic="YES" id="p8g-fv-3HI"/>
+                            <constraint firstItem="ACv-RY-I9q" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="rpL-mP-Ng1"/>
                             <constraint firstItem="BHS-Bx-OQx" firstAttribute="top" secondItem="Nm4-Bj-HS6" secondAttribute="bottom" constant="8" symbolic="YES" id="vYe-VM-Rj6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zMb-Mg-BNN"/>
                     <connections>
+                        <outlet property="acitivtyIndicator" destination="ACv-RY-I9q" id="ZpI-LX-pHc"/>
                         <outlet property="cPasswordInput" destination="BHS-Bx-OQx" id="ppR-H7-j1V"/>
                         <outlet property="emailInput" destination="I70-ml-JSP" id="NxZ-It-Fof"/>
                         <outlet property="nameInput" destination="hUE-2a-qBs" id="AIh-6m-JAX"/>
