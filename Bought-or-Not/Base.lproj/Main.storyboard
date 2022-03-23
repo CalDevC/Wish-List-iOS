@@ -289,7 +289,9 @@
                             <outlet property="delegate" destination="dwB-fH-uMd" id="hWE-vE-mpU"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="ens-sz-TXC"/>
+                    <navigationItem key="navigationItem" id="ens-sz-TXC">
+                        <barButtonItem key="rightBarButtonItem" title="userMenu" image="person.circle" catalog="system" id="RpU-Yo-yxv"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpO-x5-zoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,6 +385,7 @@
         <segue reference="moi-2V-PxF"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <namedColor name="btnFill">
             <color red="0.019289925377756877" green="0.74830334595959602" blue="0.20200769442149782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
