@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A68B634E27E7C81200B7C6BC /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */; };
+		A6F5F1CE27E7EC9000C67AEC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */; };
 		ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C427E39BC1006C0B2C /* AppDelegate.swift */; };
 		ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */; };
 		ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C827E39BC1006C0B2C /* SignInVC.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
+		A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABC165C127E39BC1006C0B2C /* Bought-or-Not.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bought-or-Not.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC165C427E39BC1006C0B2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */,
 				ABC165C827E39BC1006C0B2C /* SignInVC.swift */,
 				ABC165CA27E39BC1006C0B2C /* Main.storyboard */,
+				A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */,
+				A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */,
 				ABC165CD27E39BC2006C0B2C /* Assets.xcassets */,
 				ABC165CF27E39BC2006C0B2C /* LaunchScreen.storyboard */,
 				ABC165D227E39BC2006C0B2C /* Info.plist */,
@@ -286,8 +292,10 @@
 				ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */,
 				ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */,
 				ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */,
+				A68B634E27E7C81200B7C6BC /* HomeCollectionViewController.swift in Sources */,
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,
 				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
+				A6F5F1CE27E7EC9000C67AEC /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +472,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YJ3D687KQU;
+				DEVELOPMENT_TEAM = FSCD75QGPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bought-or-Not/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -492,7 +500,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YJ3D687KQU;
+				DEVELOPMENT_TEAM = FSCD75QGPX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bought-or-Not/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
