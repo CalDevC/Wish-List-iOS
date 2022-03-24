@@ -10,15 +10,18 @@ import Firebase
 
 class UserSettingsVCTableViewController: UITableViewController {
     
+    //All options and their symbols to be displayed in the user settings
     let menuOptions: [(img: String, text: String)] = [
         ("person.text.rectangle", Constants.userSettings.editAcct),
         ("figure.wave.circle", Constants.userSettings.signOut)]
     
+    //The headers of each section in teh user settings
     let sectionHeaders = ["User Settings"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Add the custom cell to the table view
         let nib = UINib(nibName: "UserSettingsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "UserSettingsCell")
         tableView.dataSource = self
@@ -41,6 +44,7 @@ class UserSettingsVCTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserSettingsCell", for: indexPath) as! UserSettingsCell
         
+        //Set the desired text and symbol using the menuOptions list
         cell.cellImage.image = UIImage(systemName: menuOptions[indexPath.row].img)
         cell.cellText.text = menuOptions[indexPath.row].text
 
@@ -62,6 +66,7 @@ class UserSettingsVCTableViewController: UITableViewController {
                 navigationController?.popToRootViewController(animated: true)
                 print("POPPED")
             } catch let signOutError as NSError {
+                //Inform the user of a sign out error
                 Util.launchAlert(senderVC: self,
                                  title: "Sign-out Error",
                                  message: "The current user could not be signed out at this time. Please try again later.",

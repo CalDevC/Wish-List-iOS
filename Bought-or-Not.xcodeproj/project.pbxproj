@@ -19,12 +19,15 @@
 		ABC165E627E39BC2006C0B2C /* Bought_or_NotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165E527E39BC2006C0B2C /* Bought_or_NotUITests.swift */; };
 		ABC165E827E39BC2006C0B2C /* Bought_or_NotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165E727E39BC2006C0B2C /* Bought_or_NotUITestsLaunchTests.swift */; };
 		ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */; };
-		ABC165F727E39EBC006C0B2C /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165F627E39EBC006C0B2C /* HomePageVC.swift */; };
 		ABC165F927E3A3D9006C0B2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */; };
 		ABC165FC27E3A545006C0B2C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ABC165FB27E3A545006C0B2C /* FirebaseAuth */; };
 		ABC165FE27E3A545006C0B2C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = ABC165FD27E3A545006C0B2C /* FirebaseFirestore */; };
 		ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */; };
 		ABC1660227EBEB47006C0B2C /* UserSettingsVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */; };
+		ABC1660B27EBF334006C0B2C /* UserSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660927EBF333006C0B2C /* UserSettingsCell.swift */; };
+		ABC1660C27EBF334006C0B2C /* UserSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */; };
+		ABC1660E27EBFE1A006C0B2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660D27EBFE1A006C0B2C /* Constants.swift */; };
+		ABC1661027EC0ADA006C0B2C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660F27EC0ADA006C0B2C /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +64,13 @@
 		ABC165E527E39BC2006C0B2C /* Bought_or_NotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bought_or_NotUITests.swift; sourceTree = "<group>"; };
 		ABC165E727E39BC2006C0B2C /* Bought_or_NotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bought_or_NotUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
-		ABC165F627E39EBC006C0B2C /* HomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageVC.swift; sourceTree = "<group>"; };
 		ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsVCTableViewController.swift; sourceTree = "<group>"; };
+		ABC1660927EBF333006C0B2C /* UserSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsCell.swift; sourceTree = "<group>"; };
+		ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSettingsCell.xib; sourceTree = "<group>"; };
+		ABC1660D27EBFE1A006C0B2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ABC1660F27EC0ADA006C0B2C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 		ABC165C327E39BC1006C0B2C /* Bought-or-Not */ = {
 			isa = PBXGroup;
 			children = (
+				ABC1660827EBF30B006C0B2C /* customCells */,
 				ABC165C427E39BC1006C0B2C /* AppDelegate.swift */,
 				ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */,
 				ABC165C827E39BC1006C0B2C /* SignInVC.swift */,
@@ -128,9 +135,10 @@
 				ABC165D227E39BC2006C0B2C /* Info.plist */,
 				ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */,
 				ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */,
-				ABC165F627E39EBC006C0B2C /* HomePageVC.swift */,
 				ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */,
 				ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */,
+				ABC1660D27EBFE1A006C0B2C /* Constants.swift */,
+				ABC1660F27EC0ADA006C0B2C /* Utils.swift */,
 			);
 			path = "Bought-or-Not";
 			sourceTree = "<group>";
@@ -150,6 +158,15 @@
 				ABC165E727E39BC2006C0B2C /* Bought_or_NotUITestsLaunchTests.swift */,
 			);
 			path = "Bought-or-NotUITests";
+			sourceTree = "<group>";
+		};
+		ABC1660827EBF30B006C0B2C /* customCells */ = {
+			isa = PBXGroup;
+			children = (
+				ABC1660927EBF333006C0B2C /* UserSettingsCell.swift */,
+				ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */,
+			);
+			path = customCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +284,7 @@
 				ABC165F927E3A3D9006C0B2C /* GoogleService-Info.plist in Resources */,
 				ABC165CE27E39BC2006C0B2C /* Assets.xcassets in Resources */,
 				ABC165CC27E39BC1006C0B2C /* Main.storyboard in Resources */,
+				ABC1660C27EBF334006C0B2C /* UserSettingsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,15 +309,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABC165F727E39EBC006C0B2C /* HomePageVC.swift in Sources */,
+				ABC1660E27EBFE1A006C0B2C /* Constants.swift in Sources */,
 				ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */,
 				ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */,
 				ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */,
 				A68B634E27E7C81200B7C6BC /* HomeCollectionViewController.swift in Sources */,
+				ABC1660B27EBF334006C0B2C /* UserSettingsCell.swift in Sources */,
 				ABC1660227EBEB47006C0B2C /* UserSettingsVCTableViewController.swift in Sources */,
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,
 				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
 				A6F5F1CE27E7EC9000C67AEC /* HomeCollectionViewCell.swift in Sources */,
+				ABC1661027EC0ADA006C0B2C /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
