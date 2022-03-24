@@ -1,5 +1,5 @@
 //
-//  userSettingsCell.swift
+//  UserSettingsCell.swift
 //  Bought-or-Not
 //
 //  Created by Chase Alexander on 3/23/22.
@@ -7,11 +7,12 @@
 
 import UIKit
 
-class userSettingsCell: UITableViewCell {
-
+class UserSettingsCell: UITableViewCell {
+    @IBOutlet weak var cellImage: UIImageView!
+    @IBOutlet weak var cellText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("CUSTOM CELL IN USE")
         // Initialization code
     }
 
@@ -20,5 +21,5 @@ class userSettingsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
