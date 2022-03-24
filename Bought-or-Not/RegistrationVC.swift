@@ -212,7 +212,7 @@ class RegistrationVC: UIViewController {
                     break
                 case .invalidEmail:
                     self.errorOnTextfield(textfield: self.emailInput)
-                    errMessage = "Please enter a vlaid email address."
+                    errMessage = "Please enter a valid email address."
                     break
                 default:
                     errMessage = err.localizedDescription

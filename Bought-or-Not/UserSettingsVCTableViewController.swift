@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class UserSettingsVCTableViewController: UITableViewController {
     
     let menuOptions: [(img: String, text: String)] = [
-        ("person.text.rectangle", "Edit Account"),
-        ("figure.wave.circle", "Sign out")]
+        ("person.text.rectangle", Constants.userSettings.editAcct),
+        ("figure.wave.circle", Constants.userSettings.signOut)]
     
     let sectionHeaders = ["User Settings"]
 
@@ -21,18 +22,12 @@ class UserSettingsVCTableViewController: UITableViewController {
         let nib = UINib(nibName: "UserSettingsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "UserSettingsCell")
         tableView.dataSource = self
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
+    
+//MARK: - Populate tableView
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sectionHeaders.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -40,17 +35,41 @@ class UserSettingsVCTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return menuOptions.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserSettingsCell", for: indexPath) as! UserSettingsCell
+        
         cell.cellImage.image = UIImage(systemName: menuOptions[indexPath.row].img)
         cell.cellText.text = menuOptions[indexPath.row].text
-        // Configure the cell...
 
         return cell
+    }
+    
+//MARK: - Handle menu choice selection
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch(menuOptions[indexPath.row].text){
+        case Constants.userSettings.editAcct:
+            break
+        case Constants.userSettings.signOut:
+            let firebaseAuth = Auth.auth()
+            do {
+                //Sign out the user
+                try firebaseAuth.signOut()
+                
+                //Go back to landing page
+                navigationController?.popToRootViewController(animated: true)
+                print("POPPED")
+            } catch let signOutError as NSError {
+                //TODO: Notify user of sign out failure
+                print("Error signing out: %@", signOutError)
+            }
+            print("END")
+            break
+        default:
+            return
+        }
     }
 
     /*
