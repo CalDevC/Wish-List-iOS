@@ -9,7 +9,16 @@ import Foundation
 
 struct Constants{
     struct userSettings{
-        static let signOut: String = "Sign Out"
-        static let editAcct: String = "Edit Account"
+        static let signOut = "Sign Out"
+        static let editAcct = "Edit Account"
+        static let signOutErr = "The current user could not be signed out at this time. Please try again later."
+    }
+    
+    struct segues{
+        static let landingToSignin = "toSignIn"
+        static let landingToRegistration = "toRegistration"
+        static let registrationToHome = "toHome"
+        static let signinToHome = "toHome"
+        static let homeToUserSettings = "homeToUserSettings"
     }
 }

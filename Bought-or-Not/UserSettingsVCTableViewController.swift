@@ -69,7 +69,7 @@ class UserSettingsVCTableViewController: UITableViewController {
                 //Inform the user of a sign out error
                 Util.launchAlert(senderVC: self,
                                  title: "Sign-out Error",
-                                 message: "The current user could not be signed out at this time. Please try again later.",
+                                 message: Constants.userSettings.signOutErr,
                                  btnText: "Ok")
                 print("Error signing out: \(signOutError)")
             }

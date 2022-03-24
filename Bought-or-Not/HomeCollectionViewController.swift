@@ -13,7 +13,7 @@ class HomeCollectionViewController: UICollectionViewController {
     
     // @IBOutlet var collectionView: UICollectionView!
     @IBAction func userSettingsPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "homeToUserSettings", sender: self)
+        performSegue(withIdentifier: Constants.segues.homeToUserSettings, sender: self)
     }
     
     let dataSource: [String] = ["New List", "My Birthday", "Christmas"]

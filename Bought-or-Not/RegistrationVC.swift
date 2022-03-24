@@ -251,7 +251,7 @@ class RegistrationVC: UIViewController {
             docRef.updateData([authResult!.user.uid: username])
             
             self.acitivtyIndicator.stopAnimating()
-            self.performSegue(withIdentifier: "toHome", sender: self)
+            self.performSegue(withIdentifier: Constants.segues.registrationToHome, sender: self)
         }
 
     }
