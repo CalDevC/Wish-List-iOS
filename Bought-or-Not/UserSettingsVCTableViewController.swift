@@ -62,8 +62,11 @@ class UserSettingsVCTableViewController: UITableViewController {
                 navigationController?.popToRootViewController(animated: true)
                 print("POPPED")
             } catch let signOutError as NSError {
-                //TODO: Notify user of sign out failure
-                print("Error signing out: %@", signOutError)
+                Util.launchAlert(senderVC: self,
+                                 title: "Sign-out Error",
+                                 message: "The current user could not be signed out at this time. Please try again later.",
+                                 btnText: "Ok")
+                print("Error signing out: \(signOutError)")
             }
             print("END")
             break
