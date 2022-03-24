@@ -8,9 +8,19 @@
 import UIKit
 
 class UserSettingsVCTableViewController: UITableViewController {
+    
+    let menuOptions: [(img: String, text: String)] = [
+        ("person.text.rectangle", "Edit Account"),
+        ("figure.wave.circle", "Sign out")]
+    
+    let sectionHeaders = ["User Settings"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: "UserSettingsCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "UserSettingsCell")
+        tableView.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,23 +32,26 @@ class UserSettingsVCTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        sectionHeaders[section]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return menuOptions.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserSettingsCell", for: indexPath) as! UserSettingsCell
+        cell.cellImage.image = UIImage(systemName: menuOptions[indexPath.row].img)
+        cell.cellText.text = menuOptions[indexPath.row].text
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
