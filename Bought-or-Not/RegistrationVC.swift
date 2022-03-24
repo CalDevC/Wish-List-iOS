@@ -52,7 +52,10 @@ class RegistrationVC: UIViewController {
             }
             
             if(input.unwrappedText == ""){
-                launchAlert(title: "Error", message: "Some required fields were left empty.", btnText: "Ok")
+                Util.launchAlert(senderVC: self,
+                                 title: "Error",
+                                 message: "Some required fields were left empty.",
+                                 btnText: "Ok")
                 checkForEmptyText(textfield: input)
                 emptyField = true
             }
@@ -68,7 +71,8 @@ class RegistrationVC: UIViewController {
         if(password != cPassword){
             errorOnTextfield(textfield: passwordInput)
             errorOnTextfield(textfield: cPasswordInput)
-            self.launchAlert(title: "Error",
+            Util.launchAlert(senderVC: self,
+                             title: "Error",
                              message: "Passwords do not match.",
                              btnText: "Ok")
             acitivtyIndicator.stopAnimating()
@@ -80,9 +84,10 @@ class RegistrationVC: UIViewController {
         if(!result.result){
             errorOnTextfield(textfield: passwordInput)
             errorOnTextfield(textfield: cPasswordInput)
-            launchAlert(title: "Error",
-                        message: result.message,
-                        btnText: "Ok")
+            Util.launchAlert(senderVC: self,
+                             title: "Error",
+                             message: result.message,
+                             btnText: "Ok")
         }
         
         //Check that username is not taken
@@ -97,7 +102,8 @@ class RegistrationVC: UIViewController {
                 for pair in takenUsernames{
                     print("\(pair.value) - \(username == pair.value)")
                     if(username == pair.value){
-                        self.launchAlert(title: "Error",
+                        Util.launchAlert(senderVC: self,
+                                         title: "Error",
                                          message: "username not available.",
                                          btnText: "Ok")
                         self.acitivtyIndicator.stopAnimating()
@@ -111,7 +117,8 @@ class RegistrationVC: UIViewController {
                                    phoneNumber: phoneNumber, docRef: takenUsernamesDocRef)
             } else {
                 print("Document does not exist")
-                self.launchAlert(title: "Error",
+                Util.launchAlert(senderVC: self,
+                                 title: "Error",
                                  message: "Our servers are undergoing maintenance, please try again later.",
                                  btnText: "Ok")
                 self.acitivtyIndicator.stopAnimating()
@@ -149,13 +156,6 @@ class RegistrationVC: UIViewController {
             errorOnTextfield(textfield: input)
             emptyField = true
         }
-    }
-    
-    //Launch an alert to notify the user of something
-    func launchAlert(title: String, message: String, btnText: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: btnText, style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     //Checks for a strong password. If result is false then message will provide reasoning
@@ -219,7 +219,8 @@ class RegistrationVC: UIViewController {
                 }
                 
                 //Launch the error alert with the appropriate message
-                self.launchAlert(title: "Error",
+                Util.launchAlert(senderVC: self,
+                                 title: "Error",
                                  message: errMessage,
                                  btnText: "Ok")
                 self.acitivtyIndicator.stopAnimating()
@@ -237,7 +238,8 @@ class RegistrationVC: UIViewController {
                 if let err = err {
                     //Error savng data
                     print("Error adding document: \(err)")
-                    self.launchAlert(title: "Error",
+                    Util.launchAlert(senderVC: self,
+                                     title: "Error",
                                      message: "Account created but failed to save user data.",
                                      btnText: "Ok")
                 } else {
