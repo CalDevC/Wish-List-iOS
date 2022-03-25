@@ -19,7 +19,15 @@ class WishlistTableVC: UITableViewController {
     
     @IBOutlet var wishlistTableView: UITableView!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Add the custom cell to the table view
+        let nib = UINib(nibName: "WishlistTableViewCell", bundle: nil)
+        wishlistTableView.register(nib, forCellReuseIdentifier: "WishlistTableViewCell")
+        wishlistTableView.dataSource = self
+        
+        print(listId)
         if(listId != "0") {
             let listItems = db.collection("item").whereField("listId", isEqualTo: listId).getDocuments() {(querySnapshot, err) in
                 if let err = err {
@@ -43,29 +51,8 @@ class WishlistTableVC: UITableViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // wishlistTableView.delegate = self
-        // wishlistTableView.dataSource = self
-        // wishlistTableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
-        
-        //Add the custom cell to the table view
-        let nib = UINib(nibName: "WishlistTableViewCell", bundle: nil)
-        wishlistTableView.register(nib, forCellReuseIdentifier: "WishlistTableViewCell")
-        wishlistTableView.dataSource = self
-        
-        print(listId)
         
         wishlistTableView.reloadData()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -83,8 +70,6 @@ class WishlistTableVC: UITableViewController {
     // define content that is meant to appear in a given cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // must reload data to read data retrieved from firebase
-        
-        print("IN CELLFORROWAT")
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WishlistTableViewCell") as? WishlistTableViewCell else {
             return UITableViewCell()

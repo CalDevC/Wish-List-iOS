@@ -8,10 +8,11 @@
 import UIKit
 import Firebase
 
-var userLists: [String] = []
-var userListIds: [String] = []
 
 class HomeCollectionViewController: UICollectionViewController {
+    
+    var userLists: [String] = []
+    var userListIds: [String] = []
     
     // @IBOutlet var collectionView: UICollectionView!
     @IBAction func userSettingsPressed(_ sender: UIBarButtonItem) {
@@ -44,13 +45,13 @@ class HomeCollectionViewController: UICollectionViewController {
                     print("DOCUMENT")
                     print("\(document.documentID) => \(document.data())")
                     // add listId to array
-                    userListIds.append(document.documentID)
+                    self.userListIds.append(document.documentID)
                     let listData: [String: String] = document.data() as! [String: String]
                     for pair in listData {
                         if(pair.key == "title") {
                             print(pair.value)
-                            userLists.append(pair.value)
-                            print(userLists)
+                            self.userLists.append(pair.value)
+                            print(self.userLists)
                         }
                     }
                 }
