@@ -33,7 +33,7 @@ class SignInVC: UIViewController {
                 return
             }
             
-            self.performSegue(withIdentifier: "toHome", sender: self)
+            self.performSegue(withIdentifier: Constants.segues.signinToHome, sender: self)
         }
     }
     

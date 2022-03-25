@@ -11,11 +11,11 @@ class LandingPageVC: UIViewController {
     
     //Button actions
     @IBAction func signInBtnPress(_ sender: Any) {
-        performSegue(withIdentifier: "toSignIn", sender: self)
+        performSegue(withIdentifier: Constants.segues.landingToSignin, sender: self)
     }
     
     @IBAction func createAcctBtnPress(_ sender: Any) {
-        performSegue(withIdentifier: "toRegistration", sender: self)
+        performSegue(withIdentifier: Constants.segues.landingToRegistration, sender: self)
     }
     
     override func viewDidLoad() {
