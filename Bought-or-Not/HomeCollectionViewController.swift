@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Firebase
 
-// private let reuseIdentifier = "Cell"
+var userLists: [String] = []
 
 class HomeCollectionViewController: UICollectionViewController {
     
@@ -16,27 +17,104 @@ class HomeCollectionViewController: UICollectionViewController {
         performSegue(withIdentifier: Constants.segues.homeToUserSettings, sender: self)
     }
     
-    let dataSource: [String] = ["New List", "My Birthday", "Christmas"]
+    let currentUid = Auth.auth().currentUser!.uid
+    let db = Firestore.firestore()
+    
+    var dataSource: [String] = ["New List", "My Birthday", "Christmas"]
+    // var userLists: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutCells()
+        
+        print("CURRENT UID")
+        print(currentUid)
+        
+        userLists.append("New List")
+        print(userLists)
+        
+        let wishlists = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("QUERY SUCCESSFUL")
+                for document in querySnapshot!.documents {
+                    print("DOCUMENT")
+                    print("\(document.documentID) => \(document.data())")
+                    let listData: [String: String] = document.data() as! [String: String]
+                    for pair in listData {
+                        print(pair)
+                        if(pair.key == "title") {
+                            print(pair.value)
+                            userLists.append(pair.value)
+                            print(userLists)
+                        }
+                    }
+                }
+            }
+        }
+            
+    
+        // Create a query against the collection.
+        // let query = wishlists.whereField("userId", isEqualTo: currentUid)
+        
+        /*
+        wishlists.getDocument { [self] (doc, error) in
+            if let document = doc, document.exists {
+                
+                //Get the list of taken usernames
+                // let takenUsernames: [String: String] = document.data() as! [String: String]
+                userLists.append(document.get(String))
+            }
+        }
+         */
     }
+    
+    /*
+    func populateLists(userLists: [String]) -> [String] {
+        let wishlists = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("QUERY SUCCESSFUL")
+                for document in querySnapshot!.documents {
+                    print("DOCUMENT")
+                    print("\(document.documentID) => \(document.data())")
+                    let listData: [String: String] = document.data() as! [String: String]
+                    for pair in listData {
+                        if(pair.key == "title") {
+                            print("TITLE")
+                            print(pair.value)
+                            userLists.append(pair.value)
+                            print(userLists)
+                        }
+                    }
+                }
+            }
+        }
+        
+        return userLists
+    }
+     */
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return dataSource.count
+        // return populateLists(userLists: userLists).count
+        return userLists.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
         cell.backgroundColor = UIColor.orange
         
+        // must reload data to read data retrieved from firebase
+        collectionView.reloadData()
+
         if let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? HomeCollectionViewCell {
-            listCell.configure(with: dataSource[indexPath.row])
+            listCell.configure(with: userLists[indexPath.row])
             cell = listCell
         }
         
@@ -44,8 +122,10 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         collectionView.deselectItem(at: indexPath, animated: true)
-        print(dataSource[indexPath.row])
+        print(userLists[indexPath.row])
+        // print("user id:" + Auth.auth().currentUser!.uid)
     }
     
     func layoutCells() {
