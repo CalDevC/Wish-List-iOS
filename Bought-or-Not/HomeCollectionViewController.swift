@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 var userLists: [String] = []
+var userListIds: [String] = []
 
 class HomeCollectionViewController: UICollectionViewController {
     
@@ -20,7 +21,7 @@ class HomeCollectionViewController: UICollectionViewController {
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     
-    var dataSource: [String] = ["New List", "My Birthday", "Christmas"]
+    // var dataSource: [String] = ["New List", "My Birthday", "Christmas"]
     // var userLists: [String] = []
     
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class HomeCollectionViewController: UICollectionViewController {
         print(currentUid)
         
         userLists.append("New List")
+        userListIds.append("0")
         print(userLists)
         
         let wishlists = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
@@ -41,9 +43,10 @@ class HomeCollectionViewController: UICollectionViewController {
                 for document in querySnapshot!.documents {
                     print("DOCUMENT")
                     print("\(document.documentID) => \(document.data())")
+                    // add listId to array
+                    userListIds.append(document.documentID)
                     let listData: [String: String] = document.data() as! [String: String]
                     for pair in listData {
-                        print(pair)
                         if(pair.key == "title") {
                             print(pair.value)
                             userLists.append(pair.value)
@@ -53,49 +56,7 @@ class HomeCollectionViewController: UICollectionViewController {
                 }
             }
         }
-            
-    
-        // Create a query against the collection.
-        // let query = wishlists.whereField("userId", isEqualTo: currentUid)
-        
-        /*
-        wishlists.getDocument { [self] (doc, error) in
-            if let document = doc, document.exists {
-                
-                //Get the list of taken usernames
-                // let takenUsernames: [String: String] = document.data() as! [String: String]
-                userLists.append(document.get(String))
-            }
-        }
-         */
     }
-    
-    /*
-    func populateLists(userLists: [String]) -> [String] {
-        let wishlists = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                print("QUERY SUCCESSFUL")
-                for document in querySnapshot!.documents {
-                    print("DOCUMENT")
-                    print("\(document.documentID) => \(document.data())")
-                    let listData: [String: String] = document.data() as! [String: String]
-                    for pair in listData {
-                        if(pair.key == "title") {
-                            print("TITLE")
-                            print(pair.value)
-                            userLists.append(pair.value)
-                            print(userLists)
-                        }
-                    }
-                }
-            }
-        }
-        
-        return userLists
-    }
-     */
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -122,9 +83,10 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+                
         collectionView.deselectItem(at: indexPath, animated: true)
         print(userLists[indexPath.row])
+        performSegue(withIdentifier: "homeToWishlist", sender: indexPath)
         // print("user id:" + Auth.auth().currentUser!.uid)
     }
     
@@ -135,6 +97,19 @@ class HomeCollectionViewController: UICollectionViewController {
             layout.minimumLineSpacing = 5.0
             layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 40)/3, height: ((UIScreen.main.bounds.size.width - 40)/3))
             collectionView!.collectionViewLayout = layout
+    }
+    
+    // prepare data to carry to next viewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let wishlistVC = segue.destination as? WishlistTableVC else {
+            return
+        }
+        guard let indexPath = sender as? IndexPath else {
+            return
+        }
+        
+        // use section property embedded in indexPath to pull wishlist items
+        wishlistVC.listId = userListIds[indexPath.row]
     }
 }
 
