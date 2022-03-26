@@ -28,6 +28,7 @@
 		ABC1660C27EBF334006C0B2C /* UserSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */; };
 		ABC1660E27EBFE1A006C0B2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660D27EBFE1A006C0B2C /* Constants.swift */; };
 		ABC1661027EC0ADA006C0B2C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660F27EC0ADA006C0B2C /* Utils.swift */; };
+		ABC1661227EEB368006C0B2C /* CreateListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1661127EEB367006C0B2C /* CreateListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSettingsCell.xib; sourceTree = "<group>"; };
 		ABC1660D27EBFE1A006C0B2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ABC1660F27EC0ADA006C0B2C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		ABC1661127EEB367006C0B2C /* CreateListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */,
 				ABC1660D27EBFE1A006C0B2C /* Constants.swift */,
 				ABC1660F27EC0ADA006C0B2C /* Utils.swift */,
+				ABC1661127EEB367006C0B2C /* CreateListVC.swift */,
 			);
 			path = "Bought-or-Not";
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			files = (
 				ABC1660E27EBFE1A006C0B2C /* Constants.swift in Sources */,
 				ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */,
+				ABC1661227EEB368006C0B2C /* CreateListVC.swift in Sources */,
 				ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */,
 				ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */,
 				A68B634E27E7C81200B7C6BC /* HomeCollectionViewController.swift in Sources */,
@@ -496,7 +500,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FSCD75QGPX;
+				DEVELOPMENT_TEAM = YJ3D687KQU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bought-or-Not/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -524,7 +528,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FSCD75QGPX;
+				DEVELOPMENT_TEAM = YJ3D687KQU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bought-or-Not/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
