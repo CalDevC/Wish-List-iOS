@@ -11,6 +11,9 @@ import Firebase
 class SignInVC: UIViewController {
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
+
+    var userLists: [String] = ["New List"]
+    var userListIds: [String] = ["0"]
     
     @IBAction func signInBtnPressed(_ sender: Any) {
         //
@@ -32,7 +35,7 @@ class SignInVC: UIViewController {
                 //TODO: Inform user of sign in error
                 return
             }
-            
+
             self.performSegue(withIdentifier: Constants.segues.signinToHome, sender: self)
         }
     }
@@ -41,7 +44,5 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 

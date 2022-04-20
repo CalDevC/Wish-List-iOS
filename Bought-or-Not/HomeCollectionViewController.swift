@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 
-
 class HomeCollectionViewController: UICollectionViewController {
     
     var userLists: [String] = []
@@ -29,18 +28,32 @@ class HomeCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         layoutCells()
         
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         print("CURRENT UID")
         print(currentUid)
         
-        userLists.append("New List")
-        userListIds.append("0")
+        // userLists.append("New List")
+        // userListIds.append("0")
+        print("HCVC controller says: ")
         print(userLists)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (userLists.count != 0) {
+            return
+        }
         
-        let wishlists = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
+        let _ = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 print("QUERY SUCCESSFUL")
+                self.userLists.append("New List")
+                self.userListIds.append("0")
+                
                 for document in querySnapshot!.documents {
                     print("DOCUMENT")
                     print("\(document.documentID) => \(document.data())")
@@ -55,8 +68,10 @@ class HomeCollectionViewController: UICollectionViewController {
                         }
                     }
                 }
+                self.collectionView.reloadData()
             }
         }
+        
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -71,9 +86,6 @@ class HomeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
         cell.backgroundColor = UIColor.orange
-        
-        // must reload data to read data retrieved from firebase
-        collectionView.reloadData()
 
         if let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? HomeCollectionViewCell {
             listCell.configure(with: userLists[indexPath.row])
@@ -84,11 +96,11 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                
+        // print("hello")
         collectionView.deselectItem(at: indexPath, animated: true)
         print(userLists[indexPath.row])
         performSegue(withIdentifier: "homeToWishlist", sender: indexPath)
-        // print("user id:" + Auth.auth().currentUser!.uid)
+        print("user id:" + Auth.auth().currentUser!.uid)
     }
     
     func layoutCells() {
