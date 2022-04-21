@@ -31,13 +31,11 @@ class HomeCollectionViewController: UICollectionViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        print("CURRENT UID")
-        print(currentUid)
+        // print("CURRENT UID")
+        // print(currentUid)
         
-        // userLists.append("New List")
-        // userListIds.append("0")
-        print("HCVC controller says: ")
-        print(userLists)
+        // print("HCVC controller says: ")
+        // print(userLists)
     }
     
     
@@ -59,12 +57,12 @@ class HomeCollectionViewController: UICollectionViewController {
                     print("\(document.documentID) => \(document.data())")
                     // add listId to array
                     self.userListIds.append(document.documentID)
-                    let listData: [String: String] = document.data() as! [String: String]
-                    for pair in listData {
-                        if(pair.key == "title") {
-                            print(pair.value)
-                            self.userLists.append(pair.value)
-                            print(self.userLists)
+                                        
+                    for elem in document.data() {
+                        if (elem.key == "title") {
+                            let listTitle = elem.value as? String
+                            self.userLists.append(listTitle!)
+                            // print(self.userLists)
                         }
                     }
                 }
