@@ -99,7 +99,12 @@ class HomeCollectionViewController: UICollectionViewController {
         // print("hello")
         collectionView.deselectItem(at: indexPath, animated: true)
         print(userLists[indexPath.row])
-        performSegue(withIdentifier: "homeToWishlist", sender: indexPath)
+        if (indexPath.row == 0) {
+            performSegue(withIdentifier: "homeToNewList", sender: indexPath)
+        }
+        else {
+            performSegue(withIdentifier: "homeToWishlist", sender: indexPath)
+        }
         print("user id:" + Auth.auth().currentUser!.uid)
     }
     
