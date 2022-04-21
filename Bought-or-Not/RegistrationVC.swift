@@ -16,7 +16,7 @@ extension UITextField {
      }
 }
 
-class RegistrationVC: UIViewController {
+class RegistrationVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var usernameInput: UITextField!
@@ -33,6 +33,18 @@ class RegistrationVC: UIViewController {
         super.viewDidLoad()
         acitivtyIndicator.hidesWhenStopped = true
         // Do any additional setup after loading the view.
+        emailInput.delegate = self
+        usernameInput.delegate = self
+        nameInput.delegate = self
+        phoneNumberInput.delegate = self
+        passwordInput.delegate = self
+        cPasswordInput.delegate = self
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func registerBtnPressed(_ sender: Any){

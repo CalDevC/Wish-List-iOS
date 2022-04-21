@@ -64,7 +64,7 @@
                                     <constraint firstAttribute="width" constant="200" id="LMA-mI-qoX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7r-y9-c5T">
                                 <rect key="frame" x="107" y="440" width="200" height="34"/>
@@ -73,7 +73,7 @@
                                     <constraint firstAttribute="width" constant="200" id="y0g-IT-vtu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -113,7 +113,7 @@
                                     <constraint firstAttribute="width" constant="200" id="Xiv-sO-fCZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="5fb-Qd-9MW"/>
                                 </connections>
@@ -125,7 +125,7 @@
                                     <constraint firstAttribute="width" constant="200" id="XhM-6f-J36"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="LOA-oM-DXD"/>
                                 </connections>
@@ -137,7 +137,7 @@
                                     <constraint firstAttribute="width" constant="200" id="ah5-e3-6c7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="Z2D-0K-vM6"/>
                                 </connections>
@@ -149,7 +149,7 @@
                                     <constraint firstAttribute="width" constant="200" id="jL3-Bo-fy9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nm4-Bj-HS6">
                                 <rect key="frame" x="107" y="416" width="200" height="34"/>
@@ -158,7 +158,7 @@
                                     <constraint firstAttribute="width" constant="200" id="IQV-P1-VfV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="Qvr-rf-zmH"/>
                                 </connections>
@@ -191,7 +191,7 @@
                                     <constraint firstAttribute="width" constant="200" id="di5-Ul-iXL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="yQS-lh-ooQ"/>
                                 </connections>
@@ -538,7 +538,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="moi-2V-PxF"/>
+        <segue reference="VyQ-K2-sIE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.circle" catalog="system" width="128" height="121"/>

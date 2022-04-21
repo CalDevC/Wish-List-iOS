@@ -8,12 +8,23 @@
 import UIKit
 import Firebase
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
 
     var userLists: [String] = ["New List"]
     var userListIds: [String] = ["0"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailInput.delegate = self
+        passwordInput.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     @IBAction func signInBtnPressed(_ sender: Any) {
         //
@@ -38,11 +49,6 @@ class SignInVC: UIViewController {
 
             self.performSegue(withIdentifier: Constants.segues.signinToHome, sender: self)
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
 
