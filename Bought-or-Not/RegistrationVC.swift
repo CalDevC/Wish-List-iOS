@@ -124,9 +124,11 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                 }
                 
                 //Create the new user
-                self.createNewUser(username: username, email: email,
-                                   password: password, name: name,
-                                   phoneNumber: phoneNumber, docRef: takenUsernamesDocRef)
+                self.createNewUser(
+                    username: username, email: email,
+                    password: password, name: name,
+                    phoneNumber: phoneNumber, docRef: takenUsernamesDocRef
+                )
             } else {
                 print("Document does not exist")
                 Util.launchAlert(senderVC: self,
@@ -245,6 +247,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                 "username": username,
                 "fullName": name,
                 "phoneNumber": phoneNumber,
+                "friends": [],
                 "uid": authResult!.user.uid
             ]) { err in
                 if let err = err {
