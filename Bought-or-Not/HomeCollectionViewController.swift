@@ -8,9 +8,10 @@
 import UIKit
 import Firebase
 
-var userLists: [String] = []
-
 class HomeCollectionViewController: UICollectionViewController {
+    
+    var userLists: [String] = []
+    var userListIds: [String] = []
     
     // @IBOutlet var collectionView: UICollectionView!
     @IBAction func userSettingsPressed(_ sender: UIBarButtonItem) {
@@ -20,82 +21,56 @@ class HomeCollectionViewController: UICollectionViewController {
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     
-    var dataSource: [String] = ["New List", "My Birthday", "Christmas"]
+    // var dataSource: [String] = ["New List", "My Birthday", "Christmas"]
     // var userLists: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutCells()
         
-        print("CURRENT UID")
-        print(currentUid)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        userLists.append("New List")
-        print(userLists)
+        // print("CURRENT UID")
+        // print(currentUid)
         
-        let wishlists = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
+        // print("HCVC controller says: ")
+        // print(userLists)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (userLists.count != 0) {
+            return
+        }
+        
+        let _ = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 print("QUERY SUCCESSFUL")
-                for document in querySnapshot!.documents {
-                    print("DOCUMENT")
-                    print("\(document.documentID) => \(document.data())")
-                    let listData: [String: String] = document.data() as! [String: String]
-                    for pair in listData {
-                        print(pair)
-                        if(pair.key == "title") {
-                            print(pair.value)
-                            userLists.append(pair.value)
-                            print(userLists)
-                        }
-                    }
-                }
-            }
-        }
-            
-    
-        // Create a query against the collection.
-        // let query = wishlists.whereField("userId", isEqualTo: currentUid)
-        
-        /*
-        wishlists.getDocument { [self] (doc, error) in
-            if let document = doc, document.exists {
+                self.userLists.append("New List")
+                self.userListIds.append("0")
                 
-                //Get the list of taken usernames
-                // let takenUsernames: [String: String] = document.data() as! [String: String]
-                userLists.append(document.get(String))
-            }
-        }
-         */
-    }
-    
-    /*
-    func populateLists(userLists: [String]) -> [String] {
-        let wishlists = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                print("QUERY SUCCESSFUL")
                 for document in querySnapshot!.documents {
                     print("DOCUMENT")
                     print("\(document.documentID) => \(document.data())")
-                    let listData: [String: String] = document.data() as! [String: String]
-                    for pair in listData {
-                        if(pair.key == "title") {
-                            print("TITLE")
-                            print(pair.value)
-                            userLists.append(pair.value)
-                            print(userLists)
+                    // add listId to array
+                    self.userListIds.append(document.documentID)
+                                        
+                    for elem in document.data() {
+                        if (elem.key == "title") {
+                            let listTitle = elem.value as? String
+                            self.userLists.append(listTitle!)
+                            // print(self.userLists)
                         }
                     }
                 }
+                self.collectionView.reloadData()
             }
         }
         
-        return userLists
     }
-     */
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -109,9 +84,6 @@ class HomeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
         cell.backgroundColor = UIColor.orange
-        
-        // must reload data to read data retrieved from firebase
-        collectionView.reloadData()
 
         if let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? HomeCollectionViewCell {
             listCell.configure(with: userLists[indexPath.row])
@@ -122,10 +94,16 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        // print("hello")
         collectionView.deselectItem(at: indexPath, animated: true)
         print(userLists[indexPath.row])
-        // print("user id:" + Auth.auth().currentUser!.uid)
+        if (indexPath.row == 0) {
+            performSegue(withIdentifier: "homeToNewList", sender: indexPath)
+        }
+        else {
+            performSegue(withIdentifier: "homeToWishlist", sender: indexPath)
+        }
+        print("user id:" + Auth.auth().currentUser!.uid)
     }
     
     func layoutCells() {
@@ -135,6 +113,19 @@ class HomeCollectionViewController: UICollectionViewController {
             layout.minimumLineSpacing = 5.0
             layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 40)/3, height: ((UIScreen.main.bounds.size.width - 40)/3))
             collectionView!.collectionViewLayout = layout
+    }
+    
+    // prepare data to carry to next viewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let wishlistVC = segue.destination as? WishlistTableVC else {
+            return
+        }
+        guard let indexPath = sender as? IndexPath else {
+            return
+        }
+        
+        // use section property embedded in indexPath to pull wishlist items
+        wishlistVC.listId = userListIds[indexPath.row]
     }
 }
 
