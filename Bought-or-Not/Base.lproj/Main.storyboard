@@ -57,7 +57,7 @@
                                     <action selector="signInBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RUg-sh-AfH"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="chrish@sfsu.edu" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAu-Ms-3Qo">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="chase@email.com" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAu-Ms-3Qo">
                                 <rect key="frame" x="107" y="398" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -66,7 +66,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7r-y9-c5T">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345!" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7r-y9-c5T">
                                 <rect key="frame" x="107" y="440" width="200" height="34"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <constraints>
@@ -356,7 +356,7 @@
         <!--Home-->
         <scene sceneID="7H0-fq-060">
             <objects>
-                <collectionViewController restorationIdentifier="HomeCollectionViewController" storyboardIdentifier="HomeCollectionViewController" title="Home" id="dwB-fH-uMd" userLabel="Home" customClass="HomeCollectionViewController" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController restorationIdentifier="HomeCollectionViewController" storyboardIdentifier="HomeCollectionViewController" title="Home Page" id="dwB-fH-uMd" userLabel="Home" customClass="HomeCollectionViewController" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1CJ-UC-hcl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -416,6 +416,22 @@
             </objects>
             <point key="canvasLocation" x="2670" y="80"/>
         </scene>
+        <!--Friends Page-->
+        <scene sceneID="Yyw-J6-6l3">
+            <objects>
+                <viewController title="Friends Page" id="4kg-U8-0Fw" customClass="FriendsVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3iX-FQ-Rvk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="46J-Lh-SvC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.3" catalog="system" id="O2T-nm-bYz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ohb-m8-7ui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670" y="808"/>
+        </scene>
         <!--Wishlist TableVC-->
         <scene sceneID="6ds-7B-mMp">
             <objects>
@@ -460,6 +476,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="dwB-fH-uMd" kind="relationship" relationship="viewControllers" id="pqc-2Y-44C"/>
+                        <segue destination="4kg-U8-0Fw" kind="relationship" relationship="viewControllers" id="B12-bP-diS"/>
                         <segue destination="vfG-mC-e6l" kind="relationship" relationship="viewControllers" id="z5s-qg-O5u"/>
                     </connections>
                 </tabBarController>
@@ -556,6 +573,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <namedColor name="btnFill">
             <color red="0.019289925377756877" green="0.74830334595959602" blue="0.20200769442149782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

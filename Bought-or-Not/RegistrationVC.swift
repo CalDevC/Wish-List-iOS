@@ -78,7 +78,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
             acitivtyIndicator.stopAnimating()
             return
         }
-    
+
         //Check that passwords match
         if(password != cPassword){
             errorOnTextfield(textfield: passwordInput)
@@ -242,8 +242,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
             }
             
             //Add user data
-            var ref: DocumentReference? = nil
-            ref = self.db.collection("users").addDocument(data: [
+            self.db.collection("users").document(authResult!.user.uid).setData([
                 "username": username,
                 "fullName": name,
                 "phoneNumber": phoneNumber,
@@ -258,7 +257,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                      message: "Account created but failed to save user data.",
                                      btnText: "Ok")
                 } else {
-                    print("Document added with ID: \(ref!.documentID)")
+                    print("Document added with ID: \(authResult!.user.uid)")
                 }
             }
             
