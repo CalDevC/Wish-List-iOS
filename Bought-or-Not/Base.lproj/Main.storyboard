@@ -91,7 +91,7 @@
                     <connections>
                         <outlet property="emailInput" destination="OAu-Ms-3Qo" id="TTX-Lc-ChZ"/>
                         <outlet property="passwordInput" destination="J7r-y9-c5T" id="dDI-Td-fq3"/>
-                        <segue destination="dwB-fH-uMd" kind="show" identifier="toHome" id="moi-2V-PxF"/>
+                        <segue destination="UZA-ev-kbM" kind="show" identifier="toHome" id="ahI-qw-VSc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -230,7 +230,7 @@
                         <outlet property="passwordInput" destination="Nm4-Bj-HS6" id="8Vj-Vb-0OZ"/>
                         <outlet property="phoneNumberInput" destination="9FJ-dN-OWq" id="mRl-rV-1BQ"/>
                         <outlet property="usernameInput" destination="pKG-hX-Fgc" id="hzt-F1-xDW"/>
-                        <segue destination="dwB-fH-uMd" kind="show" identifier="toHome" id="VyQ-K2-sIE"/>
+                        <segue destination="UZA-ev-kbM" kind="show" identifier="toHome" id="ehT-jt-Q8F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSG-sY-Kkp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -260,6 +260,7 @@
                             <outlet property="delegate" destination="vfG-mC-e6l" id="SKy-re-Iwb"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" image="gearshape" catalog="system" id="51f-xd-KZC"/>
                     <navigationItem key="navigationItem" id="MFF-t8-BFa"/>
                     <connections>
                         <outlet property="tableView" destination="kf0-Xz-QIZ" id="14l-ro-Sid"/>
@@ -267,7 +268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcr-8L-7Hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952" y="-679"/>
+            <point key="canvasLocation" x="2526" y="-679"/>
         </scene>
         <!--New ListVC-->
         <scene sceneID="J1x-4j-u0E">
@@ -350,12 +351,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPH-CR-gdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2886.9565217391305" y="-679.01785714285711"/>
+            <point key="canvasLocation" x="3570" y="-242"/>
         </scene>
-        <!--Home Collection View Controller-->
+        <!--Home-->
         <scene sceneID="7H0-fq-060">
             <objects>
-                <collectionViewController restorationIdentifier="HomeCollectionViewController" storyboardIdentifier="HomeCollectionViewController" id="dwB-fH-uMd" customClass="HomeCollectionViewController" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController restorationIdentifier="HomeCollectionViewController" storyboardIdentifier="HomeCollectionViewController" title="Home" id="dwB-fH-uMd" userLabel="Home" customClass="HomeCollectionViewController" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1CJ-UC-hcl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -404,22 +405,16 @@
                             <outlet property="delegate" destination="dwB-fH-uMd" id="hWE-vE-mpU"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="ens-sz-TXC">
-                        <barButtonItem key="rightBarButtonItem" title="userMenu" image="person.circle" catalog="system" id="RpU-Yo-yxv">
-                            <connections>
-                                <action selector="userSettingsPressed:" destination="dwB-fH-uMd" id="7Pc-7H-6A1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Item" image="square.grid.2x2" catalog="system" id="hxb-ve-QTl"/>
+                    <navigationItem key="navigationItem" id="ens-sz-TXC"/>
                     <connections>
-                        <segue destination="vfG-mC-e6l" kind="show" identifier="homeToUserSettings" id="uQz-Ka-ozH"/>
                         <segue destination="lFs-gI-Npq" kind="show" identifier="homeToWishlist" id="ogW-nQ-EOh"/>
                         <segue destination="c9W-cU-q61" kind="show" identifier="homeToNewList" id="Bwu-lt-Y0q"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpO-x5-zoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942.0289855072465" y="24.776785714285712"/>
+            <point key="canvasLocation" x="2670" y="80"/>
         </scene>
         <!--Wishlist TableVC-->
         <scene sceneID="6ds-7B-mMp">
@@ -451,7 +446,26 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b70-Qy-mqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2907" y="25"/>
+            <point key="canvasLocation" x="3570" y="475"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Xye-Cn-H1V">
+            <objects>
+                <tabBarController id="UZA-ev-kbM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5bw-rA-7VO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0ZW-bx-g9X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dwB-fH-uMd" kind="relationship" relationship="viewControllers" id="pqc-2Y-44C"/>
+                        <segue destination="vfG-mC-e6l" kind="relationship" relationship="viewControllers" id="z5s-qg-O5u"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eGg-rT-foE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1797" y="80"/>
         </scene>
         <!--Landing Page-->
         <scene sceneID="BHA-Rz-qcl">
@@ -538,10 +552,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VyQ-K2-sIE"/>
+        <segue reference="ahI-qw-VSc"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <namedColor name="btnFill">
             <color red="0.019289925377756877" green="0.74830334595959602" blue="0.20200769442149782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
