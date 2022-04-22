@@ -91,6 +91,7 @@
                     <connections>
                         <outlet property="emailInput" destination="OAu-Ms-3Qo" id="TTX-Lc-ChZ"/>
                         <outlet property="passwordInput" destination="J7r-y9-c5T" id="dDI-Td-fq3"/>
+                        <outlet property="signInButton" destination="uO1-Ew-GE1" id="sEs-cb-Igk"/>
                         <segue destination="UZA-ev-kbM" kind="show" identifier="toHome" id="ahI-qw-VSc"/>
                     </connections>
                 </viewController>
@@ -454,7 +455,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bx6-c9-3xb"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </searchBar>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="BTY-jD-EMO">
                                 <rect key="frame" x="0.0" y="142" width="414" height="671"/>

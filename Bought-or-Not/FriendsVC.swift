@@ -72,8 +72,11 @@ class FriendsVC: UIViewController{
         layoutCells()
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         let nib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        collectionView.keyboardDismissMode = .onDrag
     }
     
     
@@ -177,13 +180,19 @@ extension FriendsVC: UISearchBarDelegate{
         matchingData = []
         
         if(searchText == ""){
-            matchingData = dataToSearch
+            tableView.isHidden = true
+        } else{
+            tableView.isHidden = false
         }
         
         for username in dataToSearch{
             if(username.lowercased().contains(searchText.lowercased())){
                 matchingData.append(username)
             }
+        }
+        
+        if(matchingData.count == 0){
+            matchingData.append("No Results")
         }
         
         self.tableView.reloadData()
