@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-struct friend{
+struct User{
     let uid: String
     let fullName: String
     let username: String
@@ -18,9 +18,10 @@ struct friend{
 class FriendsVC: UIViewController{
     
     let db = Firestore.firestore()
-    var friendList: [friend] = []
+    var friendList: [User] = []
+    var userList: [User] = []
     let reuseIdentifier = "cell"
-    let dataToSearch = ["Hello", "these", "are", "words", "for", "searching"]
+    var dataToSearch: [String] = []
     var matchingData: [String] = []
     
     
@@ -29,14 +30,42 @@ class FriendsVC: UIViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        matchingData = ["Enter a username to find your friends!"]
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        searchBar.delegate = self
+        
+        layoutCells()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        let nib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        
         guard let currentUID = Auth.auth().currentUser?.uid else{
             return
         }
         
         friendList = []
+        userList = []
+        dataToSearch = []
         
         //Populate friends list
-        let userDataDocRef = db.collection("users").document(currentUID)
+        fetchFriends(forUID: currentUID)
+        
+        //Get search data
+        fetchAllUsers()
+    }
+    
+    func fetchFriends(forUID: String){
+        let userDataDocRef = db.collection("users").document(forUID)
         userDataDocRef.getDocument { (doc, error) in
             if let err = error{
                 //TODO: Notify user of error
@@ -57,28 +86,39 @@ class FriendsVC: UIViewController{
                 }
             }
         }
-        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        matchingData = ["Enter a username to find your friends!"]
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        searchBar.delegate = self
-        
-        layoutCells()
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        let nib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        collectionView.keyboardDismissMode = .onDrag
+    func fetchAllUsers(){
+        db.collection("users").getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting all users: \(err)")
+            } else {
+                //Save data
+                for user in querySnapshot!.documents{
+                    if(user.documentID != "takenUsernames"){
+                        let userData: [String: Any] = user.data()
+                        
+                        let user = User(
+                            uid: userData["uid"] as! String,
+                            fullName: userData["fullName"] as! String,
+                            username: userData["username"] as! String
+                        )
+                        
+                        self.userList.append(user)
+                        self.dataToSearch.append(user.username)
+                    }
+                }
+                
+                //All users added
+                self.renderUI()
+            }
+        }
     }
     
+    func renderUI(){
+        //Do redering
+        print("Rendering")
+    }
     
     func addFriend(friendUID: String){
         let userDataDocRef = self.db.collection("users").document(friendUID)
@@ -92,7 +132,7 @@ class FriendsVC: UIViewController{
                 //Add friend with details
                 let friendData: [String: Any] = document.data() ?? ["nil": "nil"]
                 
-                let friend = friend(
+                let friend = User(
                     uid: friendData["uid"] as! String,
                     fullName: friendData["fullName"] as! String,
                     username: friendData["username"] as! String
