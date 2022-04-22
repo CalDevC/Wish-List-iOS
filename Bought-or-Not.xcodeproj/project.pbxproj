@@ -18,6 +18,9 @@
 		AB2961C828124BAF00ECE28B /* FriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2961C628124BAF00ECE28B /* FriendCollectionViewCell.xib */; };
 		AB763EA5281337E0003C74CD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB763EA4281337E0003C74CD /* ProfileVC.swift */; };
 		AB763EA928133971003C74CD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB763EA828133971003C74CD /* User.swift */; };
+		AB763EAB28135647003C74CD /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB763EAA28135647003C74CD /* NotificationsVC.swift */; };
+		AB763EAE2813566E003C74CD /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB763EAC2813566E003C74CD /* NotificationCell.swift */; };
+		AB763EAF2813566E003C74CD /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB763EAD2813566E003C74CD /* NotificationCell.xib */; };
 		ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C427E39BC1006C0B2C /* AppDelegate.swift */; };
 		ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */; };
 		ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C827E39BC1006C0B2C /* SignInVC.swift */; };
@@ -68,6 +71,9 @@
 		AB2961C628124BAF00ECE28B /* FriendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB763EA4281337E0003C74CD /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AB763EA828133971003C74CD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Bought-or-Not/User.swift"; sourceTree = SOURCE_ROOT; };
+		AB763EAA28135647003C74CD /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		AB763EAC2813566E003C74CD /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		AB763EAD2813566E003C74CD /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		ABC165C127E39BC1006C0B2C /* Bought-or-Not.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bought-or-Not.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC165C427E39BC1006C0B2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +176,7 @@
 				ABC1660F27EC0ADA006C0B2C /* Utils.swift */,
 				AB2961C32812191500ECE28B /* FriendsVC.swift */,
 				AB763EA4281337E0003C74CD /* ProfileVC.swift */,
+				AB763EAA28135647003C74CD /* NotificationsVC.swift */,
 			);
 			path = "Bought-or-Not";
 			sourceTree = "<group>";
@@ -200,6 +207,8 @@
 				A6F37F3527EE7F3200BA3D1A /* WishlistTableViewCell.xib */,
 				AB2961C528124BAF00ECE28B /* FriendCollectionViewCell.swift */,
 				AB2961C628124BAF00ECE28B /* FriendCollectionViewCell.xib */,
+				AB763EAC2813566E003C74CD /* NotificationCell.swift */,
+				AB763EAD2813566E003C74CD /* NotificationCell.xib */,
 			);
 			path = customCells;
 			sourceTree = "<group>";
@@ -319,6 +328,7 @@
 				ABC165D127E39BC2006C0B2C /* LaunchScreen.storyboard in Resources */,
 				ABC165F927E3A3D9006C0B2C /* GoogleService-Info.plist in Resources */,
 				AB2961C828124BAF00ECE28B /* FriendCollectionViewCell.xib in Resources */,
+				AB763EAF2813566E003C74CD /* NotificationCell.xib in Resources */,
 				ABC165CE27E39BC2006C0B2C /* Assets.xcassets in Resources */,
 				ABC165CC27E39BC1006C0B2C /* Main.storyboard in Resources */,
 				ABC1660C27EBF334006C0B2C /* UserSettingsCell.xib in Resources */,
@@ -351,8 +361,10 @@
 				ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */,
 				A6FE177E2810EBFF00C069CC /* NewListVC.swift in Sources */,
 				ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */,
+				AB763EAB28135647003C74CD /* NotificationsVC.swift in Sources */,
 				ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */,
 				A68B634E27E7C81200B7C6BC /* HomeCollectionViewController.swift in Sources */,
+				AB763EAE2813566E003C74CD /* NotificationCell.swift in Sources */,
 				ABC1660B27EBF334006C0B2C /* UserSettingsCell.swift in Sources */,
 				ABC1660227EBEB47006C0B2C /* UserSettingsVCTableViewController.swift in Sources */,
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,

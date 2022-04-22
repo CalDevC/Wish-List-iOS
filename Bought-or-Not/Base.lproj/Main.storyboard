@@ -269,7 +269,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcr-8L-7Hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2526" y="-679"/>
+            <point key="canvasLocation" x="2670" y="-1047"/>
         </scene>
         <!--New ListVC-->
         <scene sceneID="J1x-4j-u0E">
@@ -352,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPH-CR-gdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3570" y="-242"/>
+            <point key="canvasLocation" x="3570" y="-757"/>
         </scene>
         <!--Home-->
         <scene sceneID="7H0-fq-060">
@@ -415,7 +415,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpO-x5-zoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2670" y="80"/>
+            <point key="canvasLocation" x="2670" y="-374"/>
         </scene>
         <!--Friends Page-->
         <scene sceneID="Yyw-J6-6l3">
@@ -513,7 +513,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohb-m8-7ui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2669.5652173913045" y="807.58928571428567"/>
+            <point key="canvasLocation" x="2670" y="333"/>
+        </scene>
+        <!--Notifications Page-->
+        <scene sceneID="Xgt-1g-sQP">
+            <objects>
+                <viewController title="Notifications Page" id="lNN-XC-Boi" customClass="NotificationsVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sp8-yO-1kL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="miQ-tZ-bBn">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Nwf-rj-XMB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="miQ-tZ-bBn" firstAttribute="leading" secondItem="Nwf-rj-XMB" secondAttribute="leading" id="2yI-hM-Tk4"/>
+                            <constraint firstItem="Nwf-rj-XMB" firstAttribute="bottom" secondItem="miQ-tZ-bBn" secondAttribute="bottom" id="Yhi-8P-gDR"/>
+                            <constraint firstItem="Nwf-rj-XMB" firstAttribute="trailing" secondItem="miQ-tZ-bBn" secondAttribute="trailing" id="glI-aN-tK1"/>
+                            <constraint firstItem="miQ-tZ-bBn" firstAttribute="top" secondItem="Nwf-rj-XMB" secondAttribute="top" id="vGl-cm-USd"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="bell" catalog="system" id="Eot-Z1-ItD"/>
+                    <connections>
+                        <outlet property="tableView" destination="miQ-tZ-bBn" id="aak-Vg-8nS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kT0-aG-yTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670" y="1046"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="5jJ-De-0bn">
@@ -574,7 +605,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8z4-cy-0mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2669.5652173913045" y="1518.75"/>
+            <point key="canvasLocation" x="3570" y="694"/>
         </scene>
         <!--Wishlist TableVC-->
         <scene sceneID="6ds-7B-mMp">
@@ -606,7 +637,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b70-Qy-mqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3570" y="475"/>
+            <point key="canvasLocation" x="3570" y="-12"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Xye-Cn-H1V">
@@ -621,6 +652,7 @@
                     <connections>
                         <segue destination="dwB-fH-uMd" kind="relationship" relationship="viewControllers" id="pqc-2Y-44C"/>
                         <segue destination="4kg-U8-0Fw" kind="relationship" relationship="viewControllers" id="B12-bP-diS"/>
+                        <segue destination="lNN-XC-Boi" kind="relationship" relationship="viewControllers" id="llg-tB-MGa"/>
                         <segue destination="vfG-mC-e6l" kind="relationship" relationship="viewControllers" id="z5s-qg-O5u"/>
                     </connections>
                 </tabBarController>
@@ -716,6 +748,7 @@
         <segue reference="ahI-qw-VSc"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
