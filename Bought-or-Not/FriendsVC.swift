@@ -194,6 +194,7 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.endEditing(true)
         performSegue(withIdentifier: Constants.segues.friendToProfile, sender: indexPath)
     }
     

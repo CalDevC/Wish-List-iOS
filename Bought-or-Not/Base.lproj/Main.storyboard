@@ -502,6 +502,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="person.3" catalog="system" id="O2T-nm-bYz"/>
+                    <navigationItem key="navigationItem" id="lA5-gC-mIn"/>
                     <connections>
                         <outlet property="activityIndicator" destination="cZx-dB-IqV" id="usN-qQ-Jog"/>
                         <outlet property="collectionView" destination="vYJ-kd-Iqw" id="u7d-bd-67c"/>

@@ -56,7 +56,6 @@ class ProfileVC: UIViewController {
             } else {
                 print("Document successfully updated")
                 self.navigationController?.popViewController(animated: true)
-//                self.performSegue(withIdentifier: Constants.segues.profileToFriend, sender: self)
             }
         }
     }
