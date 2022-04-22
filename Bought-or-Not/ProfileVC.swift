@@ -10,6 +10,7 @@ import UIKit
 class ProfileVC: UIViewController {
     
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var addFriendBtn: UIButton!
     
     var user: User?
 
@@ -19,6 +20,12 @@ class ProfileVC: UIViewController {
         usernameLabel.text = user?.username
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func addFriendBtnPressed(_ sender: UIButton) {
+        //Add UID the signed in user's friend list
+        
+    }
+    
     
 
     /*

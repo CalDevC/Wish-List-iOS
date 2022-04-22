@@ -531,17 +531,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NaE-wj-gep">
+                                <rect key="frame" x="50" y="483" width="314" height="48.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48.5" id="nZ8-Xk-WGM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Add Friend">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="30" name="Helvetica-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseBackgroundColor" name="btnFill"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addFriendBtnPressed:" destination="Qqa-FB-JCQ" eventType="touchUpInside" id="ouO-Vf-KdY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PYn-Ku-IWD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="NaE-wj-gep" firstAttribute="top" secondItem="t73-9p-mmK" secondAttribute="bottom" constant="10" id="5HY-CR-yDM"/>
                             <constraint firstItem="t73-9p-mmK" firstAttribute="centerY" secondItem="xIl-ho-yhN" secondAttribute="centerY" id="DEH-6l-FBq"/>
                             <constraint firstItem="t73-9p-mmK" firstAttribute="leading" secondItem="PYn-Ku-IWD" secondAttribute="leading" constant="10" id="M1H-nY-UoD"/>
+                            <constraint firstItem="NaE-wj-gep" firstAttribute="leading" secondItem="PYn-Ku-IWD" secondAttribute="leading" constant="50" id="eRo-OI-vr1"/>
                             <constraint firstItem="PYn-Ku-IWD" firstAttribute="trailing" secondItem="t73-9p-mmK" secondAttribute="trailing" constant="10" id="gYB-nq-4Lf"/>
+                            <constraint firstItem="PYn-Ku-IWD" firstAttribute="trailing" secondItem="NaE-wj-gep" secondAttribute="trailing" constant="50" id="vfs-9g-KJH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XKd-rI-S5z"/>
                     <connections>
+                        <outlet property="addFriendBtn" destination="NaE-wj-gep" id="qeD-pd-w5e"/>
                         <outlet property="usernameLabel" destination="t73-9p-mmK" id="Ro1-9b-Az1"/>
                     </connections>
                 </viewController>
