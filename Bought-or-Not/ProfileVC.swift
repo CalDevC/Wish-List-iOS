@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileVC: UIViewController {
     
@@ -13,6 +14,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var addFriendBtn: UIButton!
     
     var user: User?
+    let db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,30 @@ class ProfileVC: UIViewController {
     
     @IBAction func addFriendBtnPressed(_ sender: UIButton) {
         //Add UID the signed in user's friend list
+        guard let user = user else{
+            return
+        }
         
+        guard let currentUID = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        let userDocRef = db.collection("users").document(currentUID)
+        userDocRef.updateData([
+            "friends": FieldValue.arrayUnion([user.uid])
+        ]) { error in
+            if let error = error {
+                Util.launchAlert(
+                    senderVC: self,
+                    title: "Error",
+                    message: "Failed to add friend, please try again later :(",
+                    btnText: "ok"
+                )
+                print("Error updating document: \(error)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
     
     
