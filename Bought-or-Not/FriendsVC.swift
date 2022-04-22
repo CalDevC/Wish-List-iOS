@@ -15,45 +15,30 @@ class FriendsVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-//        guard let currentUID = Auth.auth().currentUser?.uid else{
-//            return
-//        }
-//        let userDataDocRef = db.collection("users").document(currentUID)
-//        userDataDocRef.getDocument { (doc, error) in
-//            if let document = doc, document.exists {
-//
-//                //Get the list of taken usernames
-//                let takenUsernames: [String: String] = document.data() as! [String: String]
-//
-//                //For each taken username check if it is equal to the provided username
-//                for pair in takenUsernames{
-//                    print("\(pair.value) - \(username == pair.value)")
-//                    if(username == pair.value){
-//                        Util.launchAlert(senderVC: self,
-//                                         title: "Error",
-//                                         message: "username not available.",
-//                                         btnText: "Ok")
-//                        self.acitivtyIndicator.stopAnimating()
-//                        return
-//                    }
-//                }
-//
-//                //Create the new user
-//                self.createNewUser(
-//                    username: username, email: email,
-//                    password: password, name: name,
-//                    phoneNumber: phoneNumber, docRef: takenUsernamesDocRef
-//                )
-//            } else {
-//                print("Document does not exist")
-//                Util.launchAlert(senderVC: self,
-//                                 title: "Error",
-//                                 message: "Our servers are undergoing maintenance, please try again later.",
-//                                 btnText: "Ok")
-//                self.acitivtyIndicator.stopAnimating()
-//                return
-//            }
-//        }
+        guard let currentUID = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        let userDataDocRef = db.collection("users").document(currentUID)
+        userDataDocRef.getDocument { (doc, error) in
+            if let document = doc, document.exists {
+                
+                //Get the list of taken usernames
+                let docData: [String: Any] = document.data() ?? ["nil": "nil"]
+//                let docData = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(docData)")
+                
+                guard let friendList: [String] = docData["friends"] as? [String] else{
+                    return
+                }
+
+                print("Friends: ")
+                //For each friend
+                for entry in friendList{
+                    print("FRIEND: \(entry)")
+                }
+            }
+        }
 
     }
     
