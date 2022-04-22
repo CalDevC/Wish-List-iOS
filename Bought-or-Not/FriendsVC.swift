@@ -18,11 +18,10 @@ struct User{
 class FriendsVC: UIViewController{
     
     let db = Firestore.firestore()
-    var friendList: [User] = []
+    var friendList: [User] = [:]
     var userList: [String: User] = [:]
     let reuseIdentifier = "cell"
-    var dataToSearch: [String] = []
-    var matchingData: [String] = []
+    var matchingData: [User] = []
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -55,7 +54,6 @@ class FriendsVC: UIViewController{
         
         friendList = []
         userList = [:]
-        dataToSearch = []
         //Get search data
         fetchAllUsers()
     }
@@ -105,7 +103,6 @@ class FriendsVC: UIViewController{
                         )
                         
                         self.userList[user.uid] = user
-                        self.dataToSearch.append(user.username)
                     }
                 }
                 
@@ -199,8 +196,25 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
         
         //will be depricated
-        cell.textLabel?.text = matchingData[indexPath.row]
+        cell.textLabel?.text = matchingData[indexPath.row].username
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        func prepare(for segue: UIStoryboardSegue, sender: Any?){
+            guard let profileVC = segue.destination as? profileVC else {
+                return
+            }
+            guard let indexPath = sender as? IndexPath else {
+                return
+            }
+            
+            
+            
+            profileVC.user = matchingData[indexPath.row]
+        }
+        
+        
     }
     
 }
@@ -234,14 +248,15 @@ extension FriendsVC: UISearchBarDelegate{
             tableView.isHidden = false
         }
         
-        for username in dataToSearch{
+        for user in userList{
+            let username = user.value.username
             if(username.lowercased().contains(searchText.lowercased())){
-                matchingData.append(username)
+                matchingData.append(user.value)
             }
         }
         
         if(matchingData.count == 0){
-            matchingData.append("No Results")
+            matchingData.append(User(uid: "0", fullName: "No Results", username:"No Results"))
         }
         
         self.tableView.reloadData()
