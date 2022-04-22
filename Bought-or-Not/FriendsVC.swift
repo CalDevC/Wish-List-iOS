@@ -13,6 +13,7 @@ class FriendsVC: UIViewController{
     let db = Firestore.firestore()
     var friendList: [User] = []
     var userList: [String: User] = [:]
+    var searchData: [String: User] = [:]
     let reuseIdentifier = "cell"
     var matchingData: [User] = []
     
@@ -51,8 +52,8 @@ class FriendsVC: UIViewController{
         
     }
     
-    func fetchFriends(forUID: String){
-        let userDataDocRef = db.collection("users").document(forUID)
+    func fetchFriends(forUID userUID: String){
+        let userDataDocRef = db.collection("users").document(userUID)
         userDataDocRef.getDocument { (doc, error) in
             if let err = error{
                 //TODO: Notify user of error
@@ -66,13 +67,23 @@ class FriendsVC: UIViewController{
                 guard let friendUIDList: [String] = docData["friends"] as? [String] else{
                     return
                 }
+                
+                //Create search data
+                self.searchData = self.userList
+                
+                //Remove user from search data
+                self.searchData.removeValue(forKey: userUID)
 
                 //For each friend
                 for friendUID in friendUIDList{
                     if let friend = self.userList[friendUID]{
                         self.friendList.append(friend)
+                        
+                        //remove friends from search data
+                        self.searchData.removeValue(forKey: friendUID)
                     }
                 }
+                
                 self.renderUI()
                 self.collectionView.reloadData()
             }
@@ -190,11 +201,20 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
         
         //will be depricated
         cell.textLabel?.text = matchingData[indexPath.row].username
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(matchingData[indexPath.row].uid == ""){
+            //No results was selected
+            return
+        }
+        
+        //Clear search
         searchBar.endEditing(true)
+        searchBar.text = ""
+        
         performSegue(withIdentifier: Constants.segues.friendToProfile, sender: indexPath)
     }
     
@@ -240,7 +260,7 @@ extension FriendsVC: UISearchBarDelegate{
             tableView.isHidden = false
         }
         
-        for user in userList{
+        for user in searchData{
             let username = user.value.username
             if(username.lowercased().contains(searchText.lowercased())){
                 matchingData.append(user.value)
@@ -248,7 +268,7 @@ extension FriendsVC: UISearchBarDelegate{
         }
         
         if(matchingData.count == 0){
-            matchingData.append(User(uid: "0", fullName: "No Results", username:"No Results"))
+            matchingData.append(User(uid: "", fullName: "", username:"No Results"))
         }
         
         self.tableView.reloadData()
