@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var notifications: [String] = ["Hello", "World"]
+    var notifications: [String] = []
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,15 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         tableView.register(nib, forCellReuseIdentifier: "NotificationCell")
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let currentUID = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        notifications = []
+        fetchNotifications(forUID: currentUID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,8 +45,30 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         return cell
     }
     
-    func fetchNotifications(){
-        //Get notifications from firebase
+    func fetchNotifications(forUID userUID: String){
+        let userDataDocRef = db.collection("users").document(userUID)
+        userDataDocRef.getDocument { (doc, error) in
+            if let err = error{
+                //TODO: Notify user of error
+                print(err)
+            }
+
+            if let document = doc, document.exists {
+
+                let docData: [String: Any] = document.data() ?? ["nil": "nil"]
+
+                guard let notificationList: [String] = docData["notifications"] as? [String] else{
+                    return
+                }
+                
+                //For each notification
+                for notification in notificationList{
+                    self.notifications.append(notification)
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
     }
     
 
