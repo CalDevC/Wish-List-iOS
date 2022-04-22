@@ -457,9 +457,8 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </searchBar>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="BTY-jD-EMO">
-                                <rect key="frame" x="0.0" y="142" width="414" height="671"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BTY-jD-EMO">
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" id="6r1-Sd-N3d">
@@ -478,14 +477,18 @@
                         <constraints>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="3wk-we-Ew2"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" constant="4" id="6h2-uu-5Tj"/>
+                            <constraint firstItem="BTY-jD-EMO" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" id="ADy-2S-rCi"/>
                             <constraint firstItem="aJc-VB-T5p" firstAttribute="top" secondItem="46J-Lh-SvC" secondAttribute="top" id="Gb3-h8-x11"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" constant="4" id="ViM-Qf-CSf" userLabel="Collection View.top = Search Bar.bottom + 3"/>
+                            <constraint firstItem="BTY-jD-EMO" firstAttribute="bottom" secondItem="46J-Lh-SvC" secondAttribute="bottom" id="Vv1-ex-OJW"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="bottom" secondItem="46J-Lh-SvC" secondAttribute="bottom" id="Xy6-jI-6Vt"/>
                             <constraint firstItem="aJc-VB-T5p" firstAttribute="trailing" secondItem="46J-Lh-SvC" secondAttribute="trailing" id="bM1-pB-Rhu"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="trailing" secondItem="46J-Lh-SvC" secondAttribute="trailing" id="gGy-Mx-UWC"/>
                             <constraint firstItem="46J-Lh-SvC" firstAttribute="trailing" secondItem="vYJ-kd-Iqw" secondAttribute="trailing" id="gOA-l8-trJ"/>
+                            <constraint firstItem="BTY-jD-EMO" firstAttribute="trailing" secondItem="46J-Lh-SvC" secondAttribute="trailing" id="khL-6D-7w2"/>
                             <constraint firstItem="aJc-VB-T5p" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="mSR-Ch-8hk"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="n9B-18-Ork"/>
+                            <constraint firstItem="BTY-jD-EMO" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="q4R-OU-qke"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="bottom" secondItem="46J-Lh-SvC" secondAttribute="bottom" id="yEx-iB-QoJ"/>
                         </constraints>
                     </view>
