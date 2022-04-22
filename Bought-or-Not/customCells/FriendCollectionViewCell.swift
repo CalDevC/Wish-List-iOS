@@ -8,7 +8,7 @@
 import UIKit
 
 class FriendCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var label: UILabel!
     
     
     override func awakeFromNib() {
