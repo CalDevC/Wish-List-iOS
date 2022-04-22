@@ -28,14 +28,18 @@ class FriendsVC: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     override func viewWillAppear(_ animated: Bool) {
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        matchingData = ["Enter a username to find your friends!"]
+        activityIndicator.hidesWhenStopped = true
+        collectionView.isHidden = true
+        searchBar.isHidden = true
+        activityIndicator.startAnimating()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -117,6 +121,9 @@ class FriendsVC: UIViewController{
     func renderUI(){
         //Do redering
         print("Rendering")
+        collectionView.isHidden = false
+        searchBar.isHidden = false
+        activityIndicator.stopAnimating()
     }
     
 //    func addFriend(friendUID: String){

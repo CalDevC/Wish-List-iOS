@@ -24,14 +24,14 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumberInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var cPasswordInput: UITextField!
-    @IBOutlet weak var acitivtyIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var emptyField: Bool = false
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        acitivtyIndicator.hidesWhenStopped = true
+        activityIndicator.hidesWhenStopped = true
         // Do any additional setup after loading the view.
         emailInput.delegate = self
         usernameInput.delegate = self
@@ -49,7 +49,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerBtnPressed(_ sender: Any){
-        acitivtyIndicator.startAnimating()
+        activityIndicator.startAnimating()
         let requiredTextfields = [passwordInput, emailInput, usernameInput,
                         nameInput, cPasswordInput]
         
@@ -60,7 +60,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         //Check if any textfields are empty
         for input in requiredTextfields{
             guard let input = input else{
-                acitivtyIndicator.stopAnimating()
+                activityIndicator.stopAnimating()
                 return
             }
             
@@ -76,7 +76,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         
         //Don't attempt account creation with an empty field
         if(emptyField){
-            acitivtyIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             return
         }
 
@@ -88,7 +88,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                              title: "Error",
                              message: "Passwords do not match.",
                              btnText: "Ok")
-            acitivtyIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             return
         }
         
@@ -119,7 +119,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                          title: "Error",
                                          message: "username not available.",
                                          btnText: "Ok")
-                        self.acitivtyIndicator.stopAnimating()
+                        self.activityIndicator.stopAnimating()
                         return
                     }
                 }
@@ -136,7 +136,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                  title: "Error",
                                  message: "Our servers are undergoing maintenance, please try again later.",
                                  btnText: "Ok")
-                self.acitivtyIndicator.stopAnimating()
+                self.activityIndicator.stopAnimating()
                 return
             }
         }
@@ -238,7 +238,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                  title: "Error",
                                  message: errMessage,
                                  btnText: "Ok")
-                self.acitivtyIndicator.stopAnimating()
+                self.activityIndicator.stopAnimating()
                 return
             }
             
@@ -265,7 +265,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
             //Add username to the takenUsernames list
             docRef.updateData([authResult!.user.uid: username])
             
-            self.acitivtyIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
             self.performSegue(withIdentifier: Constants.segues.registrationToHome, sender: self)
         }
 

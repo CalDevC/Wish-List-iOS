@@ -224,7 +224,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zMb-Mg-BNN"/>
                     <connections>
-                        <outlet property="acitivtyIndicator" destination="ACv-RY-I9q" id="ZpI-LX-pHc"/>
+                        <outlet property="activityIndicator" destination="ACv-RY-I9q" id="ZpI-LX-pHc"/>
                         <outlet property="cPasswordInput" destination="BHS-Bx-OQx" id="ppR-H7-j1V"/>
                         <outlet property="emailInput" destination="I70-ml-JSP" id="NxZ-It-Fof"/>
                         <outlet property="nameInput" destination="hUE-2a-qBs" id="AIh-6m-JAX"/>
@@ -425,7 +425,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vYJ-kd-Iqw">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vYJ-kd-Iqw">
                                 <rect key="frame" x="0.0" y="142" width="414" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aBC-2H-jWA">
@@ -450,7 +450,7 @@
                                     <outlet property="delegate" destination="4kg-U8-0Fw" id="uEs-AN-vav"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" placeholder="add new friends!" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJc-VB-T5p">
+                            <searchBar hidden="YES" contentMode="redraw" placeholder="add new friends!" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJc-VB-T5p">
                                 <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bx6-c9-3xb"/>
@@ -471,12 +471,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="cZx-dB-IqV">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="RBg-De-xqp"/>
+                                    <constraint firstAttribute="height" constant="50" id="YLe-7U-B6O"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="46J-Lh-SvC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cZx-dB-IqV" firstAttribute="centerY" secondItem="3iX-FQ-Rvk" secondAttribute="centerY" id="0qu-kJ-MdC"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="3wk-we-Ew2"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" constant="4" id="6h2-uu-5Tj"/>
+                            <constraint firstItem="cZx-dB-IqV" firstAttribute="centerX" secondItem="3iX-FQ-Rvk" secondAttribute="centerX" id="7Xj-IN-6SG"/>
                             <constraint firstItem="BTY-jD-EMO" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" id="ADy-2S-rCi"/>
                             <constraint firstItem="aJc-VB-T5p" firstAttribute="top" secondItem="46J-Lh-SvC" secondAttribute="top" id="Gb3-h8-x11"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" constant="4" id="ViM-Qf-CSf" userLabel="Collection View.top = Search Bar.bottom + 3"/>
@@ -494,6 +503,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="person.3" catalog="system" id="O2T-nm-bYz"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="cZx-dB-IqV" id="usN-qQ-Jog"/>
                         <outlet property="collectionView" destination="vYJ-kd-Iqw" id="u7d-bd-67c"/>
                         <outlet property="searchBar" destination="aJc-VB-T5p" id="TcW-AS-oDA"/>
                         <outlet property="tableView" destination="BTY-jD-EMO" id="l1y-aB-bm8"/>
