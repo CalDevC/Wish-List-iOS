@@ -62,7 +62,7 @@ class FriendsVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        matchingData = dataToSearch
+        matchingData = ["Enter a username to find your friends!"]
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -163,7 +163,10 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
 extension FriendsVC: UISearchBarDelegate{
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        tableView.isHidden = false
+        if(searchBar.text != ""){
+            tableView.isHidden = false
+        }
+        
         return true
     }
     
