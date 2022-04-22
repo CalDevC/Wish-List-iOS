@@ -24,6 +24,10 @@ class FriendsVC: UIViewController{
     
     
     override func viewWillAppear(_ animated: Bool) {
+        friendList = []
+        userList = [:]
+        //Get search data
+        fetchAllUsers()
     }
     
     override func viewDidLoad() {
@@ -45,10 +49,6 @@ class FriendsVC: UIViewController{
         let nib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
-        friendList = []
-        userList = [:]
-        //Get search data
-        fetchAllUsers()
     }
     
     func fetchFriends(forUID: String){
