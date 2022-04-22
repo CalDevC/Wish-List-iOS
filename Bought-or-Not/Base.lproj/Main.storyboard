@@ -260,7 +260,7 @@
                             <outlet property="delegate" destination="vfG-mC-e6l" id="SKy-re-Iwb"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="gearshape" catalog="system" id="51f-xd-KZC"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="51f-xd-KZC"/>
                     <navigationItem key="navigationItem" id="MFF-t8-BFa"/>
                     <connections>
                         <outlet property="tableView" destination="kf0-Xz-QIZ" id="14l-ro-Sid"/>
@@ -405,7 +405,7 @@
                             <outlet property="delegate" destination="dwB-fH-uMd" id="hWE-vE-mpU"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Item" image="square.grid.2x2" catalog="system" id="hxb-ve-QTl"/>
+                    <tabBarItem key="tabBarItem" title="Wish Lists" image="square.grid.2x2" catalog="system" id="hxb-ve-QTl"/>
                     <navigationItem key="navigationItem" id="ens-sz-TXC"/>
                     <connections>
                         <segue destination="lFs-gI-Npq" kind="show" identifier="homeToWishlist" id="ogW-nQ-EOh"/>
