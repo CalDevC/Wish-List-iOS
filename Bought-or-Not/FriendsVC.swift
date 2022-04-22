@@ -14,14 +14,19 @@ struct friend{
     let username: String
 }
 
+
 class FriendsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let db = Firestore.firestore()
     var friendList: [friend] = []
     let reuseIdentifier = "cell"
+    let dataToSearch = ["Hello", "these", "are", "words", "for", "searching"]
+    var matchingData: [String] = []
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewWillAppear(_ animated: Bool) {
         guard let currentUID = Auth.auth().currentUser?.uid else{
@@ -57,6 +62,13 @@ class FriendsVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        matchingData = dataToSearch
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        searchBar.delegate = self
+        
         layoutCells()
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -121,15 +133,53 @@ class FriendsVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         }
     }
     
+
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+}
+
+extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return matchingData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+        
+        //will be depricated
+        cell.textLabel?.text = matchingData[indexPath.row]
+        return cell
+    }
+    
+    
+}
+
+extension FriendsVC: UISearchBarDelegate{
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        tableView.isHidden = false
+        return true
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        tableView.isHidden = true
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        matchingData = []
+        
+        if(searchText == ""){
+            matchingData = dataToSearch
+        }
+        
+        for username in dataToSearch{
+            if(username.lowercased().contains(searchText.lowercased())){
+                matchingData.append(username)
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
 }

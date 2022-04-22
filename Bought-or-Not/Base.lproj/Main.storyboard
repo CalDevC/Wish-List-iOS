@@ -456,22 +456,43 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="BTY-jD-EMO">
+                                <rect key="frame" x="0.0" y="142" width="414" height="671"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" id="6r1-Sd-N3d">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6r1-Sd-N3d" id="txK-RO-kLp">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="46J-Lh-SvC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="3wk-we-Ew2"/>
+                            <constraint firstItem="vYJ-kd-Iqw" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" constant="4" id="6h2-uu-5Tj"/>
                             <constraint firstItem="aJc-VB-T5p" firstAttribute="top" secondItem="46J-Lh-SvC" secondAttribute="top" id="Gb3-h8-x11"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="top" secondItem="aJc-VB-T5p" secondAttribute="bottom" constant="4" id="ViM-Qf-CSf" userLabel="Collection View.top = Search Bar.bottom + 3"/>
                             <constraint firstItem="vYJ-kd-Iqw" firstAttribute="bottom" secondItem="46J-Lh-SvC" secondAttribute="bottom" id="Xy6-jI-6Vt"/>
                             <constraint firstItem="aJc-VB-T5p" firstAttribute="trailing" secondItem="46J-Lh-SvC" secondAttribute="trailing" id="bM1-pB-Rhu"/>
+                            <constraint firstItem="vYJ-kd-Iqw" firstAttribute="trailing" secondItem="46J-Lh-SvC" secondAttribute="trailing" id="gGy-Mx-UWC"/>
                             <constraint firstItem="46J-Lh-SvC" firstAttribute="trailing" secondItem="vYJ-kd-Iqw" secondAttribute="trailing" id="gOA-l8-trJ"/>
                             <constraint firstItem="aJc-VB-T5p" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="mSR-Ch-8hk"/>
+                            <constraint firstItem="vYJ-kd-Iqw" firstAttribute="leading" secondItem="46J-Lh-SvC" secondAttribute="leading" id="n9B-18-Ork"/>
+                            <constraint firstItem="vYJ-kd-Iqw" firstAttribute="bottom" secondItem="46J-Lh-SvC" secondAttribute="bottom" id="yEx-iB-QoJ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="person.3" catalog="system" id="O2T-nm-bYz"/>
                     <connections>
                         <outlet property="collectionView" destination="vYJ-kd-Iqw" id="u7d-bd-67c"/>
+                        <outlet property="searchBar" destination="aJc-VB-T5p" id="TcW-AS-oDA"/>
+                        <outlet property="tableView" destination="BTY-jD-EMO" id="l1y-aB-bm8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohb-m8-7ui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
