@@ -11,6 +11,8 @@ import Firebase
 class SignInVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    
 
     var userLists: [String] = ["New List"]
     var userListIds: [String] = ["0"]
@@ -19,6 +21,10 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailInput.delegate = self
         passwordInput.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        signInButton.isEnabled = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -40,13 +46,16 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             return
         }
         
+        signInButton.isEnabled = false
+        
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let err = error{
                 print(err.localizedDescription)
                 //TODO: Inform user of sign in error
+                self.signInButton.isEnabled = true
                 return
             }
-
+            
             self.performSegue(withIdentifier: Constants.segues.signinToHome, sender: self)
         }
     }

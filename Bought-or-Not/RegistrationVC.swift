@@ -24,14 +24,14 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumberInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var cPasswordInput: UITextField!
-    @IBOutlet weak var acitivtyIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var emptyField: Bool = false
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        acitivtyIndicator.hidesWhenStopped = true
+        activityIndicator.hidesWhenStopped = true
         // Do any additional setup after loading the view.
         emailInput.delegate = self
         usernameInput.delegate = self
@@ -42,13 +42,14 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    //Dismisses keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     @IBAction func registerBtnPressed(_ sender: Any){
-        acitivtyIndicator.startAnimating()
+        activityIndicator.startAnimating()
         let requiredTextfields = [passwordInput, emailInput, usernameInput,
                         nameInput, cPasswordInput]
         
@@ -59,7 +60,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         //Check if any textfields are empty
         for input in requiredTextfields{
             guard let input = input else{
-                acitivtyIndicator.stopAnimating()
+                activityIndicator.stopAnimating()
                 return
             }
             
@@ -75,10 +76,10 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         
         //Don't attempt account creation with an empty field
         if(emptyField){
-            acitivtyIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             return
         }
-    
+
         //Check that passwords match
         if(password != cPassword){
             errorOnTextfield(textfield: passwordInput)
@@ -87,7 +88,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                              title: "Error",
                              message: "Passwords do not match.",
                              btnText: "Ok")
-            acitivtyIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             return
         }
         
@@ -118,22 +119,24 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                          title: "Error",
                                          message: "username not available.",
                                          btnText: "Ok")
-                        self.acitivtyIndicator.stopAnimating()
+                        self.activityIndicator.stopAnimating()
                         return
                     }
                 }
                 
                 //Create the new user
-                self.createNewUser(username: username, email: email,
-                                   password: password, name: name,
-                                   phoneNumber: phoneNumber, docRef: takenUsernamesDocRef)
+                self.createNewUser(
+                    username: username, email: email,
+                    password: password, name: name,
+                    phoneNumber: phoneNumber, docRef: takenUsernamesDocRef
+                )
             } else {
                 print("Document does not exist")
                 Util.launchAlert(senderVC: self,
                                  title: "Error",
                                  message: "Our servers are undergoing maintenance, please try again later.",
                                  btnText: "Ok")
-                self.acitivtyIndicator.stopAnimating()
+                self.activityIndicator.stopAnimating()
                 return
             }
         }
@@ -235,16 +238,16 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                  title: "Error",
                                  message: errMessage,
                                  btnText: "Ok")
-                self.acitivtyIndicator.stopAnimating()
+                self.activityIndicator.stopAnimating()
                 return
             }
             
             //Add user data
-            var ref: DocumentReference? = nil
-            ref = self.db.collection("users").addDocument(data: [
+            self.db.collection("users").document(authResult!.user.uid).setData([
                 "username": username,
                 "fullName": name,
                 "phoneNumber": phoneNumber,
+                "friends": [],
                 "uid": authResult!.user.uid
             ]) { err in
                 if let err = err {
@@ -255,14 +258,14 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                      message: "Account created but failed to save user data.",
                                      btnText: "Ok")
                 } else {
-                    print("Document added with ID: \(ref!.documentID)")
+                    print("Document added with ID: \(authResult!.user.uid)")
                 }
             }
             
             //Add username to the takenUsernames list
             docRef.updateData([authResult!.user.uid: username])
             
-            self.acitivtyIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
             self.performSegue(withIdentifier: Constants.segues.registrationToHome, sender: self)
         }
 
