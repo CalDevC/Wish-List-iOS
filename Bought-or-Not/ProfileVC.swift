@@ -14,6 +14,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var addFriendBtn: UIButton!
     
     var user: User?
+    var currentUser: User?
     let db = Firestore.firestore()
 
     override func viewDidLoad() {
@@ -30,19 +31,40 @@ class ProfileVC: UIViewController {
     @IBAction func addFriendBtnPressed(_ sender: UIButton) {
         addFriendBtn.isEnabled = false
         //Add UID the signed in user's friend list
-        guard let user = user else{
+        guard let userToNotify = user else{
             addFriendBtn.isEnabled = true
             return
         }
         
-        guard let currentUID = Auth.auth().currentUser?.uid else{
+        guard let currentUser = currentUser else{
             addFriendBtn.isEnabled = true
             return
         }
         
-        let userDocRef = db.collection("users").document(currentUID)
-        userDocRef.updateData([
-            "friends": FieldValue.arrayUnion([user.uid])
+//        let userDocRef = db.collection("users").document(currentUID)
+//        userDocRef.updateData([
+//            "friends": FieldValue.arrayUnion([user.uid])
+//        ]) { error in
+//            if let error = error {
+//                Util.launchAlert(
+//                    senderVC: self,
+//                    title: "Error",
+//                    message: "Failed to add friend, please try again later :(",
+//                    btnText: "ok"
+//                )
+//                self.addFriendBtn.isEnabled = true
+//                print("Error updating document: \(error)")
+//            } else {
+//                print("Document successfully updated")
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        }
+        
+        let userToNotifyDocRef = db.collection("users").document(userToNotify.uid)
+        userToNotifyDocRef.updateData([
+            "notifications": FieldValue.arrayUnion([
+                "\(currentUser.username) (\(currentUser.fullName)) has requested to be your friend!"
+            ])
         ]) { error in
             if let error = error {
                 Util.launchAlert(

@@ -16,6 +16,7 @@ class FriendsVC: UIViewController{
     var searchData: [String: User] = [:]
     let reuseIdentifier = "cell"
     var matchingData: [User] = []
+    var currentUser: User!
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -114,6 +115,8 @@ class FriendsVC: UIViewController{
                 guard let currentUID = Auth.auth().currentUser?.uid else{
                     return
                 }
+                
+                self.currentUser = self.userList[currentUID]!
                 self.fetchFriends(forUID: currentUID)
             }
         }
@@ -227,6 +230,7 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         profileVC.user = matchingData[indexPath.row]
+        profileVC.currentUser = self.currentUser
     }
     
 }
