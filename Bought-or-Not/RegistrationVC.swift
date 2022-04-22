@@ -42,6 +42,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    //Dismisses keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

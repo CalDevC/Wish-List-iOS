@@ -643,7 +643,7 @@
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <namedColor name="btnFill">
-            <color red="0.019289925377756877" green="0.74830334595959602" blue="0.20200769442149782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.018999999389052391" green="0.74800002574920654" blue="0.20200000703334808" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="inputBackground">
             <color red="0.72899997234344482" green="1" blue="0.68500000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
