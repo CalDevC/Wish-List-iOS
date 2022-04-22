@@ -8,10 +8,16 @@
 import UIKit
 import Firebase
 
+struct friend{
+    let uid: String
+    let fullName: String
+    let username: String
+}
+
 class FriendsVC: UIViewController {
     
     let db = Firestore.firestore()
-//    var currentUID = Auth.auth().currentUser?.uid
+    var friendList: [friend] = []
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -19,33 +25,61 @@ class FriendsVC: UIViewController {
             return
         }
         
+        //Populate friends list
         let userDataDocRef = db.collection("users").document(currentUID)
         userDataDocRef.getDocument { (doc, error) in
+            if let err = error{
+                //TODO: Notify user of error
+                print(err)
+            }
+            
             if let document = doc, document.exists {
                 
-                //Get the list of taken usernames
                 let docData: [String: Any] = document.data() ?? ["nil": "nil"]
-//                let docData = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(docData)")
                 
                 guard let friendList: [String] = docData["friends"] as? [String] else{
                     return
                 }
-
+                
                 print("Friends: ")
                 //For each friend
-                for entry in friendList{
-                    print("FRIEND: \(entry)")
+                for friend in friendList{
+                    self.addFriend(friendUID: friend)
                 }
             }
         }
-
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+    }
+    
+    func addFriend(friendUID: String){
+        let userDataDocRef = self.db.collection("users").document(friendUID)
+        userDataDocRef.getDocument { (doc, error) in
+            if let err = error{
+                //TODO: Notify user of error
+                print(err)
+            }
+            
+            if let document = doc, document.exists {
+                //Add friend with details
+                let friendData: [String: Any] = document.data() ?? ["nil": "nil"]
+                
+                let friend = friend(
+                    uid: friendData["uid"] as! String,
+                    fullName: friendData["fullName"] as! String,
+                    username: friendData["username"] as! String
+                )
+                
+                print("FRIEND: \(friend.username)")
+                
+                self.friendList.append(friend)
+            }
+        }
     }
     
     
