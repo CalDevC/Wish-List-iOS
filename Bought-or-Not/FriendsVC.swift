@@ -19,7 +19,7 @@ class FriendsVC: UIViewController{
     
     let db = Firestore.firestore()
     var friendList: [User] = []
-    var userList: [User] = []
+    var userList: [String: User] = [:]
     let reuseIdentifier = "cell"
     var dataToSearch: [String] = []
     var matchingData: [String] = []
@@ -49,17 +49,9 @@ class FriendsVC: UIViewController{
         let nib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
-        guard let currentUID = Auth.auth().currentUser?.uid else{
-            return
-        }
-        
         friendList = []
-        userList = []
+        userList = [:]
         dataToSearch = []
-        
-        //Populate friends list
-        fetchFriends(forUID: currentUID)
-        
         //Get search data
         fetchAllUsers()
     }
@@ -71,19 +63,23 @@ class FriendsVC: UIViewController{
                 //TODO: Notify user of error
                 print(err)
             }
-            
+
             if let document = doc, document.exists {
-                
+
                 let docData: [String: Any] = document.data() ?? ["nil": "nil"]
-                
-                guard let tempFriendList: [String] = docData["friends"] as? [String] else{
+
+                guard let friendUIDList: [String] = docData["friends"] as? [String] else{
                     return
                 }
-                
+
                 //For each friend
-                for friend in tempFriendList{
-                    self.addFriend(friendUID: friend)
+                for friendUID in friendUIDList{
+                    if let friend = self.userList[friendUID]{
+                        self.friendList.append(friend)
+                    }
                 }
+                self.renderUI()
+                self.collectionView.reloadData()
             }
         }
     }
@@ -104,13 +100,16 @@ class FriendsVC: UIViewController{
                             username: userData["username"] as! String
                         )
                         
-                        self.userList.append(user)
+                        self.userList[user.uid] = user
                         self.dataToSearch.append(user.username)
                     }
                 }
                 
-                //All users added
-                self.renderUI()
+                //Populate friends list after all users are added
+                guard let currentUID = Auth.auth().currentUser?.uid else{
+                    return
+                }
+                self.fetchFriends(forUID: currentUID)
             }
         }
     }
@@ -120,31 +119,31 @@ class FriendsVC: UIViewController{
         print("Rendering")
     }
     
-    func addFriend(friendUID: String){
-        let userDataDocRef = self.db.collection("users").document(friendUID)
-        userDataDocRef.getDocument { (doc, error) in
-            if let err = error{
-                //TODO: Notify user of error
-                print(err)
-            }
-            
-            if let document = doc, document.exists {
-                //Add friend with details
-                let friendData: [String: Any] = document.data() ?? ["nil": "nil"]
-                
-                let friend = User(
-                    uid: friendData["uid"] as! String,
-                    fullName: friendData["fullName"] as! String,
-                    username: friendData["username"] as! String
-                )
-                
-                print("FRIEND: \(friend.username)")
-                
-                self.friendList.append(friend)
-                self.collectionView.reloadData()
-            }
-        }
-    }
+//    func addFriend(friendUID: String){
+//        let userDataDocRef = self.db.collection("users").document(friendUID)
+//        userDataDocRef.getDocument { (doc, error) in
+//            if let err = error{
+//                //TODO: Notify user of error
+//                print(err)
+//            }
+//
+//            if let document = doc, document.exists {
+//                //Add friend with details
+//                let friendData: [String: Any] = document.data() ?? ["nil": "nil"]
+//
+//                let friend = User(
+//                    uid: friendData["uid"] as! String,
+//                    fullName: friendData["fullName"] as! String,
+//                    username: friendData["username"] as! String
+//                )
+//
+//                print("FRIEND: \(friend.username)")
+//
+//                self.friendList.append(friend)
+//                self.collectionView.reloadData()
+//            }
+//        }
+//    }
     
 
     
