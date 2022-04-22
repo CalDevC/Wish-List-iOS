@@ -8,17 +8,10 @@
 import UIKit
 import Firebase
 
-struct User{
-    let uid: String
-    let fullName: String
-    let username: String
-}
-
-
 class FriendsVC: UIViewController{
     
     let db = Firestore.firestore()
-    var friendList: [User] = [:]
+    var friendList: [User] = []
     var userList: [String: User] = [:]
     let reuseIdentifier = "cell"
     var matchingData: [User] = []
@@ -201,20 +194,18 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        func prepare(for segue: UIStoryboardSegue, sender: Any?){
-            guard let profileVC = segue.destination as? profileVC else {
-                return
-            }
-            guard let indexPath = sender as? IndexPath else {
-                return
-            }
-            
-            
-            
-            profileVC.user = matchingData[indexPath.row]
+        performSegue(withIdentifier: Constants.segues.friendToProfile, sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        guard let profileVC = segue.destination as? ProfileVC else {
+            return
+        }
+        guard let indexPath = sender as? IndexPath else {
+            return
         }
         
-        
+        profileVC.user = matchingData[indexPath.row]
     }
     
 }

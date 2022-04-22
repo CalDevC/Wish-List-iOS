@@ -507,11 +507,47 @@
                         <outlet property="collectionView" destination="vYJ-kd-Iqw" id="u7d-bd-67c"/>
                         <outlet property="searchBar" destination="aJc-VB-T5p" id="TcW-AS-oDA"/>
                         <outlet property="tableView" destination="BTY-jD-EMO" id="l1y-aB-bm8"/>
+                        <segue destination="Qqa-FB-JCQ" kind="show" identifier="toProfile" id="ydM-Ke-vGT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohb-m8-7ui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2669.5652173913045" y="807.58928571428567"/>
+        </scene>
+        <!--ProfileVC-->
+        <scene sceneID="5jJ-De-0bn">
+            <objects>
+                <viewController id="Qqa-FB-JCQ" customClass="ProfileVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xIl-ho-yhN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t73-9p-mmK">
+                                <rect key="frame" x="10" y="423" width="394" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Xju-kD-dXf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PYn-Ku-IWD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t73-9p-mmK" firstAttribute="centerY" secondItem="xIl-ho-yhN" secondAttribute="centerY" id="DEH-6l-FBq"/>
+                            <constraint firstItem="t73-9p-mmK" firstAttribute="leading" secondItem="PYn-Ku-IWD" secondAttribute="leading" constant="10" id="M1H-nY-UoD"/>
+                            <constraint firstItem="PYn-Ku-IWD" firstAttribute="trailing" secondItem="t73-9p-mmK" secondAttribute="trailing" constant="10" id="gYB-nq-4Lf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="XKd-rI-S5z"/>
+                    <connections>
+                        <outlet property="usernameLabel" destination="t73-9p-mmK" id="Ro1-9b-Az1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8z4-cy-0mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2669.5652173913045" y="1518.75"/>
         </scene>
         <!--Wishlist TableVC-->
         <scene sceneID="6ds-7B-mMp">
