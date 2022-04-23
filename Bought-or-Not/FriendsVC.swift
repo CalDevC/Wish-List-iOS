@@ -231,6 +231,8 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
         
         profileVC.user = matchingData[indexPath.row]
         profileVC.currentUser = self.currentUser
+        profileVC.numBtns = 1
+        profileVC.actions = ["Send Friend Request"]
     }
     
 }

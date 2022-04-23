@@ -15,6 +15,8 @@ class ProfileVC: UIViewController {
     
     var user: User?
     var currentUser: User?
+    var numBtns: Int!
+    var actions: [String]!
     let db = Firestore.firestore()
 
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ class ProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         addFriendBtn.isEnabled = true
+        addFriendBtn.titleLabel?.text = actions[0]
     }
     
     @IBAction func addFriendBtnPressed(_ sender: UIButton) {
@@ -61,11 +64,22 @@ class ProfileVC: UIViewController {
 //        }
         
         let userToNotifyDocRef = db.collection("users").document(userToNotify.uid)
-        userToNotifyDocRef.updateData([
-            "notifications": FieldValue.arrayUnion([
-                "\(currentUser.username) (\(currentUser.fullName)) has requested to be your friend!"
-            ])
-        ]) { error in
+        let username = currentUser.username
+        let fullName = currentUser.fullName
+        userToNotifyDocRef.updateData(
+            ["notifications":
+                FieldValue.arrayUnion(
+                    [[
+                        "message": "\(username) (\(fullName)) has sent you a friend request!",
+                         "sender": [
+                            "uid": currentUser.uid,
+                            "fullName": fullName,
+                            "username": username
+                         ]
+                    ]]
+                )
+            ]
+        ){ error in
             if let error = error {
                 Util.launchAlert(
                     senderVC: self,

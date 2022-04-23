@@ -540,6 +540,7 @@
                     <tabBarItem key="tabBarItem" title="Notifications" image="bell" catalog="system" id="Eot-Z1-ItD"/>
                     <connections>
                         <outlet property="tableView" destination="miQ-tZ-bBn" id="aak-Vg-8nS"/>
+                        <segue destination="Qqa-FB-JCQ" kind="show" identifier="toProfile" id="UYR-7J-Qvj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kT0-aG-yTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -746,6 +747,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ahI-qw-VSc"/>
+        <segue reference="UYR-7J-Qvj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>

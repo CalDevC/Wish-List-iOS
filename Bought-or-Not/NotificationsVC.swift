@@ -11,8 +11,9 @@ import Firebase
 class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var notifications: [String] = []
+    var notifications: [Notification] = []
     let db = Firestore.firestore()
+    let currentUID: String = Auth.auth().currentUser!.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,6 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let currentUID = Auth.auth().currentUser?.uid else{
-            return
-        }
-        
         notifications = []
         fetchNotifications(forUID: currentUID)
     }
@@ -40,9 +37,34 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
         
-        cell.notificationLabel.text = notifications[indexPath.row]
+        cell.notificationLabel.text = notifications[indexPath.row].message
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let notif = notifications[indexPath.row]
+        if(notif.message.contains("has requested to be your friend!")){
+            //Go to accept friend request screen
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        if(segue.identifier == Constants.segues.notifToProfile){
+            guard let profileVC = segue.destination as? ProfileVC else {
+                return
+            }
+            guard let indexPath = sender as? IndexPath else {
+                return
+            }
+            
+            let notif = notifications[indexPath.row]
+            profileVC.user = notif.sender
+            profileVC.currentUser = User(uid: self.currentUID, fullName: "", username: "")
+            profileVC.numBtns = 2
+            profileVC.actions = ["Accept", "Decline"]
+        }
     }
     
     func fetchNotifications(forUID userUID: String){
@@ -57,7 +79,7 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
 
                 let docData: [String: Any] = document.data() ?? ["nil": "nil"]
 
-                guard let notificationList: [String] = docData["notifications"] as? [String] else{
+                guard let notificationList: [Notification] = docData["notifications"] as? [Notification] else{
                     return
                 }
                 
