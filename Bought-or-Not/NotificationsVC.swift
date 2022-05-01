@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SwiftUI
 
 class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -71,68 +72,52 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     func fetchNotifications(forUID userUID: String){
         print("Fetching notifs")
         
-        db.collection("users").addSnapshotListener{ (QuerySnapshot, error) in
-            guard let documents = QuerySnapshot?.documents else{
-                print("no docs")
-                return
+//        db.collection("users").addSnapshotListener{ (QuerySnapshot, error) in
+//            guard let documents = QuerySnapshot?.documents else{
+//                print("no docs")
+//                return
+//            }
+//
+//            let data = try? JSONSerialization.data(withJSONObject: QuerySnapshot?.value)
+//            print("DATA: \(data!)")
+//            let decoder = JSONDecoder()
+//
+//            do{
+//                self.notifications.append(try decoder.decode(Notification.self, from: data as! Data))
+//            } catch{
+//                print("FAILED!!")
+//                print(error)
+//            }
+//
+//        }
+        
+        
+        let userDataDocRef = db.collection("users").document(userUID)
+        userDataDocRef.getDocument { (doc, error) in
+            if let err = error{
+                //TODO: Notify user of error
+                print(err)
             }
 
-            let data = try? JSONSerialization.data(withJSONObject: QuerySnapshot?.value)
-            print("DATA: \(data!)")
-            let decoder = JSONDecoder()
-            
-            do{
-                self.notifications.append(try decoder.decode(Notification.self, from: data as! Data))
-            } catch{
-                print("FAILED!!")
-                print(error)
+            if let document = doc, document.exists {
+                print("doc exists")
+                let recievedNotifs: [Any] = document.get("notifications") as? [Any] ?? []
+                print(recievedNotifs)
+                
+                for notif in recievedNotifs{
+                    let data = try? JSONSerialization.data(withJSONObject: notif)
+                    let decoder = JSONDecoder()
+                    
+                    do{
+                        self.notifications.append(try decoder.decode(Notification.self, from: data!))
+                    } catch{
+                        print(error)
+                    }
+                }
+                
+                self.tableView.reloadData()
             }
-            
         }
-        
-        
-//        let userDataDocRef = db.collection("users").document(userUID)
-//        userDataDocRef.getDocument { (doc, error) in
-//            if let err = error{
-//                //TODO: Notify user of error
-//                print(err)
-//            }
-//
-//            if let document = doc, document.exists {
-//                print("doc exists")
-//                let docData: [String: Any] = document.data() ?? ["nil": "nil"]
-//
-//                //This guard fails bc of our model
-////                let data = document.get("notifications")
-//                let data = try? JSONSerialization.data(withJSONObject: document.get("notifications"))
-//                let decoder = JSONDecoder()
-//
-//                print(data ?? "nil")
-//
-//                do{
-//                    self.notifications.append(try decoder.decode(Notification.self, from: data as! Data))
-//                } catch{
-//                    print(error)
-//                }
-//
-//                print(self.notifications[0])
-//
-//                print("Notifications count: \(self.notifications.count)")
-//                guard let notificationList: [Notification] = docData["notifications"] as? [Notification] else{
-//                    return
-//                }
-//
-//                print("Notifications count: \(notificationList.count)")
-//
-//                //For each notification
-//                for notification in notificationList{
-//                    self.notifications.append(notification)
-//                }
-//
-//                self.tableView.reloadData()
-//            }
-//            print("after if let")
-//        }
     }
     
 
