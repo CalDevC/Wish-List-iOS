@@ -583,7 +583,7 @@
                                     <color key="baseBackgroundColor" name="btnFill"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addFriendBtnPressed:" destination="Qqa-FB-JCQ" eventType="touchUpInside" id="ouO-Vf-KdY"/>
+                                    <action selector="actionBtnPressed:" destination="Qqa-FB-JCQ" eventType="touchUpInside" id="ouO-Vf-KdY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -600,7 +600,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="XKd-rI-S5z"/>
                     <connections>
-                        <outlet property="addFriendBtn" destination="NaE-wj-gep" id="qeD-pd-w5e"/>
+                        <outlet property="actionBtn" destination="NaE-wj-gep" id="qeD-pd-w5e"/>
                         <outlet property="usernameLabel" destination="t73-9p-mmK" id="Ro1-9b-Az1"/>
                     </connections>
                 </viewController>
