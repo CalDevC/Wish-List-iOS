@@ -46,6 +46,7 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         let notif = notifications[indexPath.row]
         if(notif.message.contains("has requested to be your friend!")){
             //Go to accept friend request screen
+            performSegue(withIdentifier: Constants.segues.notifToProfile, sender: indexPath)
         }
     }
     
@@ -68,29 +69,70 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func fetchNotifications(forUID userUID: String){
-        let userDataDocRef = db.collection("users").document(userUID)
-        userDataDocRef.getDocument { (doc, error) in
-            if let err = error{
-                //TODO: Notify user of error
-                print(err)
+        print("Fetching notifs")
+        
+        db.collection("users").addSnapshotListener{ (QuerySnapshot, error) in
+            guard let documents = QuerySnapshot?.documents else{
+                print("no docs")
+                return
             }
 
-            if let document = doc, document.exists {
-
-                let docData: [String: Any] = document.data() ?? ["nil": "nil"]
-
-                guard let notificationList: [Notification] = docData["notifications"] as? [Notification] else{
-                    return
-                }
-                
-                //For each notification
-                for notification in notificationList{
-                    self.notifications.append(notification)
-                }
-                
-                self.tableView.reloadData()
+            let data = try? JSONSerialization.data(withJSONObject: QuerySnapshot?.value)
+            print("DATA: \(data!)")
+            let decoder = JSONDecoder()
+            
+            do{
+                self.notifications.append(try decoder.decode(Notification.self, from: data as! Data))
+            } catch{
+                print("FAILED!!")
+                print(error)
             }
+            
         }
+        
+        
+//        let userDataDocRef = db.collection("users").document(userUID)
+//        userDataDocRef.getDocument { (doc, error) in
+//            if let err = error{
+//                //TODO: Notify user of error
+//                print(err)
+//            }
+//
+//            if let document = doc, document.exists {
+//                print("doc exists")
+//                let docData: [String: Any] = document.data() ?? ["nil": "nil"]
+//
+//                //This guard fails bc of our model
+////                let data = document.get("notifications")
+//                let data = try? JSONSerialization.data(withJSONObject: document.get("notifications"))
+//                let decoder = JSONDecoder()
+//
+//                print(data ?? "nil")
+//
+//                do{
+//                    self.notifications.append(try decoder.decode(Notification.self, from: data as! Data))
+//                } catch{
+//                    print(error)
+//                }
+//
+//                print(self.notifications[0])
+//
+//                print("Notifications count: \(self.notifications.count)")
+//                guard let notificationList: [Notification] = docData["notifications"] as? [Notification] else{
+//                    return
+//                }
+//
+//                print("Notifications count: \(notificationList.count)")
+//
+//                //For each notification
+//                for notification in notificationList{
+//                    self.notifications.append(notification)
+//                }
+//
+//                self.tableView.reloadData()
+//            }
+//            print("after if let")
+//        }
     }
     
 
