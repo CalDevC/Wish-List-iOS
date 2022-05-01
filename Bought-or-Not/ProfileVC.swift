@@ -36,6 +36,50 @@ class ProfileVC: UIViewController {
         
         if(actions[0] == "Accept"){
             print("Accepted :)")
+            guard let currentUID = Auth.auth().currentUser?.uid else{
+                return
+            }
+            
+            guard let otherUID = user?.uid else{
+                return
+            }
+            
+            db.collection("users").document(currentUID).updateData([
+                "friends": FieldValue.arrayUnion([otherUID])
+            ]) { error in
+                if let error = error {
+                    Util.launchAlert(
+                        senderVC: self,
+                        title: "Error",
+                        message: "Failed to add friend, please try again later :(",
+                        btnText: "ok"
+                    )
+                    self.addFriendBtn.isEnabled = true
+                    print("Error updating document: \(error)")
+                } else {
+                    print("Document successfully updated")
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            
+            db.collection("users").document(otherUID).updateData([
+                "friends": FieldValue.arrayUnion([currentUID])
+            ]) { error in
+                if let error = error {
+                    Util.launchAlert(
+                        senderVC: self,
+                        title: "Error",
+                        message: "Failed to add friend, please try again later :(",
+                        btnText: "ok"
+                    )
+                    self.addFriendBtn.isEnabled = true
+                    print("Error updating document: \(error)")
+                } else {
+                    print("Document successfully updated")
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            
         } else if(actions[0] == "Send Friend Request"){
             //Add UID the signed in user's friend list
             guard let userToNotify = user else{
@@ -48,25 +92,6 @@ class ProfileVC: UIViewController {
                 return
             }
             
-    //        let userDocRef = db.collection("users").document(currentUID)
-    //        userDocRef.updateData([
-    //            "friends": FieldValue.arrayUnion([user.uid])
-    //        ]) { error in
-    //            if let error = error {
-    //                Util.launchAlert(
-    //                    senderVC: self,
-    //                    title: "Error",
-    //                    message: "Failed to add friend, please try again later :(",
-    //                    btnText: "ok"
-    //                )
-    //                self.addFriendBtn.isEnabled = true
-    //                print("Error updating document: \(error)")
-    //            } else {
-    //                print("Document successfully updated")
-    //                self.navigationController?.popViewController(animated: true)
-    //            }
-    //        }
-            
             let userToNotifyDocRef = db.collection("users").document(userToNotify.uid)
             let username = currentUser.username
             let fullName = currentUser.fullName
@@ -74,7 +99,7 @@ class ProfileVC: UIViewController {
                 ["notifications":
                     FieldValue.arrayUnion(
                         [[
-                            "message": "\(username) (\(fullName)) has sent you a friend request!",
+                            "message": "\(username) (\(fullName)) has requested to be your friend!",
                              "sender": [
                                 "uid": currentUser.uid,
                                 "fullName": fullName,

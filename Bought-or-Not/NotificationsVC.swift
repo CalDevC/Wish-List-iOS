@@ -45,6 +45,7 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let notif = notifications[indexPath.row]
+        print("Clicked " + notif.message)
         if(notif.message.contains("has requested to be your friend!")){
             //Go to accept friend request screen
             performSegue(withIdentifier: Constants.segues.notifToProfile, sender: indexPath)
@@ -63,7 +64,6 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
             
             let notif = notifications[indexPath.row]
             profileVC.user = notif.sender
-            profileVC.currentUser = User(uid: self.currentUID, fullName: "", username: "")
             profileVC.numBtns = 2
             profileVC.actions = ["Accept", "Decline"]
         }
@@ -71,27 +71,6 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func fetchNotifications(forUID userUID: String){
         print("Fetching notifs")
-        
-//        db.collection("users").addSnapshotListener{ (QuerySnapshot, error) in
-//            guard let documents = QuerySnapshot?.documents else{
-//                print("no docs")
-//                return
-//            }
-//
-//            let data = try? JSONSerialization.data(withJSONObject: QuerySnapshot?.value)
-//            print("DATA: \(data!)")
-//            let decoder = JSONDecoder()
-//
-//            do{
-//                self.notifications.append(try decoder.decode(Notification.self, from: data as! Data))
-//            } catch{
-//                print("FAILED!!")
-//                print(error)
-//            }
-//
-//        }
-        
-        
         let userDataDocRef = db.collection("users").document(userUID)
         userDataDocRef.getDocument { (doc, error) in
             if let err = error{
