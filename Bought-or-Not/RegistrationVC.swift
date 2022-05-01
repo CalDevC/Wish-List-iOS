@@ -248,6 +248,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                 "fullName": name,
                 "phoneNumber": phoneNumber,
                 "friends": [],
+                "notifications": [],
                 "uid": authResult!.user.uid
             ]) { err in
                 if let err = err {

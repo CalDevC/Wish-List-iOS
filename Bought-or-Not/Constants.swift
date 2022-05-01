@@ -22,5 +22,6 @@ struct Constants{
         static let homeToUserSettings = "homeToUserSettings"
         static let friendToProfile = "toProfile"
         static let profileToFriend = "toFriend"
+        static let notifToProfile = "toProfile"
     }
 }
