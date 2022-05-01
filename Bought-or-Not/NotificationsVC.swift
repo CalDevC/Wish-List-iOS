@@ -28,6 +28,7 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         notifications = []
+        tableView.reloadData()
         fetchNotifications(forUID: currentUID)
     }
     
