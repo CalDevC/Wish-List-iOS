@@ -40,9 +40,13 @@ class HomeCollectionViewController: UICollectionViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        if (userLists.count != 0) {
-            return
-        }
+        // if (userLists.count != 0) {
+            
+            // self.collectionView.reloadData()
+            // return
+        // }
+        userLists = []
+        userListIds = []
         
         let _ = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
             if let err = err {

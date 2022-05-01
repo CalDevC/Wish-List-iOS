@@ -66,6 +66,10 @@ class WishlistTableVC: UITableViewController {
         }
     }
     
+    @IBAction func addItem(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "wishlistToAddItem", sender: nil)
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,8 +91,20 @@ class WishlistTableVC: UITableViewController {
         }
         // use list for items
         let item = wishlistItems[indexPath.row]
-        cell.wishlistCell.text = item
+        cell.wishlistCell.text = "   " + item
         return cell
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let addItemVC = segue.destination as? AddItemVC else {
+            return
+        }
+        guard let indexPath = sender as? IndexPath else {
+            return
+        }
+        
+        // use section property embedded in indexPath to pull wishlist items
+        // wishlistVC.listId = userListIds[indexPath.row]
     }
     
 }

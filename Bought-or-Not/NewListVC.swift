@@ -54,6 +54,8 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     let currentUid = Auth.auth().currentUser!.uid

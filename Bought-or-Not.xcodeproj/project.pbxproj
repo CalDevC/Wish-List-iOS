@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6499246281E23DC000BADDD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A6499245281E23DC000BADDD /* FirebaseStorage */; };
 		A68B634E27E7C81200B7C6BC /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */; };
 		A6F37F3227EE35B100BA3D1A /* WishlistTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3027EE35B100BA3D1A /* WishlistTableVC.swift */; };
 		A6F37F3627EE7F3200BA3D1A /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3427EE7F3200BA3D1A /* WishlistTableViewCell.swift */; };
 		A6F37F3727EE7F3200BA3D1A /* WishlistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F37F3527EE7F3200BA3D1A /* WishlistTableViewCell.xib */; };
 		A6F5F1CE27E7EC9000C67AEC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */; };
 		A6FE177E2810EBFF00C069CC /* NewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE177D2810EBFF00C069CC /* NewListVC.swift */; };
+		A6FE17812812386F00C069CC /* AddItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE17802812386F00C069CC /* AddItemVC.swift */; };
 		ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C427E39BC1006C0B2C /* AppDelegate.swift */; };
 		ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */; };
 		ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C827E39BC1006C0B2C /* SignInVC.swift */; };
@@ -58,6 +60,7 @@
 		A6F37F3527EE7F3200BA3D1A /* WishlistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistTableViewCell.xib; sourceTree = "<group>"; };
 		A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A6FE177D2810EBFF00C069CC /* NewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListVC.swift; sourceTree = "<group>"; };
+		A6FE17802812386F00C069CC /* AddItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVC.swift; sourceTree = "<group>"; };
 		ABC165C127E39BC1006C0B2C /* Bought-or-Not.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bought-or-Not.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC165C427E39BC1006C0B2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 			files = (
 				ABC165FC27E3A545006C0B2C /* FirebaseAuth in Frameworks */,
 				ABC165FE27E3A545006C0B2C /* FirebaseFirestore in Frameworks */,
+				A6499246281E23DC000BADDD /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +149,7 @@
 				ABC165C827E39BC1006C0B2C /* SignInVC.swift */,
 				ABC165CA27E39BC1006C0B2C /* Main.storyboard */,
 				A6F37F3027EE35B100BA3D1A /* WishlistTableVC.swift */,
+				A6FE17802812386F00C069CC /* AddItemVC.swift */,
 				A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */,
 				A6FE177D2810EBFF00C069CC /* NewListVC.swift */,
 				A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */,
@@ -208,6 +213,7 @@
 			packageProductDependencies = (
 				ABC165FB27E3A545006C0B2C /* FirebaseAuth */,
 				ABC165FD27E3A545006C0B2C /* FirebaseFirestore */,
+				A6499245281E23DC000BADDD /* FirebaseStorage */,
 			);
 			productName = "Bought-or-Not";
 			productReference = ABC165C127E39BC1006C0B2C /* Bought-or-Not.app */;
@@ -283,6 +289,7 @@
 			mainGroup = ABC165B827E39BC0006C0B2C;
 			packageReferences = (
 				ABC165FA27E3A545006C0B2C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A6499244281E23DC000BADDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = ABC165C227E39BC1006C0B2C /* Products */;
 			projectDirPath = "";
@@ -340,6 +347,7 @@
 				ABC1660B27EBF334006C0B2C /* UserSettingsCell.swift in Sources */,
 				ABC1660227EBEB47006C0B2C /* UserSettingsVCTableViewController.swift in Sources */,
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,
+				A6FE17812812386F00C069CC /* AddItemVC.swift in Sources */,
 				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
 				A6F37F3627EE7F3200BA3D1A /* WishlistTableViewCell.swift in Sources */,
 				A6F5F1CE27E7EC9000C67AEC /* HomeCollectionViewCell.swift in Sources */,
@@ -687,6 +695,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A6499244281E23DC000BADDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		ABC165FA27E3A545006C0B2C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -698,6 +714,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A6499245281E23DC000BADDD /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6499244281E23DC000BADDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		ABC165FB27E3A545006C0B2C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ABC165FA27E3A545006C0B2C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
