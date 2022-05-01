@@ -17,16 +17,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-g0-Kak">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="1zo-DH-kyb"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="QZP-g0-Kak" secondAttribute="trailing" id="3Tp-91-PBa"/>
+                    <constraint firstItem="QZP-g0-Kak" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="K2Z-ut-Mzj"/>
                     <constraint firstAttribute="bottom" secondItem="QZP-g0-Kak" secondAttribute="bottom" id="N7O-bw-2ET"/>
                     <constraint firstItem="QZP-g0-Kak" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QIQ-jY-Lg2"/>
                     <constraint firstAttribute="trailing" secondItem="QZP-g0-Kak" secondAttribute="trailing" id="bhK-2K-f8x"/>
+                    <constraint firstAttribute="bottom" secondItem="QZP-g0-Kak" secondAttribute="bottom" id="gGX-ZX-T7u"/>
+                    <constraint firstItem="QZP-g0-Kak" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rrH-8u-Tpb"/>
                     <constraint firstItem="QZP-g0-Kak" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wMP-Dj-ott"/>
                 </constraints>
             </tableViewCellContentView>
