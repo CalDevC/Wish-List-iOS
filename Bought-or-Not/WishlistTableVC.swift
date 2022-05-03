@@ -30,6 +30,7 @@ class WishlistTableVC: UITableViewController {
         print("View did load")
         getData(compHandler: reloadItems)
         print("Done with data")
+        print("List ID in wishListTableVC: \(listId)")
         
         wishlistTableView.reloadData()
     }
@@ -45,7 +46,6 @@ class WishlistTableVC: UITableViewController {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    print("QUERY SUCCESSFUL")
                     for document in querySnapshot!.documents {
                         print("DOCUMENT")
                         print("\(document.documentID) => \(document.data())")
@@ -54,9 +54,7 @@ class WishlistTableVC: UITableViewController {
                         let listData: [String: String] = document.data() as! [String: String]
                         for pair in listData {
                             if(pair.key == "name") {
-                                print(pair.value)
                                 self.wishlistItems.append(pair.value)
-                                print(self.wishlistItems)
                             }
                         }
                     }
@@ -99,10 +97,10 @@ class WishlistTableVC: UITableViewController {
         guard let addItemVC = segue.destination as? AddItemVC else {
             return
         }
-        guard let indexPath = sender as? IndexPath else {
-            return
-        }
         
+        print("Sending")
+        
+        addItemVC.listId = listId
         // use section property embedded in indexPath to pull wishlist items
         // wishlistVC.listId = userListIds[indexPath.row]
     }

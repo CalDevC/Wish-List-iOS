@@ -13,6 +13,9 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
+    let imagePicker = UIImagePickerController()
+    
+    var listId: String?
     var imageURL: URL? = nil
     
     @IBOutlet weak var itemName: UITextField!
@@ -27,9 +30,16 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     @IBAction func saveButton(_ sender: UIButton) {
+        guard listId != nil else{
+            print("List ID is nil")
+            return
+        }
+        
+        print("List ID is \(listId)")
+        
         var ref: DocumentReference? = nil
         ref = self.db.collection("item").addDocument(data: [
-            "listId": "wop56ReOFQxvn8tX3tiI",
+            "listId": listId,
             "name": itemName.text ?? "",
             "category": itemCategory.text ?? "",
             "price": itemPrice.text ?? "",
@@ -51,8 +61,10 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         guard let newImage = imageView.image else {
             return
         }
+        
         uploadMedia(image: newImage, itemID: ref!.documentID) { (myURL) in
             // output download URL for image
+            print("Got here with URL: ")
             print(myURL)
         }
         
@@ -60,22 +72,14 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         self.navigationController?.popViewController(animated: true)
     }
     
-    let imagePicker = UIImagePickerController()
-    
     @IBAction func AddPhoto(_ sender: UIButton) {
-        // print("Herro!")
-        
-        // present(imagePicker, animated: true, completion: nil)
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-        
         present(imagePicker, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         imagePicker.delegate = self
     }
     
@@ -84,12 +88,8 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             imageView.contentMode = .scaleAspectFit
             imageView.image = pickedImage
             
-            let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
-            // if mediaType == kUTTypeImage {
-            imageURL = info[UIImagePickerController.InfoKey.imageURL] as! URL
-            print(imageURL)
-            // Handle your logic here, e.g. uploading file to Cloud Storage for Firebase
-            // }
+            imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
+            print(imageURL ?? "No URL")
         }
         
         dismiss(animated: true, completion: nil)
@@ -108,7 +108,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
 
         // Upload the file to the path "images/rivers.jpg"
         let uploadTask = imageRef.putFile(from: imageURL!, metadata: nil) { metadata, error in
-          guard let metadata = metadata else {
+            guard metadata != nil else {
             // Uh-oh, an error occurred!
             return
           }
@@ -118,6 +118,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
               // Uh-oh, an error occurred!
               return
             }
+            completion(downloadURL)
           }
         }
     }
