@@ -58,11 +58,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             }
         }
         
-        guard let newImage = imageView.image else {
-            return
-        }
-        
-        uploadMedia(image: newImage, itemID: ref!.documentID) { (myURL) in
+        uploadMedia(imgName: "\(itemName.text ?? "")_\(listId!)") { (myURL) in
             // output download URL for image
             print("Got here with URL: ")
             print(myURL)
@@ -99,12 +95,12 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         dismiss(animated: true, completion: nil)
     }
     
-    func uploadMedia(image :UIImage, itemID: String, completion: @escaping (URL?) -> ()) {
+    func uploadMedia(imgName: String, completion: @escaping (URL?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         
         // Create a reference to the file you want to upload
-        let imageRef = storageRef.child("images/rivers.jpg")
+        let imageRef = storageRef.child("images/\(imgName)")
 
         // Upload the file to the path "images/rivers.jpg"
         let uploadTask = imageRef.putFile(from: imageURL!, metadata: nil) { metadata, error in

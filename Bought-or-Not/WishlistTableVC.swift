@@ -98,8 +98,6 @@ class WishlistTableVC: UITableViewController {
             return
         }
         
-        print("Sending")
-        
         addItemVC.listId = listId
         // use section property embedded in indexPath to pull wishlist items
         // wishlistVC.listId = userListIds[indexPath.row]
