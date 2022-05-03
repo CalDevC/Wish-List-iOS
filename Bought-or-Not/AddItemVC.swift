@@ -10,7 +10,7 @@ import Firebase
 import FirebaseStorage
 
 class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     var imageURL: URL? = nil
@@ -30,10 +30,10 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         var ref: DocumentReference? = nil
         ref = self.db.collection("item").addDocument(data: [
             "listId": "wop56ReOFQxvn8tX3tiI",
-            "name": itemName.text,
-            "category": itemCategory.text,
-            "price": itemPrice.text,
-            "link": itemLink.text,
+            "name": itemName.text ?? "",
+            "category": itemCategory.text ?? "",
+            "price": itemPrice.text ?? "",
+            "link": itemLink.text ?? "",
             "userId": currentUid
         ]) { err in
             if let err = err {
@@ -68,13 +68,13 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         // present(imagePicker, animated: true, completion: nil)
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-            
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
     }
@@ -88,10 +88,10 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             // if mediaType == kUTTypeImage {
             imageURL = info[UIImagePickerController.InfoKey.imageURL] as! URL
             print(imageURL)
-                // Handle your logic here, e.g. uploading file to Cloud Storage for Firebase
+            // Handle your logic here, e.g. uploading file to Cloud Storage for Firebase
             // }
         }
-
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -101,72 +101,25 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     func uploadMedia(image :UIImage, itemID: String, completion: @escaping (URL?) -> ()) {
         let storage = Storage.storage()
-        // let url = "gs://bought-or-not-d8d87.appspot.com"
         let storageRef = storage.reference()
         
-        let data = Data()
+        // Create a reference to the file you want to upload
+        let imageRef = storageRef.child("images/rivers.jpg")
 
-        // Create file name
-        let fileExtension = imageURL!.pathExtension
-        let fileName = "images/" + itemID + ".\(fileExtension)"
-        
-        print(fileName)
-        
-        // let imageRef = storageRef.child(fileName)
-
-        let md = StorageMetadata()
-        md.contentType = "image/\(fileExtension)"
-        print(md)
-
-        let imageRef = Storage.storage().reference().child(fileName)
-
-        imageRef.putData(data, metadata: md) { (metadata, error) in
-             if error == nil {
-                 imageRef.downloadURL(completion: { (url, error) in
-                     print("Done, url is \(String(describing: url))")
-                 })
-             } else {
-                 print("error \(String(describing: error))")
-             }
-         }
-        
-        // let uploadMetadata = StorageMetadata()
-        // uploadMetadata.contentType = "image/jpeg"
-        
         // Upload the file to the path "images/rivers.jpg"
-        /*
-        let uploadTask = imageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
+        let uploadTask = imageRef.putFile(from: imageURL!, metadata: nil) { metadata, error in
           guard let metadata = metadata else {
             // Uh-oh, an error occurred!
-            print("metadata error")
             return
           }
-
-          // Metadata contains file metadata such as size, content-type.
-          let size = metadata.size
-          // You can also access to download URL after upload.
-          imageRef.downloadURL { (url, error) in
+            
+            imageRef.downloadURL { (url, error) in
             guard let downloadURL = url else {
-                // Uh-oh, an error occurred!
-                print("no download URL")
-                return
+              // Uh-oh, an error occurred!
+              return
             }
-            print(downloadURL)
           }
         }
-         */
-        
-        // return downloadURL
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
