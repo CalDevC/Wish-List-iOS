@@ -13,11 +13,6 @@ class HomeCollectionViewController: UICollectionViewController {
     var userLists: [String] = []
     var userListIds: [String] = []
     
-    // @IBOutlet var collectionView: UICollectionView!
-    @IBAction func userSettingsPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: Constants.segues.homeToUserSettings, sender: self)
-    }
-    
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     
