@@ -17,11 +17,12 @@ class HomeCollectionViewController: UICollectionViewController {
     let db = Firestore.firestore()
     let reuseIdentifier = "cell"
     
-    // var dataSource: [String] = ["New List", "My Birthday", "Christmas"]
-    // var userLists: [String] = []
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
         layoutCells()
         
         collectionView.delegate = self
@@ -40,7 +41,7 @@ class HomeCollectionViewController: UICollectionViewController {
         userLists = []
         userListIds = []
         
-        let _ = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
+        db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -63,6 +64,7 @@ class HomeCollectionViewController: UICollectionViewController {
                     }
                 }
                 self.collectionView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
         
