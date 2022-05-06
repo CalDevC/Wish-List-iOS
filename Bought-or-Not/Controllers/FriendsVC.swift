@@ -132,6 +132,30 @@ class FriendsVC: UIViewController{
         activityIndicator.stopAnimating()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        guard let indexPath = sender as? IndexPath else {
+            return
+        }
+        
+        if(segue.identifier == Constants.segues.friendToProfile ){
+            guard let profileVC = segue.destination as? ProfileVC else {
+                return
+            }
+            
+            profileVC.user = matchingData[indexPath.row]
+            profileVC.currentUser = self.currentUser
+            profileVC.numBtns = 1
+            profileVC.actions = ["Send Friend Request"]
+        } else if(segue.identifier == Constants.segues.friendToWishList){
+            guard let wishListCollectionVC = segue.destination as? WishListCollectionVC else {
+                return
+            }
+            
+            wishListCollectionVC.owner = friendList[indexPath.item]
+        }
+        
+    }
+    
 }
 
 //MARK: - Collection View Functions
@@ -154,8 +178,7 @@ extension FriendsVC: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.item): \(friendList[indexPath.row].username)")
-        let userToView = friendList[indexPath.item]
-        
+        performSegue(withIdentifier: Constants.segues.friendToWishList, sender: indexPath)
     }
     
     func layoutCells() {
@@ -195,20 +218,6 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
         searchBar.text = ""
         
         performSegue(withIdentifier: Constants.segues.friendToProfile, sender: indexPath)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        guard let profileVC = segue.destination as? ProfileVC else {
-            return
-        }
-        guard let indexPath = sender as? IndexPath else {
-            return
-        }
-        
-        profileVC.user = matchingData[indexPath.row]
-        profileVC.currentUser = self.currentUser
-        profileVC.numBtns = 1
-        profileVC.actions = ["Send Friend Request"]
     }
     
 }

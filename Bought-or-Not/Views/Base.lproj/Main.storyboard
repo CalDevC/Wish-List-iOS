@@ -523,6 +523,7 @@
                         <outlet property="searchBar" destination="aJc-VB-T5p" id="TcW-AS-oDA"/>
                         <outlet property="tableView" destination="BTY-jD-EMO" id="l1y-aB-bm8"/>
                         <segue destination="Qqa-FB-JCQ" kind="show" identifier="toProfile" id="ydM-Ke-vGT"/>
+                        <segue destination="dwB-fH-uMd" kind="show" identifier="toWishList" id="LHh-5b-kSl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohb-m8-7ui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -902,6 +903,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="ehT-jt-Q8F"/>
         <segue reference="ydM-Ke-vGT"/>
+        <segue reference="LHh-5b-kSl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>

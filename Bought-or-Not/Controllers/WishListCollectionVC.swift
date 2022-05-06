@@ -10,7 +10,7 @@ import Firebase
 
 class WishListCollectionVC: UICollectionViewController {
     
-    var friendView: Bool?
+    var owner: User?
     
     var userLists: [String] = []
     var userListIds: [String] = []
