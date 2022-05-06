@@ -97,6 +97,13 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
                     }
                 }
                 
+                if(self.notifications.isEmpty){
+                    self.notifications.append(Notification(
+                        message: "Nothing new here 🙌",
+                        sender: User(uid: "", fullName: "",username: "")
+                    ))
+                }
+                
                 self.tableView.reloadData()
             }
         }

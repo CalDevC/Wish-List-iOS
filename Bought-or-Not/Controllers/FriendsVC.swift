@@ -248,7 +248,7 @@ extension FriendsVC: UISearchBarDelegate{
         }
         
         if(matchingData.count == 0){
-            matchingData.append(User(uid: "", fullName: "", username:"No Results"))
+            matchingData.append(User(uid: "", fullName: "", username:"No users found 🤔"))
         }
         
         self.tableView.reloadData()
