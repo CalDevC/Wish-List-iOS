@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="20l-lz-ATn">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="cOF-Hi-uuK" kind="relationship" relationship="rootViewController" id="Bcr-qY-fiF"/>
                     </connections>
@@ -510,7 +513,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="person.3" catalog="system" id="O2T-nm-bYz"/>
-                    <navigationItem key="navigationItem" id="lA5-gC-mIn"/>
+                    <navigationItem key="navigationItem" title="Friends" id="lA5-gC-mIn"/>
                     <connections>
                         <outlet property="activityIndicator" destination="cZx-dB-IqV" id="usN-qQ-Jog"/>
                         <outlet property="collectionView" destination="vYJ-kd-Iqw" id="u7d-bd-67c"/>
@@ -876,7 +879,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ehT-jt-Q8F"/>
-        <segue reference="UYR-7J-Qvj"/>
+        <segue reference="ydM-Ke-vGT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>

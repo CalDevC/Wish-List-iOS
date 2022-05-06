@@ -27,6 +27,8 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.navigationItem.title = Constants.viewNames.notifications
         notifications = []
         tableView.reloadData()
         fetchNotifications(forUID: currentUID)

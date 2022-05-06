@@ -25,7 +25,6 @@ class HomeCollectionViewController: UICollectionViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         // print("CURRENT UID")
         // print(currentUid)
         
@@ -35,11 +34,10 @@ class HomeCollectionViewController: UICollectionViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        // if (userLists.count != 0) {
-            
-            // self.collectionView.reloadData()
-            // return
-        // }
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.title = Constants.viewNames.wishLists
+        
         userLists = []
         userListIds = []
         
