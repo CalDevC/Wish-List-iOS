@@ -640,6 +640,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="YPg-uU-yLH">
+                            <rect key="frame" x="0.0" y="110.5" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="019-12-UKR"/>
+                                <constraint firstAttribute="width" constant="50" id="beW-2u-MLx"/>
+                            </constraints>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lzk-SQ-s05" customClass="ItemCell" customModule="Bought_or_Not" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -663,6 +671,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="YPg-uU-yLH" id="8Jw-vU-HdZ"/>
                         <outlet property="wishlistTableView" destination="DYH-KX-7oA" id="AJP-Gw-lF1"/>
                         <segue destination="gvz-UX-Brp" kind="show" identifier="wishlistToAddItem" id="VfL-7z-wiG"/>
                     </connections>
@@ -892,7 +901,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ehT-jt-Q8F"/>
-        <segue reference="UYR-7J-Qvj"/>
+        <segue reference="ydM-Ke-vGT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
