@@ -80,20 +80,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YdD-iN-fSK">
+                                <rect key="frame" x="182" y="696" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="LBI-ho-bxO"/>
+                                    <constraint firstAttribute="height" constant="50" id="jsE-PC-b3F"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="background"/>
                         <constraints>
+                            <constraint firstItem="YdD-iN-fSK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2mg-YB-4sX"/>
                             <constraint firstItem="J7r-y9-c5T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mbh-JE-UBa"/>
                             <constraint firstItem="uO1-Ew-GE1" firstAttribute="top" secondItem="J7r-y9-c5T" secondAttribute="bottom" constant="280" id="Nxb-R8-5RQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uO1-Ew-GE1" secondAttribute="bottom" constant="59.5" id="Yhi-Ah-Mx5"/>
                             <constraint firstItem="uO1-Ew-GE1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yt9-jg-BPi"/>
                             <constraint firstItem="J7r-y9-c5T" firstAttribute="top" secondItem="OAu-Ms-3Qo" secondAttribute="bottom" constant="8" symbolic="YES" id="ccI-qy-l5K"/>
                             <constraint firstItem="OAu-Ms-3Qo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k1S-nt-M3k"/>
+                            <constraint firstItem="uO1-Ew-GE1" firstAttribute="top" secondItem="YdD-iN-fSK" secondAttribute="bottom" constant="8" symbolic="YES" id="uE3-bJ-fmu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vqk-D7-raT"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="YdD-iN-fSK" id="B2z-l1-eOK"/>
                         <outlet property="emailInput" destination="OAu-Ms-3Qo" id="TTX-Lc-ChZ"/>
                         <outlet property="passwordInput" destination="J7r-y9-c5T" id="dDI-Td-fq3"/>
                         <outlet property="signInButton" destination="uO1-Ew-GE1" id="sEs-cb-Igk"/>
@@ -208,8 +218,12 @@
                                     <action selector="textEditingDidEnd:" destination="zuG-tn-mQS" eventType="editingDidEnd" id="yQS-lh-ooQ"/>
                                 </connections>
                             </textField>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-RY-I9q">
-                                <rect key="frame" x="182" y="681" width="51" height="52"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-RY-I9q">
+                                <rect key="frame" x="182" y="683" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1H7-or-kd9"/>
+                                    <constraint firstAttribute="width" constant="50" id="7Fw-IS-Ik1"/>
+                                </constraints>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YFT-ch-SSt"/>
@@ -219,6 +233,8 @@
                             <constraint firstItem="Nm4-Bj-HS6" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="3kk-2N-dvW"/>
                             <constraint firstItem="pKG-hX-Fgc" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="Blm-Zu-rzb"/>
                             <constraint firstItem="9FJ-dN-OWq" firstAttribute="top" secondItem="I70-ml-JSP" secondAttribute="bottom" constant="8" symbolic="YES" id="CjI-Pq-e7I"/>
+                            <constraint firstItem="gsN-xd-WMy" firstAttribute="top" secondItem="ACv-RY-I9q" secondAttribute="bottom" constant="8" symbolic="YES" id="JHr-SE-UKu"/>
+                            <constraint firstItem="ACv-RY-I9q" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="Ka1-LY-tNV"/>
                             <constraint firstItem="9FJ-dN-OWq" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="ObE-Y5-WaT"/>
                             <constraint firstItem="BHS-Bx-OQx" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="Yyk-3k-NuX"/>
                             <constraint firstItem="gsN-xd-WMy" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="ZCz-eP-j5i"/>
@@ -229,7 +245,6 @@
                             <constraint firstItem="hUE-2a-qBs" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="kJH-fK-yF9"/>
                             <constraint firstItem="YFT-ch-SSt" firstAttribute="bottom" secondItem="gsN-xd-WMy" secondAttribute="bottom" constant="72.5" id="oVY-5N-lgy"/>
                             <constraint firstItem="gsN-xd-WMy" firstAttribute="top" secondItem="ACv-RY-I9q" secondAttribute="bottom" constant="8" symbolic="YES" id="p8g-fv-3HI"/>
-                            <constraint firstItem="ACv-RY-I9q" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="rpL-mP-Ng1"/>
                             <constraint firstItem="BHS-Bx-OQx" firstAttribute="top" secondItem="Nm4-Bj-HS6" secondAttribute="bottom" constant="8" symbolic="YES" id="vYe-VM-Rj6"/>
                         </constraints>
                     </view>
@@ -386,25 +401,7 @@
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fyY-tW-o5G">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2pX-wF-get">
-                                            <rect key="frame" x="43" y="0.0" width="42" height="75"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" name="btnText"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" name="btnFill"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="2pX-wF-get" secondAttribute="bottom" id="7AT-1t-Mzm"/>
-                                        <constraint firstItem="2pX-wF-get" firstAttribute="leading" secondItem="fyY-tW-o5G" secondAttribute="leading" id="7hk-M2-PUS"/>
-                                        <constraint firstAttribute="trailing" secondItem="2pX-wF-get" secondAttribute="trailing" id="F0k-xd-LuD"/>
-                                        <constraint firstItem="2pX-wF-get" firstAttribute="top" secondItem="fyY-tW-o5G" secondAttribute="top" constant="54" id="FR1-mn-5GT"/>
-                                        <constraint firstAttribute="trailing" secondItem="2pX-wF-get" secondAttribute="trailing" constant="45" id="Mdl-lt-d8f"/>
-                                        <constraint firstItem="2pX-wF-get" firstAttribute="leading" secondItem="fyY-tW-o5G" secondAttribute="leading" constant="43" id="QTI-ky-4rY"/>
-                                        <constraint firstAttribute="bottom" secondItem="2pX-wF-get" secondAttribute="bottom" constant="55" id="Z7X-OS-llx"/>
-                                        <constraint firstItem="2pX-wF-get" firstAttribute="top" secondItem="fyY-tW-o5G" secondAttribute="top" id="bDe-zd-yvG"/>
-                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="130" height="130"/>
                             </collectionViewCell>
@@ -888,9 +885,6 @@
         </namedColor>
         <namedColor name="btnFill">
             <color red="0.31131335900356438" green="0.5411734249286011" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="btnText">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="inputBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

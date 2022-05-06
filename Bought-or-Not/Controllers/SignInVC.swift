@@ -12,6 +12,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
 
     var userLists: [String] = ["New List"]
@@ -21,6 +22,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailInput.delegate = self
         passwordInput.delegate = self
+        activityIndicator.hidesWhenStopped = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +48,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             return
         }
         
+        activityIndicator.startAnimating()
         signInButton.isEnabled = false
         
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -53,8 +56,11 @@ class SignInVC: UIViewController, UITextFieldDelegate {
                 print(err.localizedDescription)
                 //TODO: Inform user of sign in error
                 self.signInButton.isEnabled = true
+                self.activityIndicator.stopAnimating()
                 return
             }
+            
+            self.activityIndicator.stopAnimating()
             
             self.performSegue(withIdentifier: Constants.segues.signinToHome, sender: self)
         }
