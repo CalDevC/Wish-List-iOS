@@ -63,6 +63,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="LMA-mI-qoX"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
@@ -72,12 +73,13 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="y0g-IT-vtu"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="J7r-y9-c5T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mbh-JE-UBa"/>
                             <constraint firstItem="uO1-Ew-GE1" firstAttribute="top" secondItem="J7r-y9-c5T" secondAttribute="bottom" constant="280" id="Nxb-R8-5RQ"/>
@@ -113,6 +115,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Xiv-sO-fCZ"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -125,6 +128,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="XhM-6f-J36"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -137,6 +141,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="ah5-e3-6c7"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -149,6 +154,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="jL3-Bo-fy9"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
@@ -158,6 +164,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="IQV-P1-VfV"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
@@ -191,6 +198,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="di5-Ul-iXL"/>
                                 </constraints>
+                                <color key="textColor" name="text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
@@ -202,7 +210,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YFT-ch-SSt"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="pKG-hX-Fgc" firstAttribute="top" secondItem="YFT-ch-SSt" secondAttribute="top" constant="160" id="3Be-lJ-cZ2"/>
                             <constraint firstItem="Nm4-Bj-HS6" firstAttribute="centerX" secondItem="v4N-8Y-kp5" secondAttribute="centerX" id="3kk-2N-dvW"/>
@@ -245,7 +253,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="kf0-Xz-QIZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Bzg-Cp-XR9">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -361,7 +369,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1CJ-UC-hcl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Ou-xs-mwR">
                             <size key="itemSize" width="130" height="130"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -379,11 +387,11 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2pX-wF-get">
                                             <rect key="frame" x="43" y="0.0" width="42" height="75"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="btnText"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    <color key="backgroundColor" name="btnFill"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="2pX-wF-get" secondAttribute="bottom" id="7AT-1t-Mzm"/>
                                         <constraint firstItem="2pX-wF-get" firstAttribute="leading" secondItem="fyY-tW-o5G" secondAttribute="leading" id="7hk-M2-PUS"/>
@@ -525,7 +533,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="miQ-tZ-bBn">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="background"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nwf-rj-XMB"/>
@@ -780,7 +788,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvP-KT-opJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3871.0144927536235" y="24.776785714285712"/>
+            <point key="canvasLocation" x="4426" y="-12"/>
         </scene>
         <!--Landing Page-->
         <scene sceneID="BHA-Rz-qcl">
@@ -839,7 +847,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ru8-mx-sVY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="qMX-f6-WND" firstAttribute="centerX" secondItem="rrp-yA-car" secondAttribute="centerX" id="8QX-mR-uzE"/>
                             <constraint firstItem="6ay-Ii-gsH" firstAttribute="leading" secondItem="Ru8-mx-sVY" secondAttribute="leading" constant="50" id="8iE-eh-sGj"/>
@@ -867,28 +875,31 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ahI-qw-VSc"/>
-        <segue reference="ydM-Ke-vGT"/>
+        <segue reference="ehT-jt-Q8F"/>
+        <segue reference="UYR-7J-Qvj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
+        <namedColor name="background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="btnFill">
-            <color red="0.018999999389052391" green="0.74800002574920654" blue="0.20200000703334808" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.31131335900356438" green="0.5411734249286011" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="btnText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="inputBackground">
-            <color red="0.72899997234344482" green="1" blue="0.68500000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

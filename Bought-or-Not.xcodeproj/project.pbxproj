@@ -74,11 +74,11 @@
 		AB2961C528124BAF00ECE28B /* FriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB2961C628124BAF00ECE28B /* FriendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB763EA4281337E0003C74CD /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		AB763EA828133971003C74CD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Bought-or-Not/User.swift"; sourceTree = SOURCE_ROOT; };
+		AB763EA828133971003C74CD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Bought-or-Not/Models/User.swift"; sourceTree = SOURCE_ROOT; };
 		AB763EAA28135647003C74CD /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		AB763EAC2813566E003C74CD /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		AB763EAD2813566E003C74CD /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
-		AB763EB0281452D9003C74CD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = "Bought-or-Not/customCells/Notification.swift"; sourceTree = SOURCE_ROOT; };
+		AB763EB0281452D9003C74CD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = "Bought-or-Not/Models/Notification.swift"; sourceTree = SOURCE_ROOT; };
 		ABC165C127E39BC1006C0B2C /* Bought-or-Not.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bought-or-Not.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC165C427E39BC1006C0B2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,13 +130,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A6FE177F28118D2100C069CC /* model */ = {
+		ABC14E44282496CD00C88F58 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ABC1660D27EBFE1A006C0B2C /* Constants.swift */,
 				AB763EA828133971003C74CD /* User.swift */,
 				AB763EB0281452D9003C74CD /* Notification.swift */,
 			);
-			path = model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABC14E452824970F00C88F58 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABC165CF27E39BC2006C0B2C /* LaunchScreen.storyboard */,
+				ABC165CA27E39BC1006C0B2C /* Main.storyboard */,
+				ABC1660827EBF30B006C0B2C /* CustomCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABC14E462824973800C88F58 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */,
+				ABC165C427E39BC1006C0B2C /* AppDelegate.swift */,
+				ABC165C827E39BC1006C0B2C /* SignInVC.swift */,
+				A6F37F3027EE35B100BA3D1A /* WishlistTableVC.swift */,
+				A6FE17802812386F00C069CC /* AddItemVC.swift */,
+				A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */,
+				A6FE177D2810EBFF00C069CC /* NewListVC.swift */,
+				A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */,
+				ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */,
+				ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */,
+				ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */,
+				AB2961C32812191500ECE28B /* FriendsVC.swift */,
+				AB763EA4281337E0003C74CD /* ProfileVC.swift */,
+				AB763EAA28135647003C74CD /* NotificationsVC.swift */,
+				ABC1660F27EC0ADA006C0B2C /* Utils.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		ABC165B827E39BC0006C0B2C = {
@@ -162,29 +195,12 @@
 		ABC165C327E39BC1006C0B2C /* Bought-or-Not */ = {
 			isa = PBXGroup;
 			children = (
-				A6FE177F28118D2100C069CC /* model */,
-				ABC1660827EBF30B006C0B2C /* customCells */,
-				ABC165C427E39BC1006C0B2C /* AppDelegate.swift */,
-				ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */,
-				ABC165C827E39BC1006C0B2C /* SignInVC.swift */,
-				ABC165CA27E39BC1006C0B2C /* Main.storyboard */,
-				A6F37F3027EE35B100BA3D1A /* WishlistTableVC.swift */,
-				A6FE17802812386F00C069CC /* AddItemVC.swift */,
-				A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */,
-				A6FE177D2810EBFF00C069CC /* NewListVC.swift */,
-				A6F5F1CD27E7EC9000C67AEC /* HomeCollectionViewCell.swift */,
+				ABC14E462824973800C88F58 /* Controllers */,
+				ABC14E452824970F00C88F58 /* Views */,
+				ABC14E44282496CD00C88F58 /* Models */,
 				ABC165CD27E39BC2006C0B2C /* Assets.xcassets */,
-				ABC165CF27E39BC2006C0B2C /* LaunchScreen.storyboard */,
 				ABC165D227E39BC2006C0B2C /* Info.plist */,
 				ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */,
-				ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */,
-				ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */,
-				ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */,
-				ABC1660D27EBFE1A006C0B2C /* Constants.swift */,
-				ABC1660F27EC0ADA006C0B2C /* Utils.swift */,
-				AB2961C32812191500ECE28B /* FriendsVC.swift */,
-				AB763EA4281337E0003C74CD /* ProfileVC.swift */,
-				AB763EAA28135647003C74CD /* NotificationsVC.swift */,
 			);
 			path = "Bought-or-Not";
 			sourceTree = "<group>";
@@ -206,7 +222,7 @@
 			path = "Bought-or-NotUITests";
 			sourceTree = "<group>";
 		};
-		ABC1660827EBF30B006C0B2C /* customCells */ = {
+		ABC1660827EBF30B006C0B2C /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
 				ABC1660927EBF333006C0B2C /* UserSettingsCell.swift */,
@@ -218,7 +234,7 @@
 				AB763EAC2813566E003C74CD /* NotificationCell.swift */,
 				AB763EAD2813566E003C74CD /* NotificationCell.xib */,
 			);
-			path = customCells;
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
