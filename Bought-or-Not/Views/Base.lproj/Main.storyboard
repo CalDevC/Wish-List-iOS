@@ -383,7 +383,7 @@
         <!--Home-->
         <scene sceneID="7H0-fq-060">
             <objects>
-                <collectionViewController restorationIdentifier="HomeCollectionViewController" storyboardIdentifier="HomeCollectionViewController" title="Home Page" id="dwB-fH-uMd" userLabel="Home" customClass="HomeCollectionViewController" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController restorationIdentifier="HomeCollectionViewController" storyboardIdentifier="HomeCollectionViewController" title="Home Page" id="dwB-fH-uMd" userLabel="Home" customClass="WishListCollectionVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1CJ-UC-hcl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -403,7 +403,7 @@
                             </constraints>
                         </activityIndicatorView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VPy-B9-vSK" customClass="HomeCollectionViewCell" customModule="Bought_or_Not" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VPy-B9-vSK" customClass="WishListCollectionViewCell" customModule="Bought_or_Not" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fyY-tW-o5G">

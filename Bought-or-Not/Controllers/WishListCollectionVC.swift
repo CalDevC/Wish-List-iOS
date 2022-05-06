@@ -1,5 +1,5 @@
 //
-//  HomeCollectionViewController.swift
+//  WishListCollectionViewController.swift
 //  Bought-or-Not
 //
 //  Created by Chris Huber on 3/20/22.
@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class HomeCollectionViewController: UICollectionViewController {
+class WishListCollectionVC: UICollectionViewController {
     
     var friendView: Bool?
     
@@ -30,7 +30,7 @@ class HomeCollectionViewController: UICollectionViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let nib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: "WishListCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
@@ -82,7 +82,7 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! WishListCollectionViewCell
         
         cell.label.text = self.userLists[indexPath.row]
         

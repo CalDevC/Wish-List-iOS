@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCollectionViewCell: UICollectionViewCell {
+class WishListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var label: UILabel!
     
