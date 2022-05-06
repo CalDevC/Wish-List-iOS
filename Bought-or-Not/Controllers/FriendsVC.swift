@@ -132,34 +132,6 @@ class FriendsVC: UIViewController{
         activityIndicator.stopAnimating()
     }
     
-//    func addFriend(friendUID: String){
-//        let userDataDocRef = self.db.collection("users").document(friendUID)
-//        userDataDocRef.getDocument { (doc, error) in
-//            if let err = error{
-//                //TODO: Notify user of error
-//                print(err)
-//            }
-//
-//            if let document = doc, document.exists {
-//                //Add friend with details
-//                let friendData: [String: Any] = document.data() ?? ["nil": "nil"]
-//
-//                let friend = User(
-//                    uid: friendData["uid"] as! String,
-//                    fullName: friendData["fullName"] as! String,
-//                    username: friendData["username"] as! String
-//                )
-//
-//                print("FRIEND: \(friend.username)")
-//
-//                self.friendList.append(friend)
-//                self.collectionView.reloadData()
-//            }
-//        }
-//    }
-    
-
-    
 }
 
 //MARK: - Collection View Functions

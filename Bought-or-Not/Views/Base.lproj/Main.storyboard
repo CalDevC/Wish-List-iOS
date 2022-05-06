@@ -407,9 +407,6 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="130" height="130"/>
-                                <connections>
-                                    <outlet property="listCellLabel" destination="2pX-wF-get" id="ZMM-ub-mK2"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
