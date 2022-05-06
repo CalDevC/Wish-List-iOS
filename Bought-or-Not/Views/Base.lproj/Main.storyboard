@@ -632,10 +632,10 @@
             </objects>
             <point key="canvasLocation" x="3570" y="694"/>
         </scene>
-        <!--Wishlist TableVC-->
+        <!--Item TableVC-->
         <scene sceneID="6ds-7B-mMp">
             <objects>
-                <tableViewController restorationIdentifier="WishlistTableVC" storyboardIdentifier="WishlistTableVC" id="lFs-gI-Npq" customClass="WishlistTableVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="WishlistTableVC" storyboardIdentifier="WishlistTableVC" id="lFs-gI-Npq" customClass="ItemTableVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="DYH-KX-7oA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

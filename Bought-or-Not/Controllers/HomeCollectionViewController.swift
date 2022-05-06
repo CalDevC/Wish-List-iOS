@@ -10,6 +10,8 @@ import Firebase
 
 class HomeCollectionViewController: UICollectionViewController {
     
+    var friendView: Bool?
+    
     var userLists: [String] = []
     var userListIds: [String] = []
     
@@ -111,7 +113,7 @@ class HomeCollectionViewController: UICollectionViewController {
     
     // prepare data to carry to next viewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let wishlistVC = segue.destination as? WishlistTableVC else {
+        guard let wishlistVC = segue.destination as? ItemTableVC else {
             return
         }
         guard let indexPath = sender as? IndexPath else {

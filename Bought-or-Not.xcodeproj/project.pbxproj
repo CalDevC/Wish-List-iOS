@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		A6499246281E23DC000BADDD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A6499245281E23DC000BADDD /* FirebaseStorage */; };
 		A68B634E27E7C81200B7C6BC /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */; };
-		A6F37F3227EE35B100BA3D1A /* WishlistTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3027EE35B100BA3D1A /* WishlistTableVC.swift */; };
-		A6F37F3627EE7F3200BA3D1A /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3427EE7F3200BA3D1A /* WishlistTableViewCell.swift */; };
-		A6F37F3727EE7F3200BA3D1A /* WishlistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F37F3527EE7F3200BA3D1A /* WishlistTableViewCell.xib */; };
+		A6F37F3227EE35B100BA3D1A /* ItemTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3027EE35B100BA3D1A /* ItemTableVC.swift */; };
+		A6F37F3627EE7F3200BA3D1A /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3427EE7F3200BA3D1A /* ItemTableViewCell.swift */; };
+		A6F37F3727EE7F3200BA3D1A /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F37F3527EE7F3200BA3D1A /* ItemTableViewCell.xib */; };
 		A6FE177E2810EBFF00C069CC /* NewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE177D2810EBFF00C069CC /* NewListVC.swift */; };
 		A6FE17812812386F00C069CC /* AddItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE17802812386F00C069CC /* AddItemVC.swift */; };
 		AB2961C42812191500ECE28B /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2961C32812191500ECE28B /* FriendsVC.swift */; };
@@ -65,9 +65,9 @@
 
 /* Begin PBXFileReference section */
 		A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
-		A6F37F3027EE35B100BA3D1A /* WishlistTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableVC.swift; sourceTree = "<group>"; };
-		A6F37F3427EE7F3200BA3D1A /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
-		A6F37F3527EE7F3200BA3D1A /* WishlistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistTableViewCell.xib; sourceTree = "<group>"; };
+		A6F37F3027EE35B100BA3D1A /* ItemTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableVC.swift; sourceTree = "<group>"; };
+		A6F37F3427EE7F3200BA3D1A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		A6F37F3527EE7F3200BA3D1A /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		A6FE177D2810EBFF00C069CC /* NewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListVC.swift; sourceTree = "<group>"; };
 		A6FE17802812386F00C069CC /* AddItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVC.swift; sourceTree = "<group>"; };
 		AB2961C32812191500ECE28B /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */,
 				ABC165C427E39BC1006C0B2C /* AppDelegate.swift */,
 				ABC165C827E39BC1006C0B2C /* SignInVC.swift */,
-				A6F37F3027EE35B100BA3D1A /* WishlistTableVC.swift */,
+				A6F37F3027EE35B100BA3D1A /* ItemTableVC.swift */,
 				A6FE17802812386F00C069CC /* AddItemVC.swift */,
 				A68B634D27E7C81200B7C6BC /* HomeCollectionViewController.swift */,
 				A6FE177D2810EBFF00C069CC /* NewListVC.swift */,
@@ -228,8 +228,8 @@
 			children = (
 				ABC1660927EBF333006C0B2C /* UserSettingsCell.swift */,
 				ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */,
-				A6F37F3427EE7F3200BA3D1A /* WishlistTableViewCell.swift */,
-				A6F37F3527EE7F3200BA3D1A /* WishlistTableViewCell.xib */,
+				A6F37F3427EE7F3200BA3D1A /* ItemTableViewCell.swift */,
+				A6F37F3527EE7F3200BA3D1A /* ItemTableViewCell.xib */,
 				AB2961C528124BAF00ECE28B /* FriendCollectionViewCell.swift */,
 				AB2961C628124BAF00ECE28B /* FriendCollectionViewCell.xib */,
 				AB763EAC2813566E003C74CD /* NotificationCell.swift */,
@@ -353,7 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F37F3727EE7F3200BA3D1A /* WishlistTableViewCell.xib in Resources */,
+				A6F37F3727EE7F3200BA3D1A /* ItemTableViewCell.xib in Resources */,
 				ABC165D127E39BC2006C0B2C /* LaunchScreen.storyboard in Resources */,
 				ABC165F927E3A3D9006C0B2C /* GoogleService-Info.plist in Resources */,
 				AB2961C828124BAF00ECE28B /* FriendCollectionViewCell.xib in Resources */,
@@ -386,7 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F37F3227EE35B100BA3D1A /* WishlistTableVC.swift in Sources */,
+				A6F37F3227EE35B100BA3D1A /* ItemTableVC.swift in Sources */,
 				ABC1660E27EBFE1A006C0B2C /* Constants.swift in Sources */,
 				ABC14E4F2824AFB600C88F58 /* HomeCollectionViewCell.swift in Sources */,
 				ABC165C927E39BC1006C0B2C /* SignInVC.swift in Sources */,
@@ -401,7 +401,7 @@
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,
 				A6FE17812812386F00C069CC /* AddItemVC.swift in Sources */,
 				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
-				A6F37F3627EE7F3200BA3D1A /* WishlistTableViewCell.swift in Sources */,
+				A6F37F3627EE7F3200BA3D1A /* ItemTableViewCell.swift in Sources */,
 				AB763EA5281337E0003C74CD /* ProfileVC.swift in Sources */,
 				AB763EA928133971003C74CD /* User.swift in Sources */,
 				AB763EB1281452D9003C74CD /* Notification.swift in Sources */,

@@ -154,6 +154,8 @@ extension FriendsVC: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.item): \(friendList[indexPath.row].username)")
+        let userToView = friendList[indexPath.item]
+        
     }
     
     func layoutCells() {

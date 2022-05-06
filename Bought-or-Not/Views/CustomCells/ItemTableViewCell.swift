@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WishlistTableViewCell: UITableViewCell {
+class ItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var wishlistCell: UILabel!
     

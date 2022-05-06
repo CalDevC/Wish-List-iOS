@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class WishlistTableVC: UITableViewController {
+class ItemTableVC: UITableViewController {
     
     var wishlistItems: [String] = []
     let currentUid = Auth.auth().currentUser!.uid
@@ -22,8 +22,8 @@ class WishlistTableVC: UITableViewController {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         //Add the custom cell to the table view
-        let nib = UINib(nibName: "WishlistTableViewCell", bundle: nil)
-        wishlistTableView.register(nib, forCellReuseIdentifier: "WishlistTableViewCell")
+        let nib = UINib(nibName: "ItemTableViewCell", bundle: nil)
+        wishlistTableView.register(nib, forCellReuseIdentifier: "ItemTableViewCell")
         wishlistTableView.dataSource = self
         
         activityIndicator.startAnimating()
@@ -80,7 +80,7 @@ class WishlistTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // must reload data to read data retrieved from firebase
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WishlistTableViewCell") as? WishlistTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell") as? ItemTableViewCell else {
             return UITableViewCell()
         }
         // use list for items
