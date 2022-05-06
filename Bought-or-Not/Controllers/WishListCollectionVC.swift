@@ -14,8 +14,8 @@ class WishListCollectionVC: UICollectionViewController {
     
     var userLists: [String] = []
     var userListIds: [String] = []
+    var currentUid: String!
     
-    let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     let reuseIdentifier = "cell"
     
@@ -39,6 +39,12 @@ class WishListCollectionVC: UICollectionViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.title = Constants.viewNames.wishLists
+        
+        if(owner != nil){
+            currentUid = owner!.uid
+        } else{
+            currentUid = Auth.auth().currentUser!.uid
+        }
         
         userLists = []
         userListIds = []

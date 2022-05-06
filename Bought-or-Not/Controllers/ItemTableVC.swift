@@ -30,6 +30,13 @@ class ItemTableVC: UITableViewController {
         getData(compHandler: reloadItems)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //TODO: Check if the current user is the list owner
+            //Check if listId belongs to the currentUid
+            //If so then show the '+' button
+            //Else hide the '+' button
+    }
+    
     func reloadItems(){
         print("DONE")
         activityIndicator.stopAnimating()
