@@ -11,10 +11,10 @@ import Firebase
 class ItemTableVC: UITableViewController {
     
     var wishlistItems: [String] = []
-    let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     var listId: String!
-    var currentUser: User?
+    var currentUser: User!
+    var owner: User!
     
     @IBOutlet var wishlistTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -35,13 +35,13 @@ class ItemTableVC: UITableViewController {
             //If so then show the '+' button
             //Else hide the '+' button
         activityIndicator.startAnimating()
-//        if(/*owner is currenlty logged in*/){
-//            //Show +
-//            self.navigationItem.rightBarButtonItem = self.addItemButton
-//        } else{
-//            //Hide +
-//            self.navigationItem.rightBarButtonItem = nil
-//        }
+        if(owner.uid == currentUser.uid){
+            //Show +
+            self.navigationItem.rightBarButtonItem = self.addItemButton
+        } else{
+            //Hide +
+            self.navigationItem.rightBarButtonItem = nil
+        }
         
         getData(compHandler: reloadItems)
         

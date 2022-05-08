@@ -11,7 +11,7 @@ import Firebase
 class WishListCollectionVC: UICollectionViewController {
     
     var currentUser: User!
-    var owner: User?
+    var owner: User!
     var userLists: [String] = []
     var userListIds: [String] = []
     var currentUid: String!
@@ -129,5 +129,6 @@ class WishListCollectionVC: UICollectionViewController {
         // use section property embedded in indexPath to pull wishlist items
         itemTableVC.listId = userListIds[indexPath.row]
         itemTableVC.currentUser = currentUser
+        itemTableVC.owner = owner
     }
 }

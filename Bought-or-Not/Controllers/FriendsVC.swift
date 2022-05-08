@@ -150,6 +150,7 @@ class FriendsVC: UIViewController{
             }
             
             wishListCollectionVC.owner = friendList[indexPath.item]
+            wishListCollectionVC.currentUser = currentUser
         }
         
     }
