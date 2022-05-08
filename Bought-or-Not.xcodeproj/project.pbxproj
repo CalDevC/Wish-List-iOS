@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A6499246281E23DC000BADDD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A6499245281E23DC000BADDD /* FirebaseStorage */; };
+		A657103428281DD600C0B37A /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A657103328281DD600C0B37A /* ItemDetailVC.swift */; };
 		A68B634E27E7C81200B7C6BC /* WishListCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B634D27E7C81200B7C6BC /* WishListCollectionVC.swift */; };
 		A6F37F3227EE35B100BA3D1A /* ItemTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3027EE35B100BA3D1A /* ItemTableVC.swift */; };
 		A6F37F3627EE7F3200BA3D1A /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F37F3427EE7F3200BA3D1A /* ItemTableViewCell.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A657103328281DD600C0B37A /* ItemDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVC.swift; sourceTree = "<group>"; };
 		A68B634D27E7C81200B7C6BC /* WishListCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCollectionVC.swift; sourceTree = "<group>"; };
 		A6F37F3027EE35B100BA3D1A /* ItemTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableVC.swift; sourceTree = "<group>"; };
 		A6F37F3427EE7F3200BA3D1A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		ABC14E462824973800C88F58 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A657103328281DD600C0B37A /* ItemDetailVC.swift */,
 				ABC165C627E39BC1006C0B2C /* SceneDelegate.swift */,
 				ABC165C427E39BC1006C0B2C /* AppDelegate.swift */,
 				ABC165C827E39BC1006C0B2C /* SignInVC.swift */,
@@ -405,6 +408,7 @@
 				A6FE17812812386F00C069CC /* AddItemVC.swift in Sources */,
 				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
 				A6F37F3627EE7F3200BA3D1A /* ItemTableViewCell.swift in Sources */,
+				A657103428281DD600C0B37A /* ItemDetailVC.swift in Sources */,
 				AB763EA5281337E0003C74CD /* ProfileVC.swift in Sources */,
 				AB763EA928133971003C74CD /* User.swift in Sources */,
 				AB763EB1281452D9003C74CD /* Notification.swift in Sources */,

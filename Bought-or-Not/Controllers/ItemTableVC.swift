@@ -13,6 +13,8 @@ class ItemTableVC: UITableViewController {
     var wishlistItems: [String] = []
     let db = Firestore.firestore()
     var listId: String!
+    var itemIdx: Int?
+    var itemIds: [String] = []
     var currentUser: User!
     var owner: User!
     
@@ -88,6 +90,7 @@ class ItemTableVC: UITableViewController {
                     for document in querySnapshot!.documents {
                         print("DOCUMENT")
                         print("\(document.documentID) => \(document.data())")
+                        self.itemIds.append(document.documentID)
                         // add listId to array
                         // userListIds.append(document.documentID)
                         let listData: [String: String] = document.data() as! [String: String]
@@ -101,6 +104,9 @@ class ItemTableVC: UITableViewController {
                 }
             }
         }
+        
+        print("ITEM IDS:")
+        print(self.itemIds)
     }
     
     @IBAction func addItem(_ sender: UIBarButtonItem) {
@@ -132,12 +138,29 @@ class ItemTableVC: UITableViewController {
         return cell
     }
 
+    // define segue action when a cell in a row is selected
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemIdx = indexPath.row
+        print(itemIdx)
+        performSegue(withIdentifier: "ToItemDetailSegue", sender: indexPath)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let addItemVC = segue.destination as? AddItemVC else {
-            return
+        if segue.identifier == "wishlistToAddItem" {
+            guard let addItemVC = segue.destination as? AddItemVC else {
+                return
+            }
+            addItemVC.listId = listId
+        }
+        else if segue.identifier == "ToItemDetailSegue" {
+            guard let itemDetailVC = segue.destination as? ItemDetailVC else {
+                return
+            }
+            // itemDetailVC.itemId = itemIds[itemIdx!]
+            itemDetailVC.itemId = itemIds[0]
         }
         
-        addItemVC.listId = listId
+        // addItemVC.listId = listId
         // use section property embedded in indexPath to pull wishlist items
         // wishlistVC.listId = userListIds[indexPath.row]
     }
