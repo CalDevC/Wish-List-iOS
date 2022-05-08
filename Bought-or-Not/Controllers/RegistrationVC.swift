@@ -275,9 +275,11 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let barViewControllers = segue.destination as! UITabBarController
-        let destinationVC = barViewControllers.viewControllers![0] as! WishListCollectionVC
-        destinationVC.currentUser = currentUser
+        guard let tabBarVC = segue.destination as? TabBarVC else {
+            return
+        }
+        
+        tabBarVC.currentUser = currentUser
     }
 
 }

@@ -682,10 +682,10 @@
             </objects>
             <point key="canvasLocation" x="3570" y="-12"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab BarVC-->
         <scene sceneID="Xye-Cn-H1V">
             <objects>
-                <tabBarController id="UZA-ev-kbM" sceneMemberID="viewController">
+                <tabBarController id="UZA-ev-kbM" customClass="TabBarVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="5bw-rA-7VO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0ZW-bx-g9X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -904,7 +904,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="ahI-qw-VSc"/>
         <segue reference="ydM-Ke-vGT"/>
-        <segue reference="LHh-5b-kSl"/>
+        <segue reference="pqc-2Y-44C"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>

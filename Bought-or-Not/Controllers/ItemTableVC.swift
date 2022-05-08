@@ -14,7 +14,7 @@ class ItemTableVC: UITableViewController {
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     var listId: String!
-    var owner: User?
+    var currentUser: User?
     
     @IBOutlet var wishlistTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

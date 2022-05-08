@@ -90,7 +90,6 @@ class WishListCollectionVC: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // print("hello")
         collectionView.deselectItem(at: indexPath, animated: true)
         print(userLists[indexPath.row])
         if (indexPath.row == 0) {
@@ -113,7 +112,7 @@ class WishListCollectionVC: UICollectionViewController {
     
     // prepare data to carry to next viewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let wishlistVC = segue.destination as? ItemTableVC else {
+        guard let itemTableVC = segue.destination as? ItemTableVC else {
             return
         }
         guard let indexPath = sender as? IndexPath else {
@@ -121,6 +120,7 @@ class WishListCollectionVC: UICollectionViewController {
         }
         
         // use section property embedded in indexPath to pull wishlist items
-        wishlistVC.listId = userListIds[indexPath.row]
+        itemTableVC.listId = userListIds[indexPath.row]
+        itemTableVC.currentUser = currentUser
     }
 }
