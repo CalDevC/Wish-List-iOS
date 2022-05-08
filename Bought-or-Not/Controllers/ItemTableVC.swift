@@ -45,6 +45,8 @@ class ItemTableVC: UITableViewController {
             self.navigationItem.rightBarButtonItem = nil
         }
         
+        wishlistItems = []
+        itemIds = []
         getData(compHandler: reloadItems)
         
 //        db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments()

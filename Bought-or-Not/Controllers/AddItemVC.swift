@@ -17,6 +17,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     var listId: String?
     var imageURL: URL? = nil
+    var imageLink: String?
     
     @IBOutlet weak var itemName: UITextField!
     @IBOutlet weak var itemCategory: UITextField!
@@ -37,35 +38,35 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         print("List ID is \(listId ?? "nil")")
         
-        var ref: DocumentReference? = nil
-        ref = self.db.collection("item").addDocument(data: [
-            "listId": listId ?? "",
-            "name": itemName.text ?? "",
-            "category": itemCategory.text ?? "",
-            "price": itemPrice.text ?? "",
-            "link": itemLink.text ?? "",
-            "userId": currentUid
-        ]) { err in
-            if let err = err {
-                //Error savng data
-                print("Error adding document: \(err)")
-                Util.launchAlert(senderVC: self,
-                                 title: "Error",
-                                 message: "Account created but failed to save user data.",
-                                 btnText: "Ok")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-        
         uploadMedia(imgName: "\(itemName.text ?? "")_\(listId!)") { (myURL) in
             // output download URL for image
             print("Got here with URL: ")
             print(myURL ?? "nil URL")
+            
+            var ref: DocumentReference? = nil
+            ref = self.db.collection("item").addDocument(data: [
+                "listId": self.listId ?? "",
+                "name": self.itemName.text ?? "",
+                "category": self.itemCategory.text ?? "",
+                "price": self.itemPrice.text ?? "",
+                "link": self.itemLink.text ?? "",
+                "userId": self.currentUid,
+                "image": myURL!.absoluteString,
+            ]) { err in
+                if let err = err {
+                    //Error savng data
+                    print("Error adding document: \(err)")
+                    Util.launchAlert(senderVC: self,
+                                     title: "Error",
+                                     message: "Account created but failed to save user data.",
+                                     btnText: "Ok")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                    // return to previous screen after save
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
-        
-        // return to previous screen after save
-        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func AddPhoto(_ sender: UIButton) {
@@ -85,6 +86,9 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             imageView.image = pickedImage
             
             imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
+            // imageLink = info[UIImagePickerController.InfoKey.imageURL] as? String
+            // print("IMAGE LINK")
+            // print(imageLink)
             print(imageURL ?? "No URL")
         }
         
