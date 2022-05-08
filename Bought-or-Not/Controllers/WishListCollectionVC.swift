@@ -10,7 +10,7 @@ import Firebase
 
 class WishListCollectionVC: UICollectionViewController {
     
-    var currentUser: User?
+    var currentUser: User!
     
     var userLists: [String] = []
     var userListIds: [String] = []
@@ -25,6 +25,9 @@ class WishListCollectionVC: UICollectionViewController {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
+        
+        let tabBar = tabBarController as! TabBarVC
+        currentUser = tabBar.currentUser
         layoutCells()
         
         collectionView.delegate = self

@@ -41,6 +41,9 @@ class FriendsVC: UIViewController{
         searchBar.isHidden = true
         activityIndicator.startAnimating()
         
+        let tabBar = tabBarController as! TabBarVC
+        currentUser = tabBar.currentUser
+        
         tableView.delegate = self
         tableView.dataSource = self
         

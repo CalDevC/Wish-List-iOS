@@ -40,7 +40,7 @@
 		ABC165FC27E3A545006C0B2C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ABC165FB27E3A545006C0B2C /* FirebaseAuth */; };
 		ABC165FE27E3A545006C0B2C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = ABC165FD27E3A545006C0B2C /* FirebaseFirestore */; };
 		ABC1660027E3AA4B006C0B2C /* LandingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */; };
-		ABC1660227EBEB47006C0B2C /* UserSettingsVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */; };
+		ABC1660227EBEB47006C0B2C /* UserSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660127EBEB46006C0B2C /* UserSettingsVC.swift */; };
 		ABC1660B27EBF334006C0B2C /* UserSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660927EBF333006C0B2C /* UserSettingsCell.swift */; };
 		ABC1660C27EBF334006C0B2C /* UserSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */; };
 		ABC1660E27EBFE1A006C0B2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1660D27EBFE1A006C0B2C /* Constants.swift */; };
@@ -99,7 +99,7 @@
 		ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		ABC165F827E3A3D9006C0B2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageVC.swift; sourceTree = "<group>"; };
-		ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsVCTableViewController.swift; sourceTree = "<group>"; };
+		ABC1660127EBEB46006C0B2C /* UserSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsVC.swift; sourceTree = "<group>"; };
 		ABC1660927EBF333006C0B2C /* UserSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsCell.swift; sourceTree = "<group>"; };
 		ABC1660A27EBF333006C0B2C /* UserSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSettingsCell.xib; sourceTree = "<group>"; };
 		ABC1660D27EBFE1A006C0B2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -137,6 +137,7 @@
 		ABC14E44282496CD00C88F58 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AB84F714282773FD00226B27 /* TabBarVC.swift */,
 				ABC1660D27EBFE1A006C0B2C /* Constants.swift */,
 				AB763EA828133971003C74CD /* User.swift */,
 				AB763EB0281452D9003C74CD /* Notification.swift */,
@@ -166,12 +167,11 @@
 				A6FE177D2810EBFF00C069CC /* NewListVC.swift */,
 				ABC165F427E39E2D006C0B2C /* RegistrationVC.swift */,
 				ABC165FF27E3AA4B006C0B2C /* LandingPageVC.swift */,
-				ABC1660127EBEB46006C0B2C /* UserSettingsVCTableViewController.swift */,
+				ABC1660127EBEB46006C0B2C /* UserSettingsVC.swift */,
 				AB2961C32812191500ECE28B /* FriendsVC.swift */,
 				AB763EA4281337E0003C74CD /* ProfileVC.swift */,
 				AB763EAA28135647003C74CD /* NotificationsVC.swift */,
 				ABC1660F27EC0ADA006C0B2C /* Utils.swift */,
-				AB84F714282773FD00226B27 /* TabBarVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 				A68B634E27E7C81200B7C6BC /* WishListCollectionVC.swift in Sources */,
 				AB763EAE2813566E003C74CD /* NotificationCell.swift in Sources */,
 				ABC1660B27EBF334006C0B2C /* UserSettingsCell.swift in Sources */,
-				ABC1660227EBEB47006C0B2C /* UserSettingsVCTableViewController.swift in Sources */,
+				ABC1660227EBEB47006C0B2C /* UserSettingsVC.swift in Sources */,
 				ABC165C727E39BC1006C0B2C /* SceneDelegate.swift in Sources */,
 				A6FE17812812386F00C069CC /* AddItemVC.swift in Sources */,
 				ABC165F527E39E2D006C0B2C /* RegistrationVC.swift in Sources */,
