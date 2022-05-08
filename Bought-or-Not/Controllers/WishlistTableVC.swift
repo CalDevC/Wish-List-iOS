@@ -11,32 +11,28 @@ import Firebase
 class WishlistTableVC: UITableViewController {
     
     var wishlistItems: [String] = []
-    
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
-    
     var listId: String?
     
     @IBOutlet var wishlistTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activityIndicator.hidesWhenStopped = true
         //Add the custom cell to the table view
         let nib = UINib(nibName: "WishlistTableViewCell", bundle: nil)
         wishlistTableView.register(nib, forCellReuseIdentifier: "WishlistTableViewCell")
         wishlistTableView.dataSource = self
         
-        print("View did load")
+        activityIndicator.startAnimating()
         getData(compHandler: reloadItems)
-        print("Done with data")
-        print("List ID in wishListTableVC: \(listId)")
-        
-        wishlistTableView.reloadData()
     }
     
     func reloadItems(){
         print("DONE")
+        activityIndicator.stopAnimating()
         self.wishlistTableView.reloadData()
     }
     

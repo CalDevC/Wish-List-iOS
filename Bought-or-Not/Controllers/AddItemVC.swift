@@ -35,11 +35,11 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             return
         }
         
-        print("List ID is \(listId)")
+        print("List ID is \(listId ?? "nil")")
         
         var ref: DocumentReference? = nil
         ref = self.db.collection("item").addDocument(data: [
-            "listId": listId,
+            "listId": listId ?? "",
             "name": itemName.text ?? "",
             "category": itemCategory.text ?? "",
             "price": itemPrice.text ?? "",
@@ -61,7 +61,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         uploadMedia(imgName: "\(itemName.text ?? "")_\(listId!)") { (myURL) in
             // output download URL for image
             print("Got here with URL: ")
-            print(myURL)
+            print(myURL ?? "nil URL")
         }
         
         // return to previous screen after save

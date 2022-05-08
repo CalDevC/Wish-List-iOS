@@ -24,4 +24,11 @@ struct Constants{
         static let profileToFriend = "toFriend"
         static let notifToProfile = "toProfile"
     }
+    
+    struct viewNames{
+        static let wishLists = "My Wish Lists"
+        static let friends = "Friends"
+        static let notifications = "Notifications"
+        static let settings = "Settings"
+    }
 }

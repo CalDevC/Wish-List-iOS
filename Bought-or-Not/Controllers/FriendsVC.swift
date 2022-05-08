@@ -26,6 +26,8 @@ class FriendsVC: UIViewController{
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.navigationItem.title = Constants.viewNames.friends
         friendList = []
         userList = [:]
         //Get search data
@@ -129,34 +131,6 @@ class FriendsVC: UIViewController{
         searchBar.isHidden = false
         activityIndicator.stopAnimating()
     }
-    
-//    func addFriend(friendUID: String){
-//        let userDataDocRef = self.db.collection("users").document(friendUID)
-//        userDataDocRef.getDocument { (doc, error) in
-//            if let err = error{
-//                //TODO: Notify user of error
-//                print(err)
-//            }
-//
-//            if let document = doc, document.exists {
-//                //Add friend with details
-//                let friendData: [String: Any] = document.data() ?? ["nil": "nil"]
-//
-//                let friend = User(
-//                    uid: friendData["uid"] as! String,
-//                    fullName: friendData["fullName"] as! String,
-//                    username: friendData["username"] as! String
-//                )
-//
-//                print("FRIEND: \(friend.username)")
-//
-//                self.friendList.append(friend)
-//                self.collectionView.reloadData()
-//            }
-//        }
-//    }
-    
-
     
 }
 
@@ -274,7 +248,7 @@ extension FriendsVC: UISearchBarDelegate{
         }
         
         if(matchingData.count == 0){
-            matchingData.append(User(uid: "", fullName: "", username:"No Results"))
+            matchingData.append(User(uid: "", fullName: "", username:"No users found 🤔"))
         }
         
         self.tableView.reloadData()

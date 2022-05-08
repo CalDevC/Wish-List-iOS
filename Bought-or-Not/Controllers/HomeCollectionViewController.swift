@@ -15,35 +15,33 @@ class HomeCollectionViewController: UICollectionViewController {
     
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
+    let reuseIdentifier = "cell"
     
-    // var dataSource: [String] = ["New List", "My Birthday", "Christmas"]
-    // var userLists: [String] = []
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
         layoutCells()
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        // print("CURRENT UID")
-        // print(currentUid)
-        
-        // print("HCVC controller says: ")
-        // print(userLists)
+        let nib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        // if (userLists.count != 0) {
-            
-            // self.collectionView.reloadData()
-            // return
-        // }
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.title = Constants.viewNames.wishLists
+        
         userLists = []
         userListIds = []
         
-        let _ = db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
+        db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -66,6 +64,7 @@ class HomeCollectionViewController: UICollectionViewController {
                     }
                 }
                 self.collectionView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
         
@@ -81,13 +80,9 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = UICollectionViewCell()
-        cell.backgroundColor = UIColor.orange
-
-        if let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? HomeCollectionViewCell {
-            listCell.configure(with: userLists[indexPath.row])
-            cell = listCell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! HomeCollectionViewCell
+        
+        cell.label.text = self.userLists[indexPath.row]
         
         return cell
     }
@@ -109,7 +104,7 @@ class HomeCollectionViewController: UICollectionViewController {
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
             layout.minimumInteritemSpacing = 5.0
-            layout.minimumLineSpacing = 5.0
+            layout.minimumLineSpacing = 10.0
             layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 40)/3, height: ((UIScreen.main.bounds.size.width - 40)/3))
             collectionView!.collectionViewLayout = layout
     }
@@ -127,51 +122,3 @@ class HomeCollectionViewController: UICollectionViewController {
         wishlistVC.listId = userListIds[indexPath.row]
     }
 }
-
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-

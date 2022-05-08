@@ -1,13 +1,14 @@
 //
-//  FriendsCollViewCellCollectionViewCell.swift
+//  HomeCollectionViewCell.swift
 //  Bought-or-Not
 //
-//  Created by Chase Alexander on 4/21/22.
+//  Created by Chase Alexander on 5/5/22.
 //
 
 import UIKit
 
-class FriendCollectionViewCell: UICollectionViewCell {
+class HomeCollectionViewCell: UICollectionViewCell {
+
     @IBOutlet weak var label: UILabel!
     
     var cornerRadius: CGFloat = 10.0
@@ -48,4 +49,5 @@ class FriendCollectionViewCell: UICollectionViewCell {
         ).cgPath
     }
     
+
 }

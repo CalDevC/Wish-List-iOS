@@ -17,6 +17,11 @@ class UserSettingsVCTableViewController: UITableViewController {
     
     //The headers of each section in teh user settings
     let sectionHeaders = ["User Settings"]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.navigationItem.title = Constants.viewNames.settings
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
