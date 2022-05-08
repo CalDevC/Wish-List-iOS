@@ -46,7 +46,13 @@ class WishListCollectionVC: UICollectionViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.title = Constants.viewNames.wishLists
-        self.tabBarController?.navigationItem.rightBarButtonItem = newListBtn
+        
+        if(owner.uid == currentUser.uid){
+            self.tabBarController?.navigationItem.rightBarButtonItem = self.newListBtn
+        } else{
+            self.tabBarController?.navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = nil
+        }
         
         userLists = []
         userListIds = []
@@ -54,7 +60,7 @@ class WishListCollectionVC: UICollectionViewController {
         db.collection("wishlist").whereField("userId", isEqualTo: owner!.uid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
-            } else {                
+            } else {
                 for document in querySnapshot!.documents {
                     print("DOCUMENT")
                     print("\(document.documentID) => \(document.data())")
