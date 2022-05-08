@@ -1,5 +1,5 @@
 //
-//  HomeCollectionViewController.swift
+//  WishListCollectionViewController.swift
 //  Bought-or-Not
 //
 //  Created by Chris Huber on 3/20/22.
@@ -8,47 +8,59 @@
 import UIKit
 import Firebase
 
-class HomeCollectionViewController: UICollectionViewController {
+class WishListCollectionVC: UICollectionViewController {
     
+    var currentUser: User!
+    var owner: User!
     var userLists: [String] = []
     var userListIds: [String] = []
+    var currentUid: String!
     
-    let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     let reuseIdentifier = "cell"
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var newListBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
+        
+        if(owner == nil){
+            let tabBar = tabBarController as! TabBarVC
+            currentUser = tabBar.currentUser
+            owner = currentUser
+        }
+        
         layoutCells()
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let nib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: "WishListCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.title = Constants.viewNames.wishLists
         
+        if(owner.uid == currentUser.uid){
+            self.tabBarController?.navigationItem.rightBarButtonItem = self.newListBtn
+        } else{
+            self.tabBarController?.navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = nil
+        }
+        
         userLists = []
         userListIds = []
         
-        db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
+        db.collection("wishlist").whereField("userId", isEqualTo: owner!.uid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                print("QUERY SUCCESSFUL")
-                self.userLists.append("New List")
-                self.userListIds.append("0")
-                
                 for document in querySnapshot!.documents {
                     print("DOCUMENT")
                     print("\(document.documentID) => \(document.data())")
@@ -70,6 +82,10 @@ class HomeCollectionViewController: UICollectionViewController {
         
     }
     
+    @IBAction func newListBtnPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.segues.wishListToNewList, sender: self)
+    }
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -80,7 +96,7 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! WishListCollectionViewCell
         
         cell.label.text = self.userLists[indexPath.row]
         
@@ -88,15 +104,9 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // print("hello")
         collectionView.deselectItem(at: indexPath, animated: true)
         print(userLists[indexPath.row])
-        if (indexPath.row == 0) {
-            performSegue(withIdentifier: "homeToNewList", sender: indexPath)
-        }
-        else {
-            performSegue(withIdentifier: "homeToWishlist", sender: indexPath)
-        }
+        performSegue(withIdentifier: Constants.segues.wishListToItemList, sender: indexPath)
         print("user id:" + Auth.auth().currentUser!.uid)
     }
     
@@ -111,7 +121,7 @@ class HomeCollectionViewController: UICollectionViewController {
     
     // prepare data to carry to next viewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let wishlistVC = segue.destination as? WishlistTableVC else {
+        guard let itemTableVC = segue.destination as? ItemTableVC else {
             return
         }
         guard let indexPath = sender as? IndexPath else {
@@ -119,6 +129,8 @@ class HomeCollectionViewController: UICollectionViewController {
         }
         
         // use section property embedded in indexPath to pull wishlist items
-        wishlistVC.listId = userListIds[indexPath.row]
+        itemTableVC.listId = userListIds[indexPath.row]
+        itemTableVC.currentUser = currentUser
+        itemTableVC.owner = owner
     }
 }

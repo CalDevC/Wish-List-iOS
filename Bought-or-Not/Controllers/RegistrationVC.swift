@@ -27,6 +27,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var emptyField: Bool = false
+    var currentUser: User?
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -265,11 +266,20 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
             
             //Add username to the takenUsernames list
             docRef.updateData([authResult!.user.uid: username])
+            self.currentUser = User(uid: authResult!.user.uid, fullName: name, username: username)
             
             self.activityIndicator.stopAnimating()
             self.performSegue(withIdentifier: Constants.segues.registrationToHome, sender: self)
         }
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let tabBarVC = segue.destination as? TabBarVC else {
+            return
+        }
+        
+        tabBarVC.currentUser = currentUser
     }
 
 }

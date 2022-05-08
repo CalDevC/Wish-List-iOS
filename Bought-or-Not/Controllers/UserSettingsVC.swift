@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class UserSettingsVCTableViewController: UITableViewController {
+class UserSettingsVC: UITableViewController {
     
     //All options and their symbols to be displayed in the user settings
     let menuOptions: [(img: String, text: String)] = [
@@ -18,9 +18,12 @@ class UserSettingsVCTableViewController: UITableViewController {
     //The headers of each section in teh user settings
     let sectionHeaders = ["User Settings"]
     
+    var currentUser: User!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.navigationItem.title = Constants.viewNames.settings
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
 
     override func viewDidLoad() {
@@ -30,6 +33,9 @@ class UserSettingsVCTableViewController: UITableViewController {
         let nib = UINib(nibName: "UserSettingsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "UserSettingsCell")
         tableView.dataSource = self
+        
+        let tabBar = tabBarController as! TabBarVC
+        currentUser = tabBar.currentUser
     }
     
 //MARK: - Populate tableView

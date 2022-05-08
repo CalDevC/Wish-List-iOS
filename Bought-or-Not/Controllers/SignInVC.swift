@@ -14,9 +14,11 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-
+    
     var userLists: [String] = ["New List"]
     var userListIds: [String] = ["0"]
+    var currentUser: User?
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +62,41 @@ class SignInVC: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            self.activityIndicator.stopAnimating()
+            guard let currentUID = authResult?.user.uid else{
+                return
+            }
             
-            self.performSegue(withIdentifier: Constants.segues.signinToHome, sender: self)
+            let userDataDocRef = self.db.collection("users").document(currentUID)
+            userDataDocRef.getDocument { (doc, error) in
+                if let err = error{
+                    //TODO: Notify user of error
+                    print(err)
+                }
+                
+                if let document = doc, document.exists {
+                    
+                    let docData: [String: Any] = document.data() ?? ["nil": "nil"]
+                    
+                    guard let fullName: String = docData["fullName"] as? String,
+                          let username: String = docData["username"] as? String
+                    else{
+                        return
+                    }
+                    
+                    self.currentUser = User(uid: currentUID, fullName: fullName, username: username)
+                    self.activityIndicator.stopAnimating()
+                    self.performSegue(withIdentifier: Constants.segues.signinToHome, sender: self)
+                }
+            }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let tabBarVC = segue.destination as? TabBarVC else {
+            return
+        }
+        
+        tabBarVC.currentUser = currentUser
     }
 }
 

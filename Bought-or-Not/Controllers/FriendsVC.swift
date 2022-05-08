@@ -28,6 +28,7 @@ class FriendsVC: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.navigationItem.title = Constants.viewNames.friends
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
         friendList = []
         userList = [:]
         //Get search data
@@ -40,6 +41,9 @@ class FriendsVC: UIViewController{
         collectionView.isHidden = true
         searchBar.isHidden = true
         activityIndicator.startAnimating()
+        
+        let tabBar = tabBarController as! TabBarVC
+        currentUser = tabBar.currentUser
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -114,12 +118,7 @@ class FriendsVC: UIViewController{
                 }
                 
                 //Populate friends list after all users are added
-                guard let currentUID = Auth.auth().currentUser?.uid else{
-                    return
-                }
-                
-                self.currentUser = self.userList[currentUID]!
-                self.fetchFriends(forUID: currentUID)
+                self.fetchFriends(forUID: self.currentUser.uid)
             }
         }
     }
@@ -130,6 +129,31 @@ class FriendsVC: UIViewController{
         collectionView.isHidden = false
         searchBar.isHidden = false
         activityIndicator.stopAnimating()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        guard let indexPath = sender as? IndexPath else {
+            return
+        }
+        
+        if(segue.identifier == Constants.segues.friendToProfile ){
+            guard let profileVC = segue.destination as? ProfileVC else {
+                return
+            }
+            
+            profileVC.user = matchingData[indexPath.row]
+            profileVC.currentUser = self.currentUser
+            profileVC.numBtns = 1
+            profileVC.actions = ["Send Friend Request"]
+        } else if(segue.identifier == Constants.segues.friendToWishList){
+            guard let wishListCollectionVC = segue.destination as? WishListCollectionVC else {
+                return
+            }
+            
+            wishListCollectionVC.owner = friendList[indexPath.item]
+            wishListCollectionVC.currentUser = currentUser
+        }
+        
     }
     
 }
@@ -154,6 +178,7 @@ extension FriendsVC: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.item): \(friendList[indexPath.row].username)")
+        performSegue(withIdentifier: Constants.segues.friendToWishList, sender: indexPath)
     }
     
     func layoutCells() {
@@ -193,20 +218,6 @@ extension FriendsVC: UITableViewDelegate, UITableViewDataSource {
         searchBar.text = ""
         
         performSegue(withIdentifier: Constants.segues.friendToProfile, sender: indexPath)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        guard let profileVC = segue.destination as? ProfileVC else {
-            return
-        }
-        guard let indexPath = sender as? IndexPath else {
-            return
-        }
-        
-        profileVC.user = matchingData[indexPath.row]
-        profileVC.currentUser = self.currentUser
-        profileVC.numBtns = 1
-        profileVC.actions = ["Send Friend Request"]
     }
     
 }

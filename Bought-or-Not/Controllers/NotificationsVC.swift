@@ -16,11 +16,15 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     var notifications: [Notification] = []
     let db = Firestore.firestore()
-    let currentUID: String = Auth.auth().currentUser!.uid
+    var currentUser: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
+        
+        let tabBar = tabBarController as! TabBarVC
+        currentUser = tabBar.currentUser
+        
         //Add the custom cell to the table view
         let nib = UINib(nibName: "NotificationCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NotificationCell")
@@ -31,10 +35,11 @@ class NotificationsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.navigationItem.title = Constants.viewNames.notifications
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
         notifications = []
         activityIndicator.startAnimating()
         tableView.reloadData()
-        fetchNotifications(forUID: currentUID)
+        fetchNotifications(forUID: currentUser.uid)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
