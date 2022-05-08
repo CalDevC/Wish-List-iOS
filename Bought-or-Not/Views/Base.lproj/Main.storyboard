@@ -673,6 +673,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="YPg-uU-yLH" id="8Jw-vU-HdZ"/>
+                        <outlet property="addItemButton" destination="7mN-ES-XIH" id="qfi-g2-am7"/>
                         <outlet property="wishlistTableView" destination="DYH-KX-7oA" id="AJP-Gw-lF1"/>
                         <segue destination="gvz-UX-Brp" kind="show" identifier="wishlistToAddItem" id="VfL-7z-wiG"/>
                     </connections>
@@ -901,7 +902,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ehT-jt-Q8F"/>
+        <segue reference="ahI-qw-VSc"/>
         <segue reference="ydM-Ke-vGT"/>
         <segue reference="LHh-5b-kSl"/>
     </inferredMetricsTieBreakers>

@@ -13,10 +13,12 @@ class ItemTableVC: UITableViewController {
     var wishlistItems: [String] = []
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
-    var listId: String?
+    var listId: String!
+    var owner: User?
     
     @IBOutlet var wishlistTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var addItemButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +27,6 @@ class ItemTableVC: UITableViewController {
         let nib = UINib(nibName: "ItemTableViewCell", bundle: nil)
         wishlistTableView.register(nib, forCellReuseIdentifier: "ItemTableViewCell")
         wishlistTableView.dataSource = self
-        
-        activityIndicator.startAnimating()
-        getData(compHandler: reloadItems)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +34,43 @@ class ItemTableVC: UITableViewController {
             //Check if listId belongs to the currentUid
             //If so then show the '+' button
             //Else hide the '+' button
+        activityIndicator.startAnimating()
+//        if(/*owner is currenlty logged in*/){
+//            //Show +
+//            self.navigationItem.rightBarButtonItem = self.addItemButton
+//        } else{
+//            //Hide +
+//            self.navigationItem.rightBarButtonItem = nil
+//        }
+        
+        getData(compHandler: reloadItems)
+        
+//        db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments()
+//        {(querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                var found: Bool = false
+//
+//                for document in querySnapshot!.documents {
+//                    if(document.documentID == self.listId){
+//                        found = true
+//                        break
+//                    }
+//                }
+//
+//                if(found){
+//                    //Show +
+//                    self.navigationItem.rightBarButtonItem = self.addItemButton
+//                } else{
+//                    //Hide +
+//                    self.navigationItem.rightBarButtonItem = nil
+//                }
+//
+//                self.getData(compHandler: self.reloadItems)
+//
+//            }
+//        }
     }
     
     func reloadItems(){

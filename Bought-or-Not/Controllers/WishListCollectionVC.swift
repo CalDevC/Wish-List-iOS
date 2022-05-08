@@ -10,7 +10,7 @@ import Firebase
 
 class WishListCollectionVC: UICollectionViewController {
     
-    var owner: User?
+    var currentUser: User?
     
     var userLists: [String] = []
     var userListIds: [String] = []
@@ -40,16 +40,10 @@ class WishListCollectionVC: UICollectionViewController {
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.title = Constants.viewNames.wishLists
         
-        if(owner != nil){
-            currentUid = owner!.uid
-        } else{
-            currentUid = Auth.auth().currentUser!.uid
-        }
-        
         userLists = []
         userListIds = []
         
-        db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments() {(querySnapshot, err) in
+        db.collection("wishlist").whereField("userId", isEqualTo: currentUser!.uid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

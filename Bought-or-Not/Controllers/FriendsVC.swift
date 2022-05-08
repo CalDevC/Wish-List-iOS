@@ -151,7 +151,7 @@ class FriendsVC: UIViewController{
                 return
             }
             
-            wishListCollectionVC.owner = friendList[indexPath.item]
+            wishListCollectionVC.currentUser = friendList[indexPath.item]
         }
         
     }
