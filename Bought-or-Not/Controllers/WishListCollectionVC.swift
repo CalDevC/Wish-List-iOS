@@ -81,7 +81,7 @@ class WishListCollectionVC: UICollectionViewController {
     }
     
     @IBAction func newListBtnPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "homeToNewList", sender: self)
+        performSegue(withIdentifier: Constants.segues.wishListToNewList, sender: self)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -104,12 +104,7 @@ class WishListCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         print(userLists[indexPath.row])
-        if (indexPath.row == 0) {
-            performSegue(withIdentifier: "homeToNewList", sender: indexPath)
-        }
-        else {
-            performSegue(withIdentifier: "homeToWishlist", sender: indexPath)
-        }
+        performSegue(withIdentifier: Constants.segues.wishListToItemList, sender: indexPath)
         print("user id:" + Auth.auth().currentUser!.uid)
     }
     

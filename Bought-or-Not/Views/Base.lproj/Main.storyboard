@@ -430,8 +430,8 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ntF-oH-stp" id="57p-z7-L6d"/>
                         <outlet property="newListBtn" destination="FMk-Dc-gLm" id="fcu-Ed-9Gc"/>
-                        <segue destination="lFs-gI-Npq" kind="show" identifier="homeToWishlist" id="ogW-nQ-EOh"/>
-                        <segue destination="c9W-cU-q61" kind="show" identifier="homeToNewList" id="Bwu-lt-Y0q"/>
+                        <segue destination="lFs-gI-Npq" kind="show" identifier="toItemList" id="ogW-nQ-EOh"/>
+                        <segue destination="c9W-cU-q61" kind="show" identifier="toNewList" id="Bwu-lt-Y0q"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpO-x5-zoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
