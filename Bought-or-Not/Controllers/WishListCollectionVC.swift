@@ -11,7 +11,7 @@ import Firebase
 class WishListCollectionVC: UICollectionViewController {
     
     var currentUser: User!
-    
+    var owner: User?
     var userLists: [String] = []
     var userListIds: [String] = []
     var currentUid: String!
@@ -26,8 +26,12 @@ class WishListCollectionVC: UICollectionViewController {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
         
-        let tabBar = tabBarController as! TabBarVC
-        currentUser = tabBar.currentUser
+        if(owner == nil){
+            let tabBar = tabBarController as! TabBarVC
+            currentUser = tabBar.currentUser
+            owner = currentUser
+        }
+        
         layoutCells()
         
         collectionView.delegate = self
@@ -46,7 +50,7 @@ class WishListCollectionVC: UICollectionViewController {
         userLists = []
         userListIds = []
         
-        db.collection("wishlist").whereField("userId", isEqualTo: currentUser!.uid).getDocuments() {(querySnapshot, err) in
+        db.collection("wishlist").whereField("userId", isEqualTo: owner!.uid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

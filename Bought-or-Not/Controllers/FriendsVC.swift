@@ -117,12 +117,7 @@ class FriendsVC: UIViewController{
                 }
                 
                 //Populate friends list after all users are added
-                guard let currentUID = Auth.auth().currentUser?.uid else{
-                    return
-                }
-                
-                self.currentUser = self.userList[currentUID]!
-                self.fetchFriends(forUID: currentUID)
+                self.fetchFriends(forUID: self.currentUser.uid)
             }
         }
     }
@@ -154,7 +149,7 @@ class FriendsVC: UIViewController{
                 return
             }
             
-            wishListCollectionVC.currentUser = friendList[indexPath.item]
+            wishListCollectionVC.owner = friendList[indexPath.item]
         }
         
     }
