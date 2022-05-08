@@ -54,11 +54,7 @@ class WishListCollectionVC: UICollectionViewController {
         db.collection("wishlist").whereField("userId", isEqualTo: owner!.uid).getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
-            } else {
-                print("QUERY SUCCESSFUL")
-                self.userLists.append("New List")
-                self.userListIds.append("0")
-                
+            } else {                
                 for document in querySnapshot!.documents {
                     print("DOCUMENT")
                     print("\(document.documentID) => \(document.data())")
