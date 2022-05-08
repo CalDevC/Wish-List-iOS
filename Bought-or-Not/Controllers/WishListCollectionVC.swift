@@ -20,6 +20,7 @@ class WishListCollectionVC: UICollectionViewController {
     let reuseIdentifier = "cell"
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var newListBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +42,11 @@ class WishListCollectionVC: UICollectionViewController {
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.title = Constants.viewNames.wishLists
+        self.tabBarController?.navigationItem.rightBarButtonItem = newListBtn
         
         userLists = []
         userListIds = []
@@ -77,6 +78,10 @@ class WishListCollectionVC: UICollectionViewController {
             }
         }
         
+    }
+    
+    @IBAction func newListBtnPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "homeToNewList", sender: self)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

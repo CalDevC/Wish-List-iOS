@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y1K-vT-H05">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -420,9 +420,16 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Wish Lists" image="square.grid.2x2" catalog="system" id="hxb-ve-QTl"/>
-                    <navigationItem key="navigationItem" id="ens-sz-TXC"/>
+                    <navigationItem key="navigationItem" id="ens-sz-TXC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FMk-Dc-gLm">
+                            <connections>
+                                <action selector="newListBtnPressed:" destination="dwB-fH-uMd" id="Wbb-vr-9nA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="ntF-oH-stp" id="57p-z7-L6d"/>
+                        <outlet property="newListBtn" destination="FMk-Dc-gLm" id="fcu-Ed-9Gc"/>
                         <segue destination="lFs-gI-Npq" kind="show" identifier="homeToWishlist" id="ogW-nQ-EOh"/>
                         <segue destination="c9W-cU-q61" kind="show" identifier="homeToNewList" id="Bwu-lt-Y0q"/>
                     </connections>
@@ -686,7 +693,9 @@
         <scene sceneID="Xye-Cn-H1V">
             <objects>
                 <tabBarController id="UZA-ev-kbM" customClass="TabBarVC" customModule="Bought_or_Not" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="5bw-rA-7VO"/>
+                    <navigationItem key="navigationItem" id="5bw-rA-7VO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Utz-je-EsB"/>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0ZW-bx-g9X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -902,7 +911,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ahI-qw-VSc"/>
+        <segue reference="ehT-jt-Q8F"/>
         <segue reference="ydM-Ke-vGT"/>
         <segue reference="pqc-2Y-44C"/>
     </inferredMetricsTieBreakers>

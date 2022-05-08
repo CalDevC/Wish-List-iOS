@@ -23,6 +23,7 @@ class UserSettingsVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.navigationItem.title = Constants.viewNames.settings
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
 
     override func viewDidLoad() {
