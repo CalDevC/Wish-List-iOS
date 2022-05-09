@@ -27,8 +27,11 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         print(listTitle)
         let component = 0
         let row = occasionPicker.selectedRow(inComponent: component)
-        let pickerOccasion = occasionPicker.delegate?.pickerView?(occasionPicker, titleForRow: row, forComponent: component)
+        var pickerOccasion = occasionPicker.delegate?.pickerView?(occasionPicker, titleForRow: row, forComponent: component)
         print(pickerOccasion!)
+        if (pickerOccasion == "Select Occasion"){
+            pickerOccasion = "None"
+        }
         let pickerDate: Date = datePicker.date
         print(pickerDate)
         let publicSwitch: Bool = accessSwitch.isOn
@@ -70,7 +73,12 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         occasionPicker.dataSource = self
         
         // Do any additional setup after loading the view.
-        occasionData = ["None", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other"]
+        occasionData = ["Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other", "Select Occasion", "Birthday", "Christmas", "Graduation", "Hanukkah", "Housewarming", "Retirement", "Valentine's Day", "Other"]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        datePicker.minimumDate = NSDate.now
+        occasionPicker.selectRow(45, inComponent: 0, animated: false)
     }
     
     // Number of columns of data
@@ -87,15 +95,5 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
     @objc func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return occasionData[row]
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
