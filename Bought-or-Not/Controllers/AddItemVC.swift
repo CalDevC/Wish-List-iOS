@@ -17,7 +17,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     var listId: String?
     var imageURL: URL? = nil
-    var imageLink: String?
+    var imageLink: String = ""
     
     @IBOutlet weak var itemName: UITextField!
     @IBOutlet weak var itemCategory: UITextField!
@@ -38,11 +38,38 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         print("List ID is \(listId ?? "nil")")
         
-        uploadMedia(imgName: "\(itemName.text ?? "")_\(listId!)") { (myURL) in
-            // output download URL for image
-            print("Got here with URL: ")
-            print(myURL ?? "nil URL")
-            
+        if self.imageLink != "" {
+            uploadMedia(imgName: "\(itemName.text ?? "")_\(listId!)") { (myURL) in
+                // output download URL for image
+                print("Got here with URL: ")
+                print(myURL ?? "nil URL")
+                
+                var ref: DocumentReference? = nil
+                ref = self.db.collection("item").addDocument(data: [
+                    "listId": self.listId ?? "",
+                    "name": self.itemName.text ?? "",
+                    "category": self.itemCategory.text ?? "",
+                    "price": self.itemPrice.text ?? "",
+                    "link": self.itemLink.text ?? "",
+                    "userId": self.currentUid,
+                    "image": self.imageLink,
+                ]) { err in
+                    if let err = err {
+                        //Error savng data
+                        print("Error adding document: \(err)")
+                        Util.launchAlert(senderVC: self,
+                                         title: "Error",
+                                         message: "Account created but failed to save user data.",
+                                         btnText: "Ok")
+                    } else {
+                        print("Document added with ID: \(ref!.documentID)")
+                        // return to previous screen after save
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        }
+        else {
             var ref: DocumentReference? = nil
             ref = self.db.collection("item").addDocument(data: [
                 "listId": self.listId ?? "",
@@ -51,7 +78,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 "price": self.itemPrice.text ?? "",
                 "link": self.itemLink.text ?? "",
                 "userId": self.currentUid,
-                "image": self.imageLink!,
+                "image": self.imageLink,
             ]) { err in
                 if let err = err {
                     //Error savng data
@@ -67,6 +94,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 }
             }
         }
+
     }
     
     @IBAction func AddPhoto(_ sender: UIButton) {
