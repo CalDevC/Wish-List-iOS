@@ -158,8 +158,10 @@ class ItemTableVC: UITableViewController {
             guard let itemDetailVC = segue.destination as? ItemDetailVC else {
                 return
             }
-            // itemDetailVC.itemId = itemIds[itemIdx!]
-            itemDetailVC.itemId = itemIds[0]
+            guard let indexPath = sender as? IndexPath else {
+                return
+            }
+            itemDetailVC.itemId = itemIds[indexPath.row]                
         }
         
         // addItemVC.listId = listId

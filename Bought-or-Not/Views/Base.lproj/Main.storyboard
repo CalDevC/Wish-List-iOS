@@ -788,6 +788,7 @@
                     <navigationItem key="navigationItem" id="yf7-MX-i1L"/>
                     <connections>
                         <outlet property="categoryLabel" destination="Lne-da-IrV" id="R2b-aM-1x6"/>
+                        <outlet property="itemDetailImageView" destination="BIR-Td-AcJ" id="Ofm-j6-mEv"/>
                         <outlet property="locationLabel" destination="NAW-TV-NUB" id="3b8-fR-vN9"/>
                         <outlet property="nameLabel" destination="H1C-AU-Bj7" id="8yy-eV-Mns"/>
                         <outlet property="priceLabel" destination="3GR-Xm-M8y" id="lhT-YT-jbl"/>

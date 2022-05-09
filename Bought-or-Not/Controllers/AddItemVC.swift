@@ -51,7 +51,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 "price": self.itemPrice.text ?? "",
                 "link": self.itemLink.text ?? "",
                 "userId": self.currentUid,
-                "image": myURL!.absoluteString,
+                "image": self.imageLink!,
             ]) { err in
                 if let err = err {
                     //Error savng data
@@ -105,6 +105,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         // Create a reference to the file you want to upload
         let imageRef = storageRef.child("images/\(imgName)")
+        imageLink = "images/\(imgName)"
 
         // Upload the file to the path "images/rivers.jpg"
         let uploadTask = imageRef.putFile(from: imageURL!, metadata: nil) { metadata, error in
