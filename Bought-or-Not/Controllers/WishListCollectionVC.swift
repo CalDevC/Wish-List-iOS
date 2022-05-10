@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class WishListCollectionVC: UICollectionViewController {
+class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDelegate {
     
     var currentUser: User!
     var owner: User!
@@ -40,6 +40,12 @@ class WishListCollectionVC: UICollectionViewController {
         
         let nib = UINib(nibName: "WishListCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        let longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(gestureRecognizer:)))
+        longPress.minimumPressDuration = 0.5
+        longPress.delegate = self
+        longPress.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(longPress)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +86,22 @@ class WishListCollectionVC: UICollectionViewController {
             }
         }
         
+    }
+    
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer){
+
+        if (gestureRecognizer.state != UIGestureRecognizer.State.began){
+            return
+        }
+
+        let location = gestureRecognizer.location(in: self.collectionView)
+
+        if let indexPath: NSIndexPath = self.collectionView?.indexPathForItem(at: location) as NSIndexPath? {
+            //do whatever you need to do
+            print("Index Number: \(indexPath.row)")
+            print("IN RECOGNIZER: \(userLists[indexPath.row])")
+        }
+
     }
     
     @IBAction func newListBtnPressed(_ sender: UIBarButtonItem) {

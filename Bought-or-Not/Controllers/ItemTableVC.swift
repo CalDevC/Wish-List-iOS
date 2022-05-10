@@ -96,10 +96,10 @@ class ItemTableVC: UITableViewController {
         }
     }
     
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -163,10 +163,6 @@ class ItemTableVC: UITableViewController {
             }
             itemDetailVC.itemId = itemIds[indexPath.row]                
         }
-        
-        // addItemVC.listId = listId
-        // use section property embedded in indexPath to pull wishlist items
-        // wishlistVC.listId = userListIds[indexPath.row]
     }
     
 }
