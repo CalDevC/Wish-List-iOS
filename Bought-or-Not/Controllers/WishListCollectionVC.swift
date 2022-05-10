@@ -102,6 +102,14 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
             print("IN RECOGNIZER: \(userLists[indexPath.row]): \(userListIds[indexPath.row])")
             //TODO: Remove a tile
             //Prompt for confirmation
+            let alert = UIAlertController(title: "Delete '\(userLists[indexPath.row])'?",
+                                          message: "Are you sure you wish to delete your wish list " +
+                                          "'\(userLists[indexPath.row])' and all of its items? " +
+                                          "This action cannot be undone.",
+                                          preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             //If yes
                 //Save listId
                 //Remove element from userLists and userListIds
