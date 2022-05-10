@@ -32,10 +32,6 @@ class ItemTableVC: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //TODO: Check if the current user is the list owner
-            //Check if listId belongs to the currentUid
-            //If so then show the '+' button
-            //Else hide the '+' button
         activityIndicator.startAnimating()
         if(owner.uid == currentUser.uid){
             //Show +
@@ -48,33 +44,6 @@ class ItemTableVC: UITableViewController {
         wishlistItems = []
         itemIds = []
         getData(compHandler: reloadItems)
-        
-//        db.collection("wishlist").whereField("userId", isEqualTo: currentUid).getDocuments()
-//        {(querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                var found: Bool = false
-//
-//                for document in querySnapshot!.documents {
-//                    if(document.documentID == self.listId){
-//                        found = true
-//                        break
-//                    }
-//                }
-//
-//                if(found){
-//                    //Show +
-//                    self.navigationItem.rightBarButtonItem = self.addItemButton
-//                } else{
-//                    //Hide +
-//                    self.navigationItem.rightBarButtonItem = nil
-//                }
-//
-//                self.getData(compHandler: self.reloadItems)
-//
-//            }
-//        }
     }
     
     func reloadItems(){
@@ -115,16 +84,47 @@ class ItemTableVC: UITableViewController {
         performSegue(withIdentifier: "wishlistToAddItem", sender: nil)
     }
     
+    func removeItem(atIdx idx: Int){
+        let itemID = itemIds[idx]
+        print("ITEM ID: \(itemID)")
+        db.collection("item").document(itemID).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
+    
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     // tells app what data to output in which section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wishlistItems.count
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
+    {
+       if(owner.uid != currentUser.uid){
+           return UITableViewCell.EditingStyle.none
+        } else {
+            return UITableViewCell.EditingStyle.delete
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if(editingStyle == .delete){
+            removeItem(atIdx: indexPath.row)
+            wishlistItems.remove(at: indexPath.row)
+            itemIds.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     // define content that is meant to appear in a given cell
@@ -163,10 +163,6 @@ class ItemTableVC: UITableViewController {
             }
             itemDetailVC.itemId = itemIds[indexPath.row]                
         }
-        
-        // addItemVC.listId = listId
-        // use section property embedded in indexPath to pull wishlist items
-        // wishlistVC.listId = userListIds[indexPath.row]
     }
     
 }

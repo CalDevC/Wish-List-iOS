@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class WishListCollectionVC: UICollectionViewController {
+class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDelegate {
     
     var currentUser: User!
     var owner: User!
@@ -40,6 +40,12 @@ class WishListCollectionVC: UICollectionViewController {
         
         let nib = UINib(nibName: "WishListCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        let longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(gestureRecognizer:)))
+        longPress.minimumPressDuration = 0.5
+        longPress.delegate = self
+        longPress.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(longPress)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +86,85 @@ class WishListCollectionVC: UICollectionViewController {
             }
         }
         
+    }
+    
+    func removeList(indexPath: IndexPath){
+        //Save listId
+        let idx = indexPath.row
+        let listId = userListIds[idx]
+        
+        //Remove element from userLists and userListIds
+        userLists.remove(at: idx)
+        userListIds.remove(at: idx)
+        //Remove element from collection view
+        collectionView.deleteItems(at: [indexPath])
+        //Remove list from database
+        db.collection("wishlist").document(listId).delete() { err in
+            if let err = err {
+                print("Error deleting wish list: \(err)")
+            } else {
+                print("Wish list successfully deleted!")
+            }
+        }
+        
+        //Remove all items from database where listId == this listId
+        db.collection("item").whereField("listId", isEqualTo: listId).getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting items: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.db.collection("item").document(document.documentID).delete() { err in
+                        if let err = err {
+                            print("Error deleting list item: \(err)")
+                        } else {
+                            print("Item successfully deleted!")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer){
+
+        if (gestureRecognizer.state != UIGestureRecognizer.State.began || owner.uid != currentUser.uid){
+            return
+        }
+
+        let location = gestureRecognizer.location(in: self.collectionView)
+
+        if let indexPath: IndexPath = self.collectionView?.indexPathForItem(at: location) as IndexPath? {
+            //do whatever you need to do
+            print("Index Number: \(indexPath.row)")
+            print("IN RECOGNIZER: \(userLists[indexPath.row]): \(userListIds[indexPath.row])")
+            
+            //TODO: Remove a tile
+            //Prompt for confirmation
+            let alert = UIAlertController(
+                title: "Delete '\(userLists[indexPath.row])'?",
+                message: "Are you sure you want to delete your Wish List " +
+                         "'\(userLists[indexPath.row])' and all of its items? " +
+                         "This action cannot be undone.",
+                preferredStyle: UIAlertController.Style.alert
+            )
+            
+            alert.addAction(UIAlertAction(
+                title: "Delete",
+                style: UIAlertAction.Style.destructive)
+                {_ in
+                    self.removeList(indexPath: indexPath)
+                }
+            )
+            
+            alert.addAction(UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil)
+            )
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
     
     @IBAction func newListBtnPressed(_ sender: UIBarButtonItem) {
