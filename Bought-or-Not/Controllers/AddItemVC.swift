@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import SwiftUI
 
 class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -30,11 +31,51 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         self.navigationController?.popViewController(animated: true)
     }
     
+    func toggleValidation(validationField: UITextField) {
+        if validationField.text == "" {
+            // validationField.backgroundColor = UIColor.orange
+            validationField.layer.borderWidth = 1.0
+            validationField.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        // validationField.backgroundColor = UIColor.white
+        validationField.layer.borderWidth = 0.0
+        return
+    }
+    
+    func canOpenURL(validationField: UITextField) -> Bool {
+        guard let url = NSURL(string: validationField.text!) else {return false}
+        if !UIApplication.shared.canOpenURL(url as URL) {return false}
+
+        let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
+        return predicate.evaluate(with: validationField.text)
+    }
+    
     @IBAction func saveButton(_ sender: UIButton) {
         guard listId != nil else{
             print("List ID is nil")
             return
         }
+        
+        print(canOpenURL(validationField: self.itemLink))
+        
+        // validate required fields or prevent submission
+        if self.itemName.text == "" ||  self.itemPrice.text == "" || self.itemLink.text == "" || canOpenURL(validationField: self.itemLink) == false {
+            toggleValidation(validationField: self.itemName)
+            toggleValidation(validationField: self.itemPrice)
+            toggleValidation(validationField: self.itemLink)
+            if canOpenURL(validationField: self.itemLink) == false {
+                self.itemLink.layer.borderWidth = 1.0
+                self.itemLink.layer.borderColor = UIColor.red.cgColor
+            }
+            else {
+                self.itemLink.layer.borderWidth = 0.0
+            }
+            
+            return
+        }
+
         
         print("List ID is \(listId ?? "nil")")
         
