@@ -108,8 +108,18 @@ class ItemTableVC: UITableViewController {
         return wishlistItems.count
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
+    {
+       if(owner.uid != currentUser.uid){
+           return UITableViewCell.EditingStyle.none
+        } else {
+            return UITableViewCell.EditingStyle.delete
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        
+        if(editingStyle == .delete){
             removeItem(atIdx: indexPath.row)
             wishlistItems.remove(at: indexPath.row)
             itemIds.remove(at: indexPath.row)
