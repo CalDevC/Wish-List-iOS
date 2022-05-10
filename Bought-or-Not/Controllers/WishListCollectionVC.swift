@@ -103,7 +103,7 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
     
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer){
 
-        if (gestureRecognizer.state != UIGestureRecognizer.State.began){
+        if (gestureRecognizer.state != UIGestureRecognizer.State.began || owner.uid != currentUser.uid){
             return
         }
 
@@ -118,7 +118,7 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
             //Prompt for confirmation
             let alert = UIAlertController(
                 title: "Delete '\(userLists[indexPath.row])'?",
-                message: "Are you sure you wish to delete your wish list " +
+                message: "Are you sure you want to delete your Wish List " +
                          "'\(userLists[indexPath.row])' and all of its items? " +
                          "This action cannot be undone.",
                 preferredStyle: UIAlertController.Style.alert
