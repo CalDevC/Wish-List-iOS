@@ -92,13 +92,37 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
         //Save listId
         let idx = indexPath.row
         let listId = userListIds[idx]
+        
         //Remove element from userLists and userListIds
         userLists.remove(at: idx)
         userListIds.remove(at: idx)
         //Remove element from collection view
         collectionView.deleteItems(at: [indexPath])
         //Remove list from database
+        db.collection("wishlist").document(listId).delete() { err in
+            if let err = err {
+                print("Error deleting wish list: \(err)")
+            } else {
+                print("Wish list successfully deleted!")
+            }
+        }
+        
         //Remove all items from database where listId == this listId
+        db.collection("item").whereField("listId", isEqualTo: listId).getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting items: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.db.collection("item").document(document.documentID).delete() { err in
+                        if let err = err {
+                            print("Error deleting list item: \(err)")
+                        } else {
+                            print("Item successfully deleted!")
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer){
