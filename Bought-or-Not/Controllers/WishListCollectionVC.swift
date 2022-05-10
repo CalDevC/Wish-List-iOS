@@ -99,7 +99,17 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
         if let indexPath: NSIndexPath = self.collectionView?.indexPathForItem(at: location) as NSIndexPath? {
             //do whatever you need to do
             print("Index Number: \(indexPath.row)")
-            print("IN RECOGNIZER: \(userLists[indexPath.row])")
+            print("IN RECOGNIZER: \(userLists[indexPath.row]): \(userListIds[indexPath.row])")
+            //TODO: Remove a tile
+            //Prompt for confirmation
+            //If yes
+                //Save listId
+                //Remove element from userLists and userListIds
+                //Remove element from collection view
+                //Remove list from database
+                //Remove all items from database where listId == this listId
+            //If no
+                //cancel
         }
 
     }
