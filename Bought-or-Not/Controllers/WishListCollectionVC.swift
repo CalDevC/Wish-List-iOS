@@ -88,6 +88,19 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
         
     }
     
+    func removeList(indexPath: IndexPath){
+        //Save listId
+        let idx = indexPath.row
+        let listId = userListIds[idx]
+        //Remove element from userLists and userListIds
+        userLists.remove(at: idx)
+        userListIds.remove(at: idx)
+        //Remove element from collection view
+        collectionView.deleteItems(at: [indexPath])
+        //Remove list from database
+        //Remove all items from database where listId == this listId
+    }
+    
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer){
 
         if (gestureRecognizer.state != UIGestureRecognizer.State.began){
@@ -96,28 +109,36 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
 
         let location = gestureRecognizer.location(in: self.collectionView)
 
-        if let indexPath: NSIndexPath = self.collectionView?.indexPathForItem(at: location) as NSIndexPath? {
+        if let indexPath: IndexPath = self.collectionView?.indexPathForItem(at: location) as IndexPath? {
             //do whatever you need to do
             print("Index Number: \(indexPath.row)")
             print("IN RECOGNIZER: \(userLists[indexPath.row]): \(userListIds[indexPath.row])")
+            
             //TODO: Remove a tile
             //Prompt for confirmation
-            let alert = UIAlertController(title: "Delete '\(userLists[indexPath.row])'?",
-                                          message: "Are you sure you wish to delete your wish list " +
-                                          "'\(userLists[indexPath.row])' and all of its items? " +
-                                          "This action cannot be undone.",
-                                          preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: nil))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            let alert = UIAlertController(
+                title: "Delete '\(userLists[indexPath.row])'?",
+                message: "Are you sure you wish to delete your wish list " +
+                         "'\(userLists[indexPath.row])' and all of its items? " +
+                         "This action cannot be undone.",
+                preferredStyle: UIAlertController.Style.alert
+            )
+            
+            alert.addAction(UIAlertAction(
+                title: "Delete",
+                style: UIAlertAction.Style.destructive)
+                {_ in
+                    self.removeList(indexPath: indexPath)
+                }
+            )
+            
+            alert.addAction(UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil)
+            )
+            
             self.present(alert, animated: true, completion: nil)
-            //If yes
-                //Save listId
-                //Remove element from userLists and userListIds
-                //Remove element from collection view
-                //Remove list from database
-                //Remove all items from database where listId == this listId
-            //If no
-                //cancel
         }
 
     }
