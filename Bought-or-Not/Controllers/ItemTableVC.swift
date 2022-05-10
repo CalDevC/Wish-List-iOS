@@ -85,6 +85,15 @@ class ItemTableVC: UITableViewController {
     }
     
     func removeItem(atIdx idx: Int){
+        let itemID = itemIds[idx]
+        print("ITEM ID: \(itemID)")
+        db.collection("item").document(itemID).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -101,11 +110,10 @@ class ItemTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("WISHLIST COUNT: \(wishlistItems.count)")
+            removeItem(atIdx: indexPath.row)
             wishlistItems.remove(at: indexPath.row)
             itemIds.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            removeItem(atIdx: indexPath.row)
         }
     }
     
