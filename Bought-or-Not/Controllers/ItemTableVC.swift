@@ -14,7 +14,6 @@ class ItemTableVC: UITableViewController {
     let db = Firestore.firestore()
     var listId: String!
     var itemIdx: Int?
-    var itemIds: [String] = []
     var currentUser: User!
     var owner: User!
     
@@ -41,13 +40,10 @@ class ItemTableVC: UITableViewController {
             self.navigationItem.rightBarButtonItem = nil
         }
         
-        wishlistItems = []
-        itemIds = []
         getData(compHandler: reloadItems)
     }
     
     func reloadItems(){
-        print("DONE")
         activityIndicator.stopAnimating()
         self.wishlistTableView.reloadData()
     }
@@ -58,10 +54,15 @@ class ItemTableVC: UITableViewController {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
+                    
+                    if(querySnapshot!.documents.count == self.wishlistItems.count){
+                        self.activityIndicator.stopAnimating()
+                        return
+                    } else{
+                        self.wishlistItems = []
+                    }
+                    
                     for document in querySnapshot!.documents {
-                        print("DOCUMENT")
-                        print("\(document.documentID) => \(document.data())")
-                        self.itemIds.append(document.documentID)
                         
                         let itemData: [String: String] = document.data() as! [String: String]
                         let item = Item(
@@ -71,7 +72,8 @@ class ItemTableVC: UITableViewController {
                             listId: itemData["listId"] ?? "",
                             name: itemData["name"] ?? "",
                             price: itemData["price"] ?? "",
-                            userId: itemData["userId"] ?? ""
+                            userId: itemData["userId"] ?? "",
+                            itemId: document.documentID
                         )
                         
                         self.wishlistItems.append(item)
@@ -81,9 +83,6 @@ class ItemTableVC: UITableViewController {
                 }
             }
         }
-        
-        print("ITEM IDS:")
-        print(self.itemIds)
     }
     
     @IBAction func addItem(_ sender: UIBarButtonItem) {
@@ -91,8 +90,7 @@ class ItemTableVC: UITableViewController {
     }
     
     func removeItem(atIdx idx: Int){
-        let itemID = itemIds[idx]
-        print("ITEM ID: \(itemID)")
+        let itemID = wishlistItems[idx].itemId
         db.collection("item").document(itemID).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
@@ -128,7 +126,6 @@ class ItemTableVC: UITableViewController {
         if(editingStyle == .delete){
             removeItem(atIdx: indexPath.row)
             wishlistItems.remove(at: indexPath.row)
-            itemIds.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
