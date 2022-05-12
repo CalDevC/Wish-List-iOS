@@ -47,6 +47,7 @@ class ItemDetailVC: UIViewController {
     func getImage(){
         if(item.image == ""){
             self.itemDetailImageView.image = UIImage(systemName: "photo")
+            self.activityIndicator.stopAnimating()
         } else{
             let imageRef = Storage.storage().reference().child(item.image)
             

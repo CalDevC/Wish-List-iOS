@@ -138,6 +138,7 @@ class ItemTableVC: UITableViewController {
             return UITableViewCell()
         }
         // use list for items
+        cell.selectionStyle = .none
         let item = wishlistItems[indexPath.row]
         cell.wishlistCell.text = "   " + item.name
         return cell
