@@ -891,7 +891,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save" cornerStyle="capsule"/>
                                 <connections>
-                                    <action selector="saveButton:" destination="gvz-UX-Brp" eventType="touchUpInside" id="EfG-wX-8am"/>
+                                    <action selector="saveBtnPressed:" destination="gvz-UX-Brp" eventType="touchUpInside" id="EfG-wX-8am"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-0V-Off">
@@ -902,7 +902,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Cancel" cornerStyle="capsule"/>
                                 <connections>
-                                    <action selector="cancelButton:" destination="gvz-UX-Brp" eventType="touchUpInside" id="hQp-Uu-pCc"/>
+                                    <action selector="cancelBtnPressed:" destination="gvz-UX-Brp" eventType="touchUpInside" id="hQp-Uu-pCc"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="01k-WR-BR6">
@@ -926,6 +926,13 @@
                                     <action selector="AddPhoto:" destination="gvz-UX-Brp" eventType="touchUpInside" id="N42-Sh-y4C"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="jN5-R6-LvU">
+                                <rect key="frame" x="182" y="771" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="T7W-re-SAm"/>
+                                    <constraint firstAttribute="width" constant="50" id="uQI-g3-5OK"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x5A-sl-ftI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -935,11 +942,13 @@
                             <constraint firstItem="tJ1-6Y-HvF" firstAttribute="top" secondItem="f0c-u1-KW1" secondAttribute="bottom" constant="10" id="81X-KO-7gN"/>
                             <constraint firstItem="tJ1-6Y-HvF" firstAttribute="centerX" secondItem="X6P-Lq-0Eo" secondAttribute="centerX" id="BAF-RV-b5M"/>
                             <constraint firstItem="f0c-u1-KW1" firstAttribute="top" secondItem="yA3-iP-zTS" secondAttribute="bottom" constant="10" id="Diw-oN-y7K"/>
+                            <constraint firstItem="4XM-0V-Off" firstAttribute="top" secondItem="jN5-R6-LvU" secondAttribute="bottom" constant="10" id="Du7-vr-ZWJ"/>
                             <constraint firstItem="yA3-iP-zTS" firstAttribute="centerX" secondItem="X6P-Lq-0Eo" secondAttribute="centerX" id="G7c-yq-Lpu"/>
                             <constraint firstItem="kMT-2B-Mk7" firstAttribute="top" secondItem="tJ1-6Y-HvF" secondAttribute="bottom" constant="10" id="KNy-su-xFj"/>
                             <constraint firstItem="q3s-DY-g8Y" firstAttribute="top" secondItem="01k-WR-BR6" secondAttribute="bottom" constant="8" symbolic="YES" id="Kqx-un-sAg" userLabel="Add Image.top = Image View.bottom + 10"/>
                             <constraint firstItem="x5A-sl-ftI" firstAttribute="trailing" secondItem="0jf-TP-iSa" secondAttribute="trailing" constant="60" id="ONZ-SP-lhj" userLabel="Safe Area.trailing = Save.trailing + 50"/>
                             <constraint firstItem="01k-WR-BR6" firstAttribute="top" secondItem="kMT-2B-Mk7" secondAttribute="bottom" constant="10" id="UMP-OT-JjW"/>
+                            <constraint firstItem="jN5-R6-LvU" firstAttribute="centerX" secondItem="X6P-Lq-0Eo" secondAttribute="centerX" id="VEO-I6-i7j"/>
                             <constraint firstItem="yA3-iP-zTS" firstAttribute="top" secondItem="x5A-sl-ftI" secondAttribute="top" constant="20" id="XCC-IM-Htf"/>
                             <constraint firstItem="4XM-0V-Off" firstAttribute="bottom" secondItem="x5A-sl-ftI" secondAttribute="bottom" id="XPG-w0-VFR"/>
                             <constraint firstItem="01k-WR-BR6" firstAttribute="centerX" secondItem="X6P-Lq-0Eo" secondAttribute="centerX" id="cXL-9Z-wrg"/>
@@ -950,11 +959,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="DSm-nv-WX4"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="jN5-R6-LvU" id="EN9-tE-dVX"/>
+                        <outlet property="cancelBtn" destination="4XM-0V-Off" id="UeC-0B-dSj"/>
                         <outlet property="imageView" destination="01k-WR-BR6" id="YH4-c1-43m"/>
                         <outlet property="itemCategory" destination="f0c-u1-KW1" id="ljZ-b4-P0I"/>
                         <outlet property="itemLink" destination="kMT-2B-Mk7" id="XNg-Z0-veB"/>
                         <outlet property="itemName" destination="yA3-iP-zTS" id="DZv-uc-6tr"/>
                         <outlet property="itemPrice" destination="tJ1-6Y-HvF" id="cmy-9A-8im"/>
+                        <outlet property="saveBtn" destination="0jf-TP-iSa" id="TbV-0g-EbS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvP-KT-opJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
