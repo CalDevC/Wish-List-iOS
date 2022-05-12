@@ -14,11 +14,8 @@ class ItemDetailVC: UIViewController {
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
 
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var urlLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var itemDetailImageView: UIImageView!
     
     private var collectionRef: CollectionReference!
@@ -60,11 +57,10 @@ class ItemDetailVC: UIViewController {
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                     print("Document data: \(dataDescription)")
                     
-                    self.nameLabel.text = document.data()?["name"] as? String
+                    self.navigationItem.title = document.data()?["name"] as? String
                     self.categoryLabel.text = document.data()?["category"] as? String
-                    self.priceLabel.text = document.data()?["price"] as? String
+                    self.priceLabel.text = "$\(document.data()!["price"] as! String)"
                     self.linkURL = document.data()?["link"] as? String
-                    self.locationLabel.text = document.data()?["location"] as? String
                     let myImage = document.data()?["image"] as! String
                     
                     // let storage = Storage.storage()
