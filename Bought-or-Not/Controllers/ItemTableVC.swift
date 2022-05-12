@@ -24,6 +24,7 @@ class ItemTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
+        
         //Add the custom cell to the table view
         let nib = UINib(nibName: "ItemTableViewCell", bundle: nil)
         wishlistTableView.register(nib, forCellReuseIdentifier: "ItemTableViewCell")
@@ -49,38 +50,37 @@ class ItemTableVC: UITableViewController {
     }
     
     func getData(compHandler: @escaping()->Void){
-        if(listId != "0") {
-            let listItems = db.collection("item").whereField("listId", isEqualTo: listId).getDocuments() {(querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    
-                    if(querySnapshot!.documents.count == self.wishlistItems.count){
-                        self.activityIndicator.stopAnimating()
-                        return
-                    } else{
-                        self.wishlistItems = []
-                    }
-                    
-                    for document in querySnapshot!.documents {
-                        
-                        let itemData: [String: String] = document.data() as! [String: String]
-                        let item = Item(
-                            category: itemData["category"] ?? "",
-                            image: itemData["image"] ?? "",
-                            link: itemData["link"] ?? "",
-                            listId: itemData["listId"] ?? "",
-                            name: itemData["name"] ?? "",
-                            price: itemData["price"] ?? "",
-                            userId: itemData["userId"] ?? "",
-                            itemId: document.documentID
-                        )
-                        
-                        self.wishlistItems.append(item)
-                        
-                    }
-                    compHandler()
+        db.collection("item").whereField("listId", isEqualTo: listId as String).getDocuments()
+        {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                if(querySnapshot!.documents.count == self.wishlistItems.count){
+                    self.activityIndicator.stopAnimating()
+                    return
+                } else{
+                    self.wishlistItems = []
                 }
+                
+                for document in querySnapshot!.documents {
+                    
+                    let itemData: [String: String] = document.data() as! [String: String]
+                    let item = Item(
+                        category: itemData["category"] ?? "",
+                        image: itemData["image"] ?? "",
+                        link: itemData["link"] ?? "",
+                        listId: itemData["listId"] ?? "",
+                        name: itemData["name"] ?? "",
+                        price: itemData["price"] ?? "",
+                        userId: itemData["userId"] ?? "",
+                        itemId: document.documentID
+                    )
+                    
+                    self.wishlistItems.append(item)
+                    
+                }
+                compHandler()
             }
         }
     }
@@ -114,8 +114,8 @@ class ItemTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
     {
-       if(owner.uid != currentUser.uid){
-           return UITableViewCell.EditingStyle.none
+        if(owner.uid != currentUser.uid){
+            return UITableViewCell.EditingStyle.none
         } else {
             return UITableViewCell.EditingStyle.delete
         }
@@ -142,7 +142,7 @@ class ItemTableVC: UITableViewController {
         cell.wishlistCell.text = "   " + item.name
         return cell
     }
-
+    
     // define segue action when a cell in a row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemIdx = indexPath.row
