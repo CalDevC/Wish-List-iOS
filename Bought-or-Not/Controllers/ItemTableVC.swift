@@ -10,11 +10,10 @@ import Firebase
 
 class ItemTableVC: UITableViewController {
     
-    var wishlistItems: [String] = []
+    var wishlistItems: [Item] = []
     let db = Firestore.firestore()
     var listId: String!
     var itemIdx: Int?
-    var itemIds: [String] = []
     var currentUser: User!
     var owner: User!
     
@@ -25,6 +24,7 @@ class ItemTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
+        
         //Add the custom cell to the table view
         let nib = UINib(nibName: "ItemTableViewCell", bundle: nil)
         wishlistTableView.register(nib, forCellReuseIdentifier: "ItemTableViewCell")
@@ -41,43 +41,48 @@ class ItemTableVC: UITableViewController {
             self.navigationItem.rightBarButtonItem = nil
         }
         
-        wishlistItems = []
-        itemIds = []
         getData(compHandler: reloadItems)
     }
     
     func reloadItems(){
-        print("DONE")
         activityIndicator.stopAnimating()
         self.wishlistTableView.reloadData()
     }
     
     func getData(compHandler: @escaping()->Void){
-        if(listId != "0") {
-            let listItems = db.collection("item").whereField("listId", isEqualTo: listId).getDocuments() {(querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("DOCUMENT")
-                        print("\(document.documentID) => \(document.data())")
-                        self.itemIds.append(document.documentID)
-                        // add listId to array
-                        // userListIds.append(document.documentID)
-                        let listData: [String: String] = document.data() as! [String: String]
-                        for pair in listData {
-                            if(pair.key == "name") {
-                                self.wishlistItems.append(pair.value)
-                            }
-                        }
-                    }
-                    compHandler()
+        db.collection("item").whereField("listId", isEqualTo: listId as String).getDocuments()
+        {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                if(querySnapshot!.documents.count == self.wishlistItems.count){
+                    self.activityIndicator.stopAnimating()
+                    return
+                } else{
+                    self.wishlistItems = []
                 }
+                
+                for document in querySnapshot!.documents {
+                    
+                    let itemData: [String: String] = document.data() as! [String: String]
+                    let item = Item(
+                        category: itemData["category"] ?? "",
+                        image: itemData["image"] ?? "",
+                        link: itemData["link"] ?? "",
+                        listId: itemData["listId"] ?? "",
+                        name: itemData["name"] ?? "",
+                        price: itemData["price"] ?? "",
+                        userId: itemData["userId"] ?? "",
+                        itemId: document.documentID
+                    )
+                    
+                    self.wishlistItems.append(item)
+                    
+                }
+                compHandler()
             }
         }
-        
-        print("ITEM IDS:")
-        print(self.itemIds)
     }
     
     @IBAction func addItem(_ sender: UIBarButtonItem) {
@@ -85,8 +90,7 @@ class ItemTableVC: UITableViewController {
     }
     
     func removeItem(atIdx idx: Int){
-        let itemID = itemIds[idx]
-        print("ITEM ID: \(itemID)")
+        let itemID = wishlistItems[idx].itemId
         db.collection("item").document(itemID).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
@@ -110,8 +114,8 @@ class ItemTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
     {
-       if(owner.uid != currentUser.uid){
-           return UITableViewCell.EditingStyle.none
+        if(owner.uid != currentUser.uid){
+            return UITableViewCell.EditingStyle.none
         } else {
             return UITableViewCell.EditingStyle.delete
         }
@@ -122,7 +126,6 @@ class ItemTableVC: UITableViewController {
         if(editingStyle == .delete){
             removeItem(atIdx: indexPath.row)
             wishlistItems.remove(at: indexPath.row)
-            itemIds.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -135,11 +138,12 @@ class ItemTableVC: UITableViewController {
             return UITableViewCell()
         }
         // use list for items
+        cell.selectionStyle = .none
         let item = wishlistItems[indexPath.row]
-        cell.wishlistCell.text = "   " + item
+        cell.wishlistCell.text = "   " + item.name
         return cell
     }
-
+    
     // define segue action when a cell in a row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemIdx = indexPath.row
@@ -161,7 +165,8 @@ class ItemTableVC: UITableViewController {
             guard let indexPath = sender as? IndexPath else {
                 return
             }
-            itemDetailVC.itemId = itemIds[indexPath.row]                
+            
+            itemDetailVC.item = wishlistItems[indexPath.row]
         }
     }
     

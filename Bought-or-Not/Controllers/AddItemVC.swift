@@ -24,8 +24,10 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBOutlet weak var itemCategory: UITextField!
     @IBOutlet weak var itemPrice: UITextField!
     @IBOutlet weak var itemLink: UITextField!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +36,12 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         itemCategory.delegate = self
         itemPrice.delegate = self
         itemLink.delegate = self
+        activityIndicator.hidesWhenStopped = true
+        saveBtn.isEnabled = true
+        cancelBtn.isEnabled = true
     }
     
-    @IBAction func cancelButton(_ sender: UIButton) {
+    @IBAction func cancelBtnPressed(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -72,13 +77,10 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         return predicate.evaluate(with: validationField.text)
     }
     
-    @IBAction func saveButton(_ sender: UIButton) {
+    @IBAction func saveBtnPressed(_ sender: UIButton) {
         guard listId != nil else{
-            print("List ID is nil")
             return
         }
-        
-        print(canOpenURL(validationField: self.itemLink))
         
         // validate required fields or prevent submission
         if self.itemName.text == "" ||  self.itemPrice.text == "" || self.itemLink.text == ""{
@@ -107,10 +109,11 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             self.itemLink.layer.borderWidth = 0.0
         }
         
+        activityIndicator.startAnimating()
+        saveBtn.isEnabled = false
+        cancelBtn.isEnabled = false
         
-        print("List ID is \(listId ?? "nil")")
-        
-        if self.imageLink != "" {
+        if(self.imageURL != nil && self.imageURL?.absoluteString != ""){
             uploadMedia(imgName: "\(itemName.text ?? "")_\(listId!)") { (myURL) in
                 
                 self.db.collection("item").addDocument(data: [
@@ -125,6 +128,9 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                     if let err = err {
                         //Error savng data
                         print("Error adding document: \(err)")
+                        self.activityIndicator.stopAnimating()
+                        self.saveBtn.isEnabled = true
+                        self.cancelBtn.isEnabled = true
                         Util.launchAlert(
                             senderVC: self,
                             title: "Error",
@@ -133,6 +139,9 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                         )
                     } else {
                         // return to previous screen after save
+                        self.activityIndicator.stopAnimating()
+                        self.saveBtn.isEnabled = true
+                        self.cancelBtn.isEnabled = true
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
@@ -152,6 +161,9 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 if let err = err {
                     //Error savng data
                     print("Error adding document: \(err)")
+                    self.activityIndicator.stopAnimating()
+                    self.saveBtn.isEnabled = true
+                    self.cancelBtn.isEnabled = true
                     Util.launchAlert(
                         senderVC: self,
                         title: "Error",
@@ -161,6 +173,9 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 } else {
                     print("Document added with ID: \(ref!.documentID)")
                     // return to previous screen after save
+                    self.activityIndicator.stopAnimating()
+                    self.saveBtn.isEnabled = true
+                    self.cancelBtn.isEnabled = true
                     self.navigationController?.popViewController(animated: true)
                 }
             }
@@ -180,7 +195,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             imageView.image = pickedImage
             
             imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
-            // imageLink = info[UIImagePickerController.InfoKey.imageURL] as? String
+//            imageLink = info[UIImagePickerController.InfoKey.imageURL] as! String
             // print("IMAGE LINK")
             // print(imageLink)
             print(imageURL ?? "No URL")

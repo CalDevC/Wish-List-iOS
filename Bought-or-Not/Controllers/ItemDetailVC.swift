@@ -10,41 +10,33 @@ import Firebase
 import FirebaseStorage
 
 class ItemDetailVC: UIViewController {
-
+    
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
-
-    @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var urlLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var itemDetailImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var collectionRef: CollectionReference!
-    var itemId: String?
-    var itemName: String?
-    var itemCategory: String?
-    var linkURL: String?
-    var docRef = Firestore.firestore().collection("item")
+    var item: Item!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        print(itemId!)
-        getData(compHandler: reloadItems)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        
+        self.navigationItem.title = item.name
+        categoryLabel.text = item.category
+        priceLabel.text = item.price
+        
+        getImage()
     }
     
     @IBAction func linkButton(_ sender: Any) {
         // UIApplication.shared.openURL(NSURL(string: self.linkURL!)! as URL)
-        UIApplication.shared.open(URL(string: self.linkURL!)!, options: [:], completionHandler: nil)
-    }
-    
-    func reloadItems(){
-        print("RELOAD")
-        // activityIndicator.stopAnimating()
-        // self.wishlistTableView.reloadData()
+        UIApplication.shared.open(URL(string: self.item.link)!, options: [:], completionHandler: nil)
     }
     
     func linkTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
@@ -52,60 +44,35 @@ class ItemDetailVC: UIViewController {
         return false
     }
     
-    func getData(compHandler: @escaping()->Void){
-        if(itemId != nil) {
-            docRef.document(itemId!).getDocument { (document, error) in
-                if let document = document, document.exists {
-                    print(document.data())
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("Document data: \(dataDescription)")
-                    self.nameLabel.text = document.data()?["name"] as? String
-                    self.categoryLabel.text = document.data()?["category"] as? String
-                    self.priceLabel.text = document.data()?["price"] as? String
-                    self.linkURL = document.data()?["link"] as? String
-                    self.locationLabel.text = document.data()?["location"] as? String
-                    let myImage = document.data()?["image"] as! String
-                    // let storage = Storage.storage()
-                    let storageRef = Storage.storage().reference()
-                    let imagePath = myImage
-                    print("IMAGE PATH")
-                    print(imagePath)
-                    let imageRef = storageRef.child(imagePath)
-
-                    // print(document.data()?["image"] as? String)
-                    
-                    imageRef.getData(maxSize: 1 * 100024 * 100024) { data, error in
-                      if let error = error {
-                        print("ERRORORORO")
-                        print(error)
-                        // Uh-oh, an error occurred!
-                      } else {
-                        // Data for "images/island.jpg" is returned
-                        let itemImage = UIImage(data: data!)
-                        self.itemDetailImageView.image = itemImage
-                      }
-                    }
-                }
-                else {
-                    print("Document does not exist")
+    func getImage(){
+        if(item.image == ""){
+            self.itemDetailImageView.image = UIImage(systemName: "photo")
+            self.activityIndicator.stopAnimating()
+        } else{
+            let imageRef = Storage.storage().reference().child(item.image)
+            
+            imageRef.getData(maxSize: 1 * 100024 * 100024) { data, error in
+                if let error = error {
+                    print(error)
+                    self.itemDetailImageView.image = UIImage(systemName: "photo")
+                    Util.launchAlert(
+                        senderVC: self,
+                        title: "Internal Error",
+                        message: "Could not load image 🙁, please try again later",
+                        btnText: "Ok"
+                    )
+                    self.activityIndicator.stopAnimating()
                     return
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    let itemImage = UIImage(data: data!)
+                    self.itemDetailImageView.image = itemImage
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }
     }
-
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension UIImageView {

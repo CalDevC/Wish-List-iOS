@@ -120,8 +120,7 @@ class ProfileVC: UIViewController {
                 self.actionBtn.isEnabled = true
                 print("Error updating document: \(error)")
             } else {
-                print("Document successfully updated")
-                self.navigationController?.popViewController(animated: true)
+                print("Updated current user")
             }
         }
     }

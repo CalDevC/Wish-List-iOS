@@ -68,19 +68,18 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("DOCUMENT")
-                    print("\(document.documentID) => \(document.data())")
-                    // add listId to array
-                    self.userListIds.append(document.documentID)
-                                        
-                    for elem in document.data() {
-                        if (elem.key == "title") {
-                            let listTitle = elem.value as? String
-                            self.userLists.append(listTitle!)
-                            // print(self.userLists)
-                        }
+                    let listData = document.data()
+                    
+                    if(self.owner.uid == self.currentUser.uid){
+                        self.userListIds.append(document.documentID)
+                        self.userLists.append(listData["title"] as! String)
+                    } else if(document.data()["public"] as! Bool){
+                        self.userListIds.append(document.documentID)
+                        self.userLists.append(listData["title"] as! String)
                     }
+                    
                 }
+                
                 self.collectionView.reloadData()
                 self.activityIndicator.stopAnimating()
             }
