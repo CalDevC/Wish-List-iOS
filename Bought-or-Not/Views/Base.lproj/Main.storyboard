@@ -731,13 +731,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIR-Td-AcJ">
-                                <rect key="frame" x="10" y="98" width="394" height="394"/>
-                                <color key="tintColor" systemColor="opaqueSeparatorColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="BIR-Td-AcJ" secondAttribute="height" multiplier="1:1" id="bhM-h6-sZb"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GR-Xm-M8y">
                                 <rect key="frame" x="5" y="502" width="39" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -767,28 +760,57 @@
                                     <constraint firstItem="Qju-gT-ryb" firstAttribute="centerY" secondItem="3oY-Kg-Ppc" secondAttribute="centerY" id="p0W-8s-eLK"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ec1-tm-mJb">
+                                <rect key="frame" x="0.0" y="88" width="414" height="404"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIR-Td-AcJ">
+                                        <rect key="frame" x="5" y="0.0" width="404" height="404"/>
+                                        <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BIR-Td-AcJ" secondAttribute="height" multiplier="1:1" id="bhM-h6-sZb"/>
+                                        </constraints>
+                                    </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="mJO-an-E0m">
+                                        <rect key="frame" x="182" y="177" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Ssd-hS-47i"/>
+                                            <constraint firstAttribute="width" constant="50" id="xDb-HL-RTc"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BIR-Td-AcJ" secondAttribute="trailing" constant="5" id="2Vo-YK-ql9"/>
+                                    <constraint firstItem="BIR-Td-AcJ" firstAttribute="top" secondItem="ec1-tm-mJb" secondAttribute="top" id="3FG-Z6-V2x"/>
+                                    <constraint firstItem="mJO-an-E0m" firstAttribute="centerX" secondItem="ec1-tm-mJb" secondAttribute="centerX" id="BNa-So-M5v"/>
+                                    <constraint firstItem="BIR-Td-AcJ" firstAttribute="leading" secondItem="ec1-tm-mJb" secondAttribute="leading" constant="5" id="KWD-7B-E5j"/>
+                                    <constraint firstItem="mJO-an-E0m" firstAttribute="centerY" secondItem="ec1-tm-mJb" secondAttribute="centerY" id="mEM-3E-qOy"/>
+                                    <constraint firstAttribute="bottom" secondItem="BIR-Td-AcJ" secondAttribute="bottom" id="qnd-OY-f8g"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uBi-M8-rBd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3GR-Xm-M8y" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" constant="5" id="0iM-NN-BaI"/>
+                            <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="ec1-tm-mJb" secondAttribute="trailing" id="19m-qz-dJP"/>
                             <constraint firstItem="3oY-Kg-Ppc" firstAttribute="top" secondItem="3GR-Xm-M8y" secondAttribute="bottom" id="3vh-sV-GzU"/>
+                            <constraint firstItem="ec1-tm-mJb" firstAttribute="top" secondItem="uBi-M8-rBd" secondAttribute="top" id="5Jz-2b-so1"/>
+                            <constraint firstItem="Lne-da-IrV" firstAttribute="top" secondItem="ec1-tm-mJb" secondAttribute="bottom" constant="10" id="9t5-91-Bcj"/>
                             <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="Lne-da-IrV" secondAttribute="trailing" constant="5" id="DSb-UV-poe"/>
-                            <constraint firstItem="3GR-Xm-M8y" firstAttribute="top" secondItem="BIR-Td-AcJ" secondAttribute="bottom" constant="10" id="Iqk-aO-ZCZ"/>
-                            <constraint firstItem="BIR-Td-AcJ" firstAttribute="top" secondItem="uBi-M8-rBd" secondAttribute="top" constant="10" id="M9a-Ro-OaD" userLabel="Item Detail Image View.top = Safe Area.top + 5"/>
+                            <constraint firstItem="3GR-Xm-M8y" firstAttribute="top" secondItem="ec1-tm-mJb" secondAttribute="bottom" constant="10" id="EKr-qx-ZCD"/>
                             <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="3oY-Kg-Ppc" secondAttribute="trailing" id="RMm-WB-zjF"/>
                             <constraint firstItem="uBi-M8-rBd" firstAttribute="bottom" secondItem="3oY-Kg-Ppc" secondAttribute="bottom" id="Zg0-jF-Qb5"/>
-                            <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="BIR-Td-AcJ" secondAttribute="trailing" constant="10" id="bVN-Dt-19c"/>
                             <constraint firstItem="3oY-Kg-Ppc" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" id="eMg-9S-UdU"/>
                             <constraint firstItem="uBi-M8-rBd" firstAttribute="bottom" secondItem="3oY-Kg-Ppc" secondAttribute="bottom" id="o8Y-iR-WU6"/>
-                            <constraint firstItem="Lne-da-IrV" firstAttribute="top" secondItem="BIR-Td-AcJ" secondAttribute="bottom" constant="10" id="oal-LU-XiE"/>
-                            <constraint firstItem="BIR-Td-AcJ" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" constant="10" id="seb-lY-nK8" userLabel="Item Detail Image View.leading = Safe Area.leading + 5"/>
+                            <constraint firstItem="ec1-tm-mJb" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" id="r5Q-ZF-v2O"/>
                             <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="3oY-Kg-Ppc" secondAttribute="trailing" id="vMC-26-pDk"/>
                             <constraint firstItem="3oY-Kg-Ppc" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" id="zvy-RJ-4qb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yf7-MX-i1L"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="mJO-an-E0m" id="Tte-h0-TFs"/>
                         <outlet property="categoryLabel" destination="Lne-da-IrV" id="R2b-aM-1x6"/>
                         <outlet property="itemDetailImageView" destination="BIR-Td-AcJ" id="Ofm-j6-mEv"/>
                         <outlet property="priceLabel" destination="3GR-Xm-M8y" id="lhT-YT-jbl"/>
