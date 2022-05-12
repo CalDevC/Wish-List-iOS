@@ -42,7 +42,6 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("EDITING TEXT")
         Util.clearErrorOnTextfield(textfield: textField)
     }
     

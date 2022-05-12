@@ -10,7 +10,7 @@ import Firebase
 import FirebaseStorage
 import SwiftUI
 
-class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let currentUid = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
@@ -27,8 +27,23 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     @IBOutlet weak var imageView: UIImageView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imagePicker.delegate = self
+        itemName.delegate = self
+        itemCategory.delegate = self
+        itemPrice.delegate = self
+        itemLink.delegate = self
+    }
+    
     @IBAction func cancelButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    //Dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func toggleValidation(validationField: UITextField) {
@@ -157,11 +172,6 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imagePicker.delegate = self
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
