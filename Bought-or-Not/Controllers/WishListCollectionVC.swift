@@ -138,7 +138,6 @@ class WishListCollectionVC: UICollectionViewController, UIGestureRecognizerDeleg
             print("Index Number: \(indexPath.row)")
             print("IN RECOGNIZER: \(userLists[indexPath.row]): \(userListIds[indexPath.row])")
             
-            //TODO: Remove a tile
             //Prompt for confirmation
             let alert = UIAlertController(
                 title: "Delete '\(userLists[indexPath.row])'?",

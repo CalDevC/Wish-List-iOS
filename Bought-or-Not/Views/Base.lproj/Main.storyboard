@@ -324,14 +324,20 @@
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xU-dJ-ExW">
-                                <rect key="frame" x="132" y="831" width="150" height="31"/>
+                                <rect key="frame" x="132" y="834" width="150" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="NbY-jd-y1h"/>
+                                    <constraint firstAttribute="width" constant="150" id="NbY-jd-y1h" userLabel="width = 250"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Submit"/>
+                                        <fragment content="Create Wish List">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="12" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
                                     </attributedString>
                                     <color key="baseForegroundColor" name="btnText"/>
                                     <color key="baseBackgroundColor" name="btnFill"/>
@@ -352,11 +358,18 @@
                                     <constraint firstAttribute="width" constant="250" id="8BS-ua-gXc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVf-R8-qIY">
                                 <rect key="frame" x="182.5" y="686" width="51" height="31"/>
                             </switch>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fZk-Kq-IA9">
+                                <rect key="frame" x="182" y="774" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8t6-GQ-VRQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="PLr-xU-gui"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O8b-Gp-8xO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -371,16 +384,19 @@
                             <constraint firstItem="9hT-Tu-9Fg" firstAttribute="top" secondItem="K1s-4h-aJC" secondAttribute="bottom" constant="10" id="YSE-RN-pDc"/>
                             <constraint firstItem="OVf-R8-qIY" firstAttribute="centerX" secondItem="bSf-fk-Ai1" secondAttribute="centerX" id="e7J-Ew-ZHq"/>
                             <constraint firstItem="6xU-dJ-ExW" firstAttribute="centerX" secondItem="bSf-fk-Ai1" secondAttribute="centerX" id="eO9-T9-CfX"/>
+                            <constraint firstItem="6xU-dJ-ExW" firstAttribute="top" secondItem="fZk-Kq-IA9" secondAttribute="bottom" constant="10" id="iYP-wu-qzN"/>
                             <constraint firstItem="gsS-Ew-F3f" firstAttribute="top" secondItem="O8b-Gp-8xO" secondAttribute="top" constant="10" id="jvq-md-Sx9"/>
                             <constraint firstItem="RLf-T1-0R7" firstAttribute="top" secondItem="vEx-KI-u9e" secondAttribute="bottom" constant="10" id="kbg-GN-Qmf"/>
                             <constraint firstItem="K1s-4h-aJC" firstAttribute="top" secondItem="RLf-T1-0R7" secondAttribute="bottom" id="oSw-LI-DNs"/>
                             <constraint firstItem="vEx-KI-u9e" firstAttribute="top" secondItem="gsS-Ew-F3f" secondAttribute="bottom" constant="10" id="qMZ-qh-3o8"/>
+                            <constraint firstItem="fZk-Kq-IA9" firstAttribute="centerX" secondItem="bSf-fk-Ai1" secondAttribute="centerX" id="xjh-mi-SQ7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IoK-sU-PXG"/>
                     <connections>
                         <outlet property="accessLabel" destination="9hT-Tu-9Fg" id="Tlb-c5-Zf2"/>
                         <outlet property="accessSwitch" destination="OVf-R8-qIY" id="gDZ-jK-Bwu"/>
+                        <outlet property="activityIndicator" destination="fZk-Kq-IA9" id="chZ-4a-8y0"/>
                         <outlet property="dateLabel" destination="RLf-T1-0R7" id="Q7q-zx-NEr"/>
                         <outlet property="datePicker" destination="K1s-4h-aJC" id="CsP-ir-6aY"/>
                         <outlet property="occasionPicker" destination="vEx-KI-u9e" id="6ea-Rq-xHT"/>
@@ -846,7 +862,7 @@
                                     <constraint firstAttribute="width" constant="250" id="1WF-86-V2c"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0c-u1-KW1">
                                 <rect key="frame" x="82" y="152" width="250" height="34"/>
@@ -854,7 +870,7 @@
                                     <constraint firstAttribute="width" constant="250" id="8lu-0O-ru3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="price" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJ1-6Y-HvF">
                                 <rect key="frame" x="82" y="196" width="250" height="34"/>
@@ -862,7 +878,7 @@
                                     <constraint firstAttribute="width" constant="250" id="NXZ-HM-Nsy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="link" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMT-2B-Mk7">
                                 <rect key="frame" x="82" y="240" width="250" height="34"/>
@@ -870,7 +886,7 @@
                                     <constraint firstAttribute="width" constant="250" id="eNY-iT-Lu5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-TP-iSa">
                                 <rect key="frame" x="254" y="831" width="100" height="31"/>
@@ -1037,7 +1053,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="ahI-qw-VSc"/>
         <segue reference="ydM-Ke-vGT"/>
-        <segue reference="pqc-2Y-44C"/>
+        <segue reference="LHh-5b-kSl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
