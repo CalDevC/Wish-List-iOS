@@ -83,8 +83,8 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
 
         //Check that passwords match
         if(password != cPassword){
-            errorOnTextfield(textfield: passwordInput)
-            errorOnTextfield(textfield: cPasswordInput)
+            Util.errorOnTextfield(textfield: passwordInput)
+            Util.errorOnTextfield(textfield: cPasswordInput)
             Util.launchAlert(senderVC: self,
                              title: "Error",
                              message: "Passwords do not match.",
@@ -96,8 +96,8 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         //Check that passowrds are strong enough
         let result = isStrongPassword(password: password)
         if(!result.result){
-            errorOnTextfield(textfield: passwordInput)
-            errorOnTextfield(textfield: cPasswordInput)
+            Util.errorOnTextfield(textfield: passwordInput)
+            Util.errorOnTextfield(textfield: cPasswordInput)
             Util.launchAlert(senderVC: self,
                              title: "Error",
                              message: result.message,
@@ -147,19 +147,8 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     //When a required textfield finishes being edited
     @IBAction func textEditingDidEnd(_ sender: UITextField) {
         emptyField = false
-        clearErrorOnTextfield(textfield: sender)
+        Util.clearErrorOnTextfield(textfield: sender)
         checkForEmptyText(textfield: sender)
-    }
-    
-    //Add a red border to the textfield
-    func errorOnTextfield(textfield: UITextField){
-        textfield.layer.borderWidth = 1.0
-        textfield.layer.borderColor = UIColor.red.cgColor
-    }
-    
-    //Remove any red border from the textfield
-    func clearErrorOnTextfield(textfield: UITextField){
-        textfield.layer.borderWidth = 0.0
     }
     
     //Mark the textfield as errored if its content is empty
@@ -169,7 +158,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         }
         
         if(input.unwrappedText == ""){
-            errorOnTextfield(textfield: input)
+            Util.errorOnTextfield(textfield: input)
             emptyField = true
         }
     }
@@ -223,11 +212,11 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                 //Choose an appropriate error message based on the error code
                 switch(errCode){
                 case .emailAlreadyInUse:
-                    self.errorOnTextfield(textfield: self.emailInput)
+                    Util.errorOnTextfield(textfield: self.emailInput)
                     errMessage = "The email '\(email)' is already associated with an account."
                     break
                 case .invalidEmail:
-                    self.errorOnTextfield(textfield: self.emailInput)
+                    Util.errorOnTextfield(textfield: self.emailInput)
                     errMessage = "Please enter a valid email address."
                     break
                 default:

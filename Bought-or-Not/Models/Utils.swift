@@ -16,4 +16,15 @@ class Util{
         senderVC.present(alert, animated: true, completion: nil)
     }
     
+    //Add a red border to the textfield
+    static func errorOnTextfield(textfield: UITextField){
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    //Remove any red border from the textfield
+    static func clearErrorOnTextfield(textfield: UITextField){
+        textfield.layer.borderWidth = 0.0
+    }
+    
 }
