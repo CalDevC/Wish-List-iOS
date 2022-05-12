@@ -110,7 +110,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         print("List ID is \(listId ?? "nil")")
         
-        if self.imageLink != "" {
+        if self.imageURL?.absoluteString != "" {
             uploadMedia(imgName: "\(itemName.text ?? "")_\(listId!)") { (myURL) in
                 
                 self.db.collection("item").addDocument(data: [
@@ -180,7 +180,7 @@ class AddItemVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             imageView.image = pickedImage
             
             imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
-            // imageLink = info[UIImagePickerController.InfoKey.imageURL] as? String
+//            imageLink = info[UIImagePickerController.InfoKey.imageURL] as! String
             // print("IMAGE LINK")
             // print(imageLink)
             print(imageURL ?? "No URL")
