@@ -10,7 +10,7 @@ import Firebase
 
 class ItemTableVC: UITableViewController {
     
-    var wishlistItems: [String] = []
+    var wishlistItems: [Item] = []
     let db = Firestore.firestore()
     var listId: String!
     var itemIdx: Int?
@@ -62,14 +62,20 @@ class ItemTableVC: UITableViewController {
                         print("DOCUMENT")
                         print("\(document.documentID) => \(document.data())")
                         self.itemIds.append(document.documentID)
-                        // add listId to array
-                        // userListIds.append(document.documentID)
-                        let listData: [String: String] = document.data() as! [String: String]
-                        for pair in listData {
-                            if(pair.key == "name") {
-                                self.wishlistItems.append(pair.value)
-                            }
-                        }
+                        
+                        let itemData: [String: String] = document.data() as! [String: String]
+                        let item = Item(
+                            category: itemData["category"] ?? "",
+                            image: itemData["image"] ?? "",
+                            link: itemData["link"] ?? "",
+                            listId: itemData["listId"] ?? "",
+                            name: itemData["name"] ?? "",
+                            price: itemData["price"] ?? "",
+                            userId: itemData["userId"] ?? ""
+                        )
+                        
+                        self.wishlistItems.append(item)
+                        
                     }
                     compHandler()
                 }
@@ -136,7 +142,7 @@ class ItemTableVC: UITableViewController {
         }
         // use list for items
         let item = wishlistItems[indexPath.row]
-        cell.wishlistCell.text = "   " + item
+        cell.wishlistCell.text = "   " + item.name
         return cell
     }
 
@@ -161,7 +167,8 @@ class ItemTableVC: UITableViewController {
             guard let indexPath = sender as? IndexPath else {
                 return
             }
-            itemDetailVC.itemId = itemIds[indexPath.row]                
+            
+            itemDetailVC.item = wishlistItems[indexPath.row]
         }
     }
     

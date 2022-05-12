@@ -25,6 +25,7 @@
 		AB763EAF2813566E003C74CD /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB763EAD2813566E003C74CD /* NotificationCell.xib */; };
 		AB763EB1281452D9003C74CD /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB763EB0281452D9003C74CD /* Notification.swift */; };
 		AB84F715282773FD00226B27 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB84F714282773FD00226B27 /* TabBarVC.swift */; };
+		AB8F4709282D829D0095C837 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F4708282D829D0095C837 /* File.swift */; };
 		ABC14E4F2824AFB600C88F58 /* WishListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC14E4D2824AFB600C88F58 /* WishListCollectionViewCell.swift */; };
 		ABC14E502824AFB600C88F58 /* WishListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC14E4E2824AFB600C88F58 /* WishListCollectionViewCell.xib */; };
 		ABC165C527E39BC1006C0B2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC165C427E39BC1006C0B2C /* AppDelegate.swift */; };
@@ -83,6 +84,7 @@
 		AB763EAD2813566E003C74CD /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		AB763EB0281452D9003C74CD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = "Bought-or-Not/Models/Notification.swift"; sourceTree = SOURCE_ROOT; };
 		AB84F714282773FD00226B27 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		AB8F4708282D829D0095C837 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		ABC14E4D2824AFB600C88F58 /* WishListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABC14E4E2824AFB600C88F58 /* WishListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListCollectionViewCell.xib; sourceTree = "<group>"; };
 		ABC165C127E39BC1006C0B2C /* Bought-or-Not.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bought-or-Not.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				ABC1660D27EBFE1A006C0B2C /* Constants.swift */,
 				AB763EA828133971003C74CD /* User.swift */,
 				AB763EB0281452D9003C74CD /* Notification.swift */,
+				AB8F4708282D829D0095C837 /* File.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB8F4709282D829D0095C837 /* File.swift in Sources */,
 				A6F37F3227EE35B100BA3D1A /* ItemTableVC.swift in Sources */,
 				ABC1660E27EBFE1A006C0B2C /* Constants.swift in Sources */,
 				ABC14E4F2824AFB600C88F58 /* WishListCollectionViewCell.swift in Sources */,
