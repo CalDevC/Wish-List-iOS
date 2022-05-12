@@ -7,14 +7,6 @@
 
 import UIKit
 import Firebase
-import simd
-
-//Added an unwrapped text value to avoid lots of unwrapping
-extension UITextField {
-    var unwrappedText: String {
-        return self.text ?? ""
-     }
-}
 
 class RegistrationVC: UIViewController, UITextFieldDelegate {
 

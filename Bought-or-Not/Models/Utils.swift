@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+//Added an unwrapped text value to avoid lots of unwrapping
+extension UITextField {
+    var unwrappedText: String {
+        return self.text ?? ""
+     }
+}
+
 class Util{
     //Launch an alert to notify the user of something
     static func launchAlert(senderVC: UIViewController, title: String, message: String, btnText: String){

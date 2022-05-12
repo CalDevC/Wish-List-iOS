@@ -37,26 +37,47 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signInBtnPressed(_ sender: Any) {
-        //
-        //TODO: validation checking for all textfield inputs
-        //
-        guard let password = passwordInput.text else{
-            //TODO: No password error
-            return
-        }
         
-        guard let email = emailInput.text else{
-            //TODO: No email error
+        Util.clearErrorOnTextfield(textfield: passwordInput)
+        Util.clearErrorOnTextfield(textfield: emailInput)
+        
+        if(emailInput.unwrappedText == ""){
+            Util.errorOnTextfield(textfield: emailInput)
+            Util.launchAlert(
+                senderVC: self,
+                title: "Error",
+                message: "Please provide the email associated with your account",
+                btnText: "Ok"
+            )
+            return
+        }else if(passwordInput.unwrappedText == ""){
+            Util.errorOnTextfield(textfield: passwordInput)
+            Util.launchAlert(
+                senderVC: self,
+                title: "Error",
+                message: "Please provide your password",
+                btnText: "Ok"
+            )
             return
         }
         
         activityIndicator.startAnimating()
         signInButton.isEnabled = false
         
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+        Auth.auth().signIn(
+            withEmail: emailInput.unwrappedText,
+            password: passwordInput.unwrappedText
+        ) { authResult, error in
             if let err = error{
                 print(err.localizedDescription)
-                //TODO: Inform user of sign in error
+                
+                Util.launchAlert(
+                    senderVC: self,
+                    title: "Error",
+                    message: "Invalid email or password",
+                    btnText: "Ok"
+                )
+                
                 self.signInButton.isEnabled = true
                 self.activityIndicator.stopAnimating()
                 return
@@ -69,8 +90,14 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             let userDataDocRef = self.db.collection("users").document(currentUID)
             userDataDocRef.getDocument { (doc, error) in
                 if let err = error{
-                    //TODO: Notify user of error
+                    Util.launchAlert(
+                        senderVC: self,
+                        title: "Internal Error",
+                        message: "User data could not be loaded, please try again later",
+                        btnText: "Ok"
+                    )
                     print(err)
+                    return
                 }
                 
                 if let document = doc, document.exists {
@@ -80,6 +107,12 @@ class SignInVC: UIViewController, UITextFieldDelegate {
                     guard let fullName: String = docData["fullName"] as? String,
                           let username: String = docData["username"] as? String
                     else{
+                        Util.launchAlert(
+                            senderVC: self,
+                            title: "Internal Error",
+                            message: "User data could not be loaded, please try again later",
+                            btnText: "Ok"
+                        )
                         return
                     }
                     
