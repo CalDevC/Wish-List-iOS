@@ -25,9 +25,12 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     @IBOutlet weak var accessLabel: UILabel!
     @IBOutlet weak var accessSwitch: UISwitch!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activityIndicator.hidesWhenStopped = true
         occasionPicker.delegate = self
         occasionPicker.dataSource = self
         titleInput.delegate = self
@@ -63,6 +66,8 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
             Util.clearErrorOnTextfield(textfield: titleInput)
         }
         
+        activityIndicator.startAnimating()
+        
         let row = occasionPicker.selectedRow(inComponent: 0)
         
         var pickerOccasion: String = occasionPicker.delegate?.pickerView?(
@@ -75,9 +80,7 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
             pickerOccasion = "None"
         }
         let pickerDate: Date = datePicker.date
-        print(pickerDate)
         let publicSwitch: Bool = accessSwitch.isOn
-        print(publicSwitch)
         
         //Add new list data
         var ref: DocumentReference? = nil
@@ -94,15 +97,18 @@ class NewListVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
                 Util.launchAlert(
                     senderVC: self,
                     title: "Error",
-                    message: "Account created but failed to save user data.",
+                    message: "Wish list could not be created 🙁, please try again later",
                     btnText: "Ok"
                 )
+                
+                self.activityIndicator.stopAnimating()
                 return
             } else {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
         
+        activityIndicator.stopAnimating()
         self.navigationController?.popViewController(animated: true)
     }
     
