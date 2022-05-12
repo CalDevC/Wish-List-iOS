@@ -744,32 +744,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qju-gT-ryb">
-                                <rect key="frame" x="132" y="841" width="150" height="31"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oY-Kg-Ppc">
+                                <rect key="frame" x="0.0" y="523" width="414" height="339"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qju-gT-ryb">
+                                        <rect key="frame" x="132" y="154" width="150" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="KAm-Ic-uDA"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Buy Now" cornerStyle="capsule">
+                                            <color key="baseBackgroundColor" name="btnFill"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="linkButton:" destination="0Ar-85-zaE" eventType="touchUpInside" id="e0m-n7-mRJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="KAm-Ic-uDA"/>
+                                    <constraint firstItem="Qju-gT-ryb" firstAttribute="centerX" secondItem="3oY-Kg-Ppc" secondAttribute="centerX" id="V4s-bV-0Jv"/>
+                                    <constraint firstItem="Qju-gT-ryb" firstAttribute="centerY" secondItem="3oY-Kg-Ppc" secondAttribute="centerY" id="p0W-8s-eLK"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Buy Now" cornerStyle="capsule">
-                                    <color key="baseBackgroundColor" name="btnFill"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="linkButton:" destination="0Ar-85-zaE" eventType="touchUpInside" id="e0m-n7-mRJ"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uBi-M8-rBd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3GR-Xm-M8y" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" constant="5" id="0iM-NN-BaI"/>
+                            <constraint firstItem="3oY-Kg-Ppc" firstAttribute="top" secondItem="3GR-Xm-M8y" secondAttribute="bottom" id="3vh-sV-GzU"/>
                             <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="Lne-da-IrV" secondAttribute="trailing" constant="5" id="DSb-UV-poe"/>
                             <constraint firstItem="3GR-Xm-M8y" firstAttribute="top" secondItem="BIR-Td-AcJ" secondAttribute="bottom" constant="10" id="Iqk-aO-ZCZ"/>
                             <constraint firstItem="BIR-Td-AcJ" firstAttribute="top" secondItem="uBi-M8-rBd" secondAttribute="top" constant="10" id="M9a-Ro-OaD" userLabel="Item Detail Image View.top = Safe Area.top + 5"/>
+                            <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="3oY-Kg-Ppc" secondAttribute="trailing" id="RMm-WB-zjF"/>
+                            <constraint firstItem="uBi-M8-rBd" firstAttribute="bottom" secondItem="3oY-Kg-Ppc" secondAttribute="bottom" id="Zg0-jF-Qb5"/>
                             <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="BIR-Td-AcJ" secondAttribute="trailing" constant="10" id="bVN-Dt-19c"/>
-                            <constraint firstItem="Qju-gT-ryb" firstAttribute="bottom" secondItem="uBi-M8-rBd" secondAttribute="bottom" constant="10" id="k6t-Pm-cUP"/>
-                            <constraint firstItem="Qju-gT-ryb" firstAttribute="centerX" secondItem="zQ4-39-hKs" secondAttribute="centerX" id="lWH-R2-Z6u"/>
+                            <constraint firstItem="3oY-Kg-Ppc" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" id="eMg-9S-UdU"/>
+                            <constraint firstItem="uBi-M8-rBd" firstAttribute="bottom" secondItem="3oY-Kg-Ppc" secondAttribute="bottom" id="o8Y-iR-WU6"/>
                             <constraint firstItem="Lne-da-IrV" firstAttribute="top" secondItem="BIR-Td-AcJ" secondAttribute="bottom" constant="10" id="oal-LU-XiE"/>
                             <constraint firstItem="BIR-Td-AcJ" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" constant="10" id="seb-lY-nK8" userLabel="Item Detail Image View.leading = Safe Area.leading + 5"/>
+                            <constraint firstItem="uBi-M8-rBd" firstAttribute="trailing" secondItem="3oY-Kg-Ppc" secondAttribute="trailing" id="vMC-26-pDk"/>
+                            <constraint firstItem="3oY-Kg-Ppc" firstAttribute="leading" secondItem="uBi-M8-rBd" secondAttribute="leading" id="zvy-RJ-4qb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yf7-MX-i1L"/>
