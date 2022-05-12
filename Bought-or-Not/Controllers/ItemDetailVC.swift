@@ -29,7 +29,7 @@ class ItemDetailVC: UIViewController {
         
         self.navigationItem.title = item.name
         categoryLabel.text = item.category
-        priceLabel.text = item.price
+        priceLabel.text = "$\(item.price)"
         
         getImage()
     }
