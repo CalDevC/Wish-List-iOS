@@ -59,31 +59,38 @@ class ItemDetailVC: UIViewController {
                     print(document.data())
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                     print("Document data: \(dataDescription)")
+                    
                     self.nameLabel.text = document.data()?["name"] as? String
                     self.categoryLabel.text = document.data()?["category"] as? String
                     self.priceLabel.text = document.data()?["price"] as? String
                     self.linkURL = document.data()?["link"] as? String
                     self.locationLabel.text = document.data()?["location"] as? String
                     let myImage = document.data()?["image"] as! String
+                    
                     // let storage = Storage.storage()
                     let storageRef = Storage.storage().reference()
                     let imagePath = myImage
                     print("IMAGE PATH")
                     print(imagePath)
-                    let imageRef = storageRef.child(imagePath)
+                    if(imagePath == ""){
+                        self.itemDetailImageView.image = UIImage(systemName: "photo")
+                    } else{
+                        self.itemDetailImageView.isHidden = false
+                        let imageRef = storageRef.child(imagePath)
 
-                    // print(document.data()?["image"] as? String)
-                    
-                    imageRef.getData(maxSize: 1 * 100024 * 100024) { data, error in
-                      if let error = error {
-                        print("ERRORORORO")
-                        print(error)
-                        // Uh-oh, an error occurred!
-                      } else {
-                        // Data for "images/island.jpg" is returned
-                        let itemImage = UIImage(data: data!)
-                        self.itemDetailImageView.image = itemImage
-                      }
+                        // print(document.data()?["image"] as? String)
+                        
+                        imageRef.getData(maxSize: 1 * 100024 * 100024) { data, error in
+                          if let error = error {
+                            print("ERRORORORO")
+                            print(error)
+                            // Uh-oh, an error occurred!
+                          } else {
+                            // Data for "images/island.jpg" is returned
+                            let itemImage = UIImage(data: data!)
+                            self.itemDetailImageView.image = itemImage
+                          }
+                        }
                     }
                 }
                 else {
