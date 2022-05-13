@@ -1,61 +1,21 @@
-## Wish List iOS App
+# Bought-or-Not (iOS)
 
-Team: Chase Alexander, Chris Huber\
-Course: CSC680/780 Mobile App Development\
-Instuctor: Axel Esselmann
+## Description
+Bought-or-Not is an iOS application that makes it easy to share all of your wish lists with family and friends. Your wish lists provide you a place to list things you want year-round so that when your birthday or the holidays come around you don’t have to try and think back on all the cool things you’ve seen and wanted but have now forgotten. Your list will be available 24/7 making it easy for you to just add things you like when you see them at the store or in an ad. Keeping your lists on Bought-or-Not also makes it easier for your family and friends to shop for you. Whenever they’re ready they can view your lists and won’t tip you off that they’re shopping for you by asking what you want for a certain occasion.
 
-### Description
-This app is meant to help people add things to and remember a wish list of items that they might otherwise forget. The interface allows the user to add lists for certain occasions and populate those lists with items they find throughout their day. Item will have a name, price, optional image, and other details about the desired item.
-
-### Must-have features
- - Create new a user account and log in
+## Core Features
+ # Create new a user account
    - Must have account to access app features
  - Create new lists
  - Add new items to lists
  - Create whitelisted links to lists (for sharing)
  - Mark items as purchased
  - Update settings
- 
- #### List feature
- - Accessibility (public/private)
- - Title (Linked to occasion)
- - Date (of occassion)
- - Option to see what items have been bought (before or after date)
- - Option to see who the purchaser was (before or after date)
- - List of contributors (optionally viewable before/after date)
 
- #### List item features
- - Name of item
- - Category
- - Price range
- - Link (optional)
- - Location of store (optional)
- - Occasion
- - Photo (optional)
- - Status
-   - Bought or not
-   - Purchaser & message (if bought)
- 
- #### Purchaser options
- - Share name or alias
- - Add optional gift message
 
- #### User data
+ ### User Data
  - username
- - first/last name
+ - full name
  - email
  - password
  - phone number (optional)
- - profile picture
- - possible payment info
-
-### Nice-to-have features
- - Add images to list item
- - Ability to add location to items posted (using geo-location)
- - Send money through Stripe instead of purchasing lsit item (possibly on a scheduled day)
- - Friend list (for sharing list updates)
-
-## Layout
-
-<img width="886" alt="Screen Shot 2022-03-12 at 2 18 58 PM" src="https://user-images.githubusercontent.com/62198796/158037007-4b4d55ae-85a0-4686-9c90-c29f7a586f51.png">
-
