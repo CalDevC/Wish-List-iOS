@@ -12,6 +12,9 @@ Bought-or-Not is an iOS application that makes it easy to share all of your wish
  - Email
  - Password
  - Phone number (optional)
+ - Friend list
+ - Notifications
+ - User ID
 
 ### Wish List data
  - Title
@@ -19,6 +22,7 @@ Bought-or-Not is an iOS application that makes it easy to share all of your wish
  - Event date
  - Visibility (public/private)
     - Public lists are visible to friends
+ - List ID
 
 ### Wish List item data
  - Title
@@ -26,6 +30,7 @@ Bought-or-Not is an iOS application that makes it easy to share all of your wish
  - Price
  - Link to purchase item
  - Image (optional)
+ - Item ID
 
 ## Feature Demos
  ### Create new a user account
