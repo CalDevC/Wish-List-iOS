@@ -70,6 +70,19 @@ Bought-or-Not is an iOS application that makes it easy to share all of your wish
  
  > https://user-images.githubusercontent.com/62198796/168190403-b2535b8d-8191-4523-b87e-85928eb351ba.mov
 
+ ### Send a friend request
 
+ > https://user-images.githubusercontent.com/62198796/168193828-eb00ca21-bafb-4d63-b0a6-0652db08dc08.mov
+
+ ### Accept friend request
+
+ > https://user-images.githubusercontent.com/62198796/168193863-3cdd12b4-e6ca-4ff0-a33b-e1c2a5cf1f28.mov
+
+
+ > https://user-images.githubusercontent.com/62198796/168193873-d0947eaf-e92e-425c-8529-6ebb3ba0bddf.mov
+
+ ### View/purchase items for friends
+
+ > https://user-images.githubusercontent.com/62198796/168194061-fd78bca3-037a-4775-aa99-3e3c2baf7576.mov
 
 
