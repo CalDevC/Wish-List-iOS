@@ -1,61 +1,88 @@
-## Wish List iOS App
+# Bought-or-Not (iOS)
 
-Team: Chase Alexander, Chris Huber\
-Course: CSC680/780 Mobile App Development\
-Instuctor: Axel Esselmann
+## Description
+Bought-or-Not is an iOS application that makes it easy to share all of your wish lists with family and friends. Your wish lists provide you a place to list things you want year-round so that when your birthday or the holidays come around you don’t have to try and think back on all the cool things you’ve seen and wanted but have now forgotten. Your list will be available 24/7 making it easy for you to just add things you like when you see them at the store or in an ad. Keeping your lists on Bought-or-Not also makes it easier for your family and friends to shop for you. Whenever they’re ready they can view your lists and won’t tip you off that they’re shopping for you by asking what you want for a certain occasion.
 
-### Description
-This app is meant to help people add things to and remember a wish list of items that they might otherwise forget. The interface allows the user to add lists for certain occasions and populate those lists with items they find throughout their day. Item will have a name, price, optional image, and other details about the desired item.
-
-### Must-have features
- - Create new a user account and log in
-   - Must have account to access app features
- - Create new lists
- - Add new items to lists
- - Create whitelisted links to lists (for sharing)
- - Mark items as purchased
- - Update settings
+## Core Features
+ - Create a new account
+ - Sign in to an existing account
+ - Sign out the currently signed in user
  
- #### List feature
- - Accessibility (public/private)
- - Title (Linked to occasion)
- - Date (of occassion)
- - Option to see what items have been bought (before or after date)
- - Option to see who the purchaser was (before or after date)
- - List of contributors (optionally viewable before/after date)
+ - Create a new wish list
+ - Add a new item to a wish list
+ - Delete a wish list (press and hold)
+ - Delete an item from a wish list
 
- #### List item features
- - Name of item
- - Category
- - Price range
- - Link (optional)
- - Location of store (optional)
- - Occasion
- - Photo (optional)
- - Status
-   - Bought or not
-   - Purchaser & message (if bought)
+ - Search existing userbase for friends
+ - Send/Recieve/Accept friend requests
+ - View friend's public wish lists/items without ability to edit
+ - Purchase items for friends or self through "Buy Now" feature
  
- #### Purchaser options
- - Share name or alias
- - Add optional gift message
+## Data Stored
+### User Data
+ - Username
+ - Full name
+ - Email
+ - Password
+ - Phone number (optional)
+ - Friend list
+ - Notifications
+ - User ID
 
- #### User data
- - username
- - first/last name
- - email
- - password
- - phone number (optional)
- - profile picture
- - possible payment info
+### Wish List data
+ - Title
+ - Occasion (optional)
+ - Event date
+ - Visibility (public/private)
+    - Public lists are visible to friends
+ - List ID
 
-### Nice-to-have features
- - Add images to list item
- - Ability to add location to items posted (using geo-location)
- - Send money through Stripe instead of purchasing lsit item (possibly on a scheduled day)
- - Friend list (for sharing list updates)
+### Wish List item data
+ - Title
+ - Category (optional)
+ - Price
+ - Link to purchase item
+ - Image (optional)
+ - Item ID
 
-## Layout
+## Feature Demos
+ ### Create new a user account
 
-<img width="886" alt="Screen Shot 2022-03-12 at 2 18 58 PM" src="https://user-images.githubusercontent.com/62198796/158037007-4b4d55ae-85a0-4686-9c90-c29f7a586f51.png">
+ > https://user-images.githubusercontent.com/62198796/168189662-538e900c-2152-43e1-9c71-42c33926c665.mov
+
+ ### Sign in to an existing account
+
+ > https://user-images.githubusercontent.com/62198796/168189936-000a1e4e-18f6-47a7-8bb7-9436d0fbd4ff.mov
+
+ ### Create a new Wish List
+
+ > https://user-images.githubusercontent.com/62198796/168189977-df8a4545-a5aa-4ef9-9ee6-0775e24f80b4.mov
+
+ ### Add a new item to a Wish List
+
+ > https://user-images.githubusercontent.com/62198796/168190266-c8a4f243-25c5-4a99-ab9a-afee503d607c.mp4
+
+ ### Delete an item from a Wish List
+ 
+ > https://user-images.githubusercontent.com/62198796/168190334-7646b91b-60b5-49e7-951b-bbadf5fad995.mov
+
+ ### Delete a Wish List (press and hold)
+ 
+ > https://user-images.githubusercontent.com/62198796/168190403-b2535b8d-8191-4523-b87e-85928eb351ba.mov
+
+ ### Send a friend request
+
+ > https://user-images.githubusercontent.com/62198796/168193828-eb00ca21-bafb-4d63-b0a6-0652db08dc08.mov
+
+ ### Accept friend request
+
+ > https://user-images.githubusercontent.com/62198796/168193863-3cdd12b4-e6ca-4ff0-a33b-e1c2a5cf1f28.mov
+
+
+ > https://user-images.githubusercontent.com/62198796/168193873-d0947eaf-e92e-425c-8529-6ebb3ba0bddf.mov
+
+ ### View/purchase items for friends
+
+ > https://user-images.githubusercontent.com/62198796/168194061-fd78bca3-037a-4775-aa99-3e3c2baf7576.mov
+
 
