@@ -4,6 +4,30 @@
 Bought-or-Not is an iOS application that makes it easy to share all of your wish lists with family and friends. Your wish lists provide you a place to list things you want year-round so that when your birthday or the holidays come around you don’t have to try and think back on all the cool things you’ve seen and wanted but have now forgotten. Your list will be available 24/7 making it easy for you to just add things you like when you see them at the store or in an ad. Keeping your lists on Bought-or-Not also makes it easier for your family and friends to shop for you. Whenever they’re ready they can view your lists and won’t tip you off that they’re shopping for you by asking what you want for a certain occasion.
 
 ## Core Features
+
+## Data Stored
+### User Data
+ - Username
+ - Full name
+ - Email
+ - Password
+ - Phone number (optional)
+
+### Wish List data
+ - Title
+ - Occasion (optional)
+ - Event date
+ - Visibility (public/private)
+    - Public lists are visible to friends
+
+### Wish List item data
+ - Title
+ - Category (optional)
+ - Price
+ - Link to purchase item
+ - Image (optional)
+
+## Feature Demos
  ### Create new a user account
 
  > https://user-images.githubusercontent.com/62198796/168189662-538e900c-2152-43e1-9c71-42c33926c665.mov
@@ -27,19 +51,6 @@ Bought-or-Not is an iOS application that makes it easy to share all of your wish
  ### Delete a Wish List
  
  > https://user-images.githubusercontent.com/62198796/168190403-b2535b8d-8191-4523-b87e-85928eb351ba.mov
-
-## Data Stored
-### User Data
- - username
- - full name
- - email
- - password
- - phone number (optional)
-
-### Wish List data
- - 
-### Wish List item data
-
 
 
 
