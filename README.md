@@ -4,7 +4,20 @@
 Bought-or-Not is an iOS application that makes it easy to share all of your wish lists with family and friends. Your wish lists provide you a place to list things you want year-round so that when your birthday or the holidays come around you don’t have to try and think back on all the cool things you’ve seen and wanted but have now forgotten. Your list will be available 24/7 making it easy for you to just add things you like when you see them at the store or in an ad. Keeping your lists on Bought-or-Not also makes it easier for your family and friends to shop for you. Whenever they’re ready they can view your lists and won’t tip you off that they’re shopping for you by asking what you want for a certain occasion.
 
 ## Core Features
+ - Create a new account
+ - Sign in to an existing account
+ - Sign out the currently signed in user
+ 
+ - Create a new wish list
+ - Add a new item to a wish list
+ - Delete a wish list (press and hold)
+ - Delete an item from a wish list
 
+ - Search existing userbase for friends
+ - Send/Recieve/Accept friend requests
+ - View friend's public wish lists/items without ability to edit
+ - Purchase items for friends or self through "Buy Now" feature
+ 
 ## Data Stored
 ### User Data
  - Username
@@ -53,7 +66,7 @@ Bought-or-Not is an iOS application that makes it easy to share all of your wish
  
  > https://user-images.githubusercontent.com/62198796/168190334-7646b91b-60b5-49e7-951b-bbadf5fad995.mov
 
- ### Delete a Wish List
+ ### Delete a Wish List (press and hold)
  
  > https://user-images.githubusercontent.com/62198796/168190403-b2535b8d-8191-4523-b87e-85928eb351ba.mov
 
